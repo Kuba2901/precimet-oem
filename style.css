@@ -604,3 +604,98 @@ footer {
 /* ── SCROLL REVEAL ── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .reveal.in { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE DESIGN (Media Queries) ── */
+
+@media (max-width: 1024px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr; /* Stopka w 2 kolumnach na tabletach */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Nawigacja */
+  nav {
+    height: auto;
+    padding: 15px 5%;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .nav-links {
+    margin-left: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav-links a {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 60px 5%;
+    text-align: center;
+  }
+  .hero-inner {
+    max-width: 100%;
+  }
+  .hero-label {
+    justify-content: center;
+  }
+  .hero-label::before { display: none; } /* Usuwamy kreskę dla lepszego wyśrodkowania */
+  .hero-desc {
+    margin: 0 auto 30px;
+  }
+  .hero-btns {
+    justify-content: center;
+  }
+
+  /* Statystyki - zmiana na 2x2 */
+  .stats-inner {
+    flex-wrap: wrap;
+  }
+  .stat {
+    flex: 0 0 50%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat:nth-child(even) {
+    border-left: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* Usługi i Maszyny - wymuszenie 1 kolumny tam, gdzie grid jest za ciasny */
+  .services-grid, .machines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stopka - wszystko w jednej kolumnie */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  .footer-logo-wrap {
+    align-items: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Topbar - ukrywamy lub upraszczamy na małych ekranach */
+  .topbar {
+    justify-content: center;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat {
+    flex: 0 0 100%; /* Statystyki jeden pod drugim na bardzo małych telefonach */
+    border-left: none !important;
+  }
+  
+  .hero h1 {
+    font-size: 36px; /* Nadpisujemy clamp, jeśli wciąż jest za duże */
+  }
+}
