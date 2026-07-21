@@ -1,0 +1,111 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {
+  LOCALES,
+  OG_LOCALES,
+  path,
+  stripLocale,
+  type Locale,
+} from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+  /** Ścieżka bez prefiksu językowego, np. '/blog' — używana do hreflang. */
+  pagePath?: string;
+  ogImage?: string;
+}
+
+const { locale, title, description, pagePath, ogImage } = Astro.props;
+const dict = t(locale);
+
+const metaTitle = title ?? dict.seo.title;
+const metaDescription = description ?? dict.seo.description;
+const basePath = pagePath ?? stripLocale(Astro.url);
+const site = Astro.site ?? new URL('https://oem.precimet.pl');
+const canonical = new URL(path(locale, basePath), site).href;
+const ogImg = ogImage ?? new URL('/logo.png', site).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Precimet',
+  alternateName: 'Precimet OEM Manufacturing',
+  url: site.href,
+  logo: new URL('/logo.png', site).href,
+  description: metaDescription,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Łódź',
+    addressCountry: 'PL',
+  },
+};
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/logo.png" />
+
+    {/* hreflang — każda wersja językowa wskazuje pozostałe */}
+    {LOCALES.map((l) => (
+      <link rel="alternate" hreflang={l} href={new URL(path(l, basePath), site).href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(path('pl', basePath), site).href} />
+
+    {/* Open Graph / Twitter */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Precimet OEM Manufacturing" />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImg} />
+    <meta property="og:locale" content={OG_LOCALES[locale]} />
+    {LOCALES.filter((l) => l !== locale).map((l) => (
+      <meta property="og:locale:alternate" content={OG_LOCALES[l]} />
+    ))}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {/* Fonty */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <Header locale={locale} />
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+
+    {/* Subtelne animacje wejścia sekcji */}
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              observer.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

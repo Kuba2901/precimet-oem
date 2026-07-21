@@ -1,0 +1,108 @@
+---
+import { path, type Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import { getPosts, postSlug, dateFormatter } from '../lib/blog';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const posts = await getPosts(locale);
+const fmt = dateFormatter(locale);
+---
+
+<section class="section blog-list">
+  <div class="container">
+    <header class="blog-list__head">
+      <p class="eyebrow">{dict.blog.eyebrow}</p>
+      <h1>{dict.blog.title}</h1>
+      <hr class="laser-line" />
+      <p class="blog-list__lead">{dict.blog.lead}</p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p>{dict.blog.empty}</p>
+    ) : (
+      <div class="blog-list__grid">
+        {posts.map((post) => {
+          const url = path(locale, `/blog/${postSlug(post)}`);
+          return (
+            <article class="card post-card">
+              {post.data.cover && (
+                <a href={url} class="post-card__media" tabindex="-1">
+                  <img src={post.data.cover} alt="" loading="lazy" width="600" height="380" />
+                </a>
+              )}
+              <div class="post-card__body">
+                <time class="spec" datetime={post.data.date.toISOString()}>
+                  {fmt.format(post.data.date)}
+                </time>
+                <h2><a href={url}>{post.data.title}</a></h2>
+                <p>{post.data.description}</p>
+                <a class="post-card__more" href={url}>{dict.blog.readMore} →</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .blog-list__head { max-width: 680px; margin-bottom: 2.5rem; }
+  .blog-list__head h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+  .blog-list__lead { color: var(--c-text-muted); }
+
+  .blog-list__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .post-card__media {
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--c-sand-100);
+  }
+
+  .post-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease;
+  }
+
+  .post-card:hover .post-card__media img { transform: scale(1.04); }
+
+  .post-card__body {
+    padding: 1.15rem 1.25rem 1.4rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .post-card__body h2 { font-size: 1.4rem; margin: 0; }
+
+  .post-card__body h2 a {
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .post-card__body h2 a:hover { color: var(--c-red-500); }
+
+  .post-card__body p { margin: 0; color: var(--c-text-muted); font-size: 0.94rem; }
+
+  .post-card__more {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--c-red-500);
+  }
+
+  .post-card__more:hover { color: var(--c-red-600); }
+</style>

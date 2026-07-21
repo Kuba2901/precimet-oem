@@ -1,0 +1,84 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section id="proces" class="section">
+  <div class="container">
+    <header class="process__head reveal">
+      <p class="eyebrow">{dict.process.eyebrow}</p>
+      <h2>{dict.process.title}</h2>
+      <hr class="laser-line" />
+      <p class="process__lead">{dict.process.lead}</p>
+    </header>
+
+    <ol class="process__steps">
+      {dict.process.steps.map((step, i) => (
+        <li class="step reveal">
+          <span class="step__no">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{step.title}</h3>
+          <p>{step.desc}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .process__head { max-width: 640px; margin-bottom: 2.5rem; }
+  .process__lead { color: var(--c-text-muted); }
+
+  .process__steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    counter-reset: step;
+  }
+
+  .step {
+    position: relative;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.4rem 1.5rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .step:hover {
+    border-color: var(--c-steel-300);
+    box-shadow: var(--shadow-card);
+  }
+
+  .step__no {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--c-red-500);
+    display: inline-block;
+    margin-bottom: 0.7rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--c-sand-500);
+  }
+
+  .step h3 { font-size: 1.3rem; margin-bottom: 0.35rem; }
+
+  .step p { margin: 0; color: var(--c-text-muted); font-size: 0.94rem; }
+
+  @media (max-width: 900px) {
+    .process__steps { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .process__steps { grid-template-columns: 1fr; }
+  }
+</style>

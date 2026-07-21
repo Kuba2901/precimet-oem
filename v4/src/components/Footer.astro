@@ -1,0 +1,156 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { path, type Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const home = path(locale, '/');
+const year = new Date().getFullYear();
+
+const links = [
+  { href: `${home}#o-firmie`, label: dict.nav.about },
+  { href: `${home}#uslugi`, label: dict.nav.services },
+  { href: `${home}#proces`, label: dict.nav.process },
+  { href: path(locale, '/blog'), label: dict.nav.blog },
+  { href: `${home}#kontakt`, label: dict.nav.contact },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a href={home} class="footer__logo">
+        <img src="/logo.png" alt="Precimet" width="40" height="40" />
+        <span>PRECIMET <em>OEM Manufacturing</em></span>
+      </a>
+      <p>{dict.footer.tagline}</p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h4>{dict.footer.navTitle}</h4>
+      <ul>
+        {links.map((l) => (
+          <li><a href={l.href}>{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <h4>{dict.footer.contactTitle}</h4>
+      <address>
+        {dict.contact.info.address.split('\n').map((line) => <span>{line}</span>)}
+        <a href={`tel:${dict.contact.info.phone.replace(/\s/g, '')}`}>{dict.contact.info.phone}</a>
+        <a href={`mailto:${dict.contact.info.email}`}>{dict.contact.info.email}</a>
+      </address>
+    </div>
+
+    <div>
+      <h4>{dict.footer.langTitle}</h4>
+      <LanguageSwitcher variant="footer" />
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <span class="spec">© {year} Precimet · {dict.footer.legal}</span>
+    <span class="spec">ISO 9001:2015</span>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--c-graphite-900);
+    color: var(--c-text-inverse-muted);
+    padding-top: 3.5rem;
+    font-size: 0.94rem;
+  }
+
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+
+  .footer__logo img { border-radius: 50%; }
+
+  .footer__logo span {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    color: var(--c-text-inverse);
+  }
+
+  .footer__logo em {
+    display: block;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--c-sand-500);
+  }
+
+  h4 {
+    color: var(--c-text-inverse);
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer a:hover { color: var(--c-sand-500); }
+
+  address {
+    font-style: normal;
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-block: 1.2rem;
+    border-top: 1px solid var(--c-graphite-700);
+  }
+
+  .footer__bottom .spec { color: var(--c-steel-300); }
+
+  @media (max-width: 900px) {
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+</style>

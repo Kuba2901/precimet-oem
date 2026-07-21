@@ -1,0 +1,78 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section id="dlaczego-my" class="section section--dark">
+  <div class="container">
+    <header class="why__head reveal">
+      <p class="eyebrow">{dict.why.eyebrow}</p>
+      <h2>{dict.why.title}</h2>
+      <hr class="laser-line" />
+    </header>
+
+    <div class="why__grid">
+      {dict.why.items.map((item) => (
+        <div class="why__item reveal">
+          <h3>{item.title}</h3>
+          <p>{item.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <p class="why__note reveal">{dict.why.machineNote}</p>
+  </div>
+</section>
+
+<style>
+  .why__head { max-width: 680px; margin-bottom: 2.5rem; }
+
+  .why__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem 2.25rem;
+  }
+
+  .why__item {
+    border-top: 2px solid var(--c-steel-500);
+    padding-top: 1rem;
+    transition: border-color var(--transition);
+  }
+
+  .why__item:hover { border-color: var(--c-red-500); }
+
+  .why__item h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .why__item p {
+    margin: 0;
+    color: var(--c-text-inverse-muted);
+    font-size: 0.94rem;
+  }
+
+  .why__note {
+    margin: 2.75rem 0 0;
+    padding: 1.1rem 1.3rem;
+    border-left: 3px solid var(--c-sand-500);
+    background: rgb(207 200 150 / 0.08);
+    color: var(--c-sand-300);
+    max-width: 760px;
+  }
+
+  @media (max-width: 900px) {
+    .why__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .why__grid { grid-template-columns: 1fr; }
+  }
+</style>

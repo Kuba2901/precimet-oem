@@ -1,0 +1,76 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section id="branze" class="section section--alt">
+  <div class="container">
+    <header class="industries__head reveal">
+      <p class="eyebrow">{dict.industries.eyebrow}</p>
+      <h2>{dict.industries.title}</h2>
+      <hr class="laser-line" />
+      <p class="industries__lead">{dict.industries.lead}</p>
+    </header>
+
+    {/* Kafelki branż — docelowo można podmienić na logotypy klientów */}
+    <ul class="industries__grid" role="list">
+      {dict.industries.items.map((name) => (
+        <li class="industry reveal">{name}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .industries__head { max-width: 640px; margin-bottom: 2.25rem; }
+  .industries__lead { color: var(--c-text-muted); }
+
+  .industries__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--c-line);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .industry {
+    background: var(--c-surface);
+    padding: 1.4rem 1.2rem;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--c-graphite-700);
+    display: flex;
+    align-items: center;
+    min-height: 5rem;
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .industry:hover {
+    color: var(--c-red-500);
+    background: var(--c-sand-100);
+  }
+
+  @media (max-width: 900px) {
+    .industries__grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .industries__grid { grid-template-columns: 1fr; }
+    .industry { min-height: 0; }
+  }
+</style>

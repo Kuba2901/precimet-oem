@@ -1,0 +1,75 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section id="uslugi" class="section section--alt">
+  <div class="container">
+    <header class="services__head reveal">
+      <p class="eyebrow">{dict.services.eyebrow}</p>
+      <h2>{dict.services.title}</h2>
+      <hr class="laser-line" />
+      <p class="services__lead">{dict.services.lead}</p>
+    </header>
+
+    <div class="services__grid">
+      {dict.services.items.map((s) => (
+        <article class="card service reveal">
+          <div class="service__media">
+            <img src={s.img} alt={s.imgAlt} loading="lazy" width="600" height="400" />
+          </div>
+          <div class="service__body">
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__head { max-width: 640px; margin-bottom: 2.5rem; }
+  .services__lead { color: var(--c-text-muted); }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .service__media {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--c-sand-100);
+  }
+
+  .service__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease;
+  }
+
+  .service:hover .service__media img { transform: scale(1.04); }
+
+  .service__body { padding: 1.15rem 1.25rem 1.4rem; }
+
+  .service__body h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .service__body p {
+    margin: 0;
+    color: var(--c-text-muted);
+    font-size: 0.94rem;
+  }
+</style>

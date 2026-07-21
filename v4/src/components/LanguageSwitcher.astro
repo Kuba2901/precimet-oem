@@ -1,0 +1,78 @@
+---
+import {
+  LOCALES,
+  LOCALE_LABELS,
+  LOCALE_NAMES,
+  localeFromUrl,
+  stripLocale,
+  path,
+  type Locale,
+} from '../i18n/config';
+
+interface Props {
+  /** 'header' — kompaktowy, 'footer' — z pełnymi nazwami języków */
+  variant?: 'header' | 'footer';
+}
+
+const { variant = 'header' } = Astro.props;
+const current = localeFromUrl(Astro.url);
+let base = stripLocale(Astro.url);
+
+// Slugi wpisów różnią się między językami — przełącznik z wpisu
+// prowadzi do listy bloga w docelowym języku.
+if (/^\/blog\/.+/.test(base)) base = '/blog';
+
+const target = (l: Locale) => path(l, base);
+---
+
+<nav class={`lang lang--${variant}`} aria-label="Language">
+  {LOCALES.map((l) => (
+    <a
+      href={target(l)}
+      class:list={['lang__item', { 'is-active': l === current }]}
+      aria-current={l === current ? 'true' : undefined}
+      lang={l}
+      hreflang={l}
+    >
+      {variant === 'footer' ? LOCALE_NAMES[l] : LOCALE_LABELS[l]}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .lang {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  .lang--header {
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .lang__item {
+    text-decoration: none;
+    padding: 0.35rem 0.65rem;
+    color: var(--c-text-muted);
+    transition: color var(--transition), background var(--transition);
+  }
+
+  .lang--header .lang__item + .lang__item {
+    border-left: 1px solid var(--c-line);
+  }
+
+  .lang__item:hover { color: var(--c-red-500); }
+
+  .lang--header .lang__item.is-active {
+    background: var(--c-graphite-800);
+    color: #fff;
+  }
+
+  .lang--footer { gap: 1rem; }
+  .lang--footer .lang__item { padding: 0; color: var(--c-text-inverse-muted); }
+  .lang--footer .lang__item.is-active { color: var(--c-sand-500); }
+</style>

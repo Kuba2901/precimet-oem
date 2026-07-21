@@ -1,0 +1,97 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+
+const aboutImg =
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT22GtlmMxJgQmV6L5hzwhwxT97ojJMVI9CKUaS-6s11ivcpu-VY_8Af9hC&s=10';
+---
+
+<section id="o-firmie" class="section">
+  <div class="container about">
+    <div class="about__text reveal">
+      <p class="eyebrow">{dict.about.eyebrow}</p>
+      <h2>{dict.about.title}</h2>
+      <hr class="laser-line" />
+      <p>{dict.about.p1}</p>
+      <p>{dict.about.p2}</p>
+      <p>{dict.about.p3}</p>
+    </div>
+
+    <div class="about__aside reveal">
+      <figure class="about__figure">
+        <img src={aboutImg} alt={dict.about.imgAlt} loading="lazy" width="700" height="470" />
+      </figure>
+      <dl class="about__facts">
+        {dict.about.facts.map((f) => (
+          <div class="fact">
+            <dt class="spec">{f.label}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+  }
+
+  .about__figure {
+    margin: 0 0 1.25rem;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--c-line);
+  }
+
+  .about__figure img {
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  .about__facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--c-line);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .fact {
+    background: var(--c-surface);
+    padding: 1rem 1.1rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .fact dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--c-red-500);
+    line-height: 1;
+    order: -1;
+  }
+
+  .fact dt { font-size: 0.7rem; }
+
+  @media (max-width: 860px) {
+    .about { grid-template-columns: 1fr; }
+  }
+</style>
