@@ -4,14 +4,12 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // TODO: podmień na docelową domenę przed publikacją
-  site: 'https://oem.precimet.pl',
-
+  site: 'https://jakubnenczak.xyz',
+  base: '/precimet-oem',
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en', 'de'],
     routing: {
-      // polski bez prefiksu: /  |  angielski: /en  |  niemiecki: /de
       prefixDefaultLocale: false,
     },
   },
