@@ -25,7 +25,7 @@ const links = [
   <div class="container footer__grid">
     <div class="footer__brand">
       <a href={home} class="footer__logo">
-        <img src="/precimet-oem/logo.png" alt="Precimet" width="40" height="40" />
+        <img src="/logo.png" alt="Precimet" width="40" height="40" />
         <span>PRECIMET <em>OEM Manufacturing</em></span>
       </a>
       <p>{dict.footer.tagline}</p>
@@ -58,6 +58,11 @@ const links = [
   <div class="container footer__bottom">
     <span class="spec">© {year} Precimet · {dict.footer.legal}</span>
     <span class="spec">ISO 9001:2015</span>
+    <nav class="footer__legal" aria-label="Legal">
+      <a href={path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy')}>
+        {locale === 'pl' ? 'Polityka prywatności' : locale === 'de' ? 'Datenschutz' : 'Privacy Policy'}
+      </a>
+    </nav>
   </div>
 </footer>
 

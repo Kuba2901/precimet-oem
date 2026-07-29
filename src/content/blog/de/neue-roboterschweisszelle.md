@@ -10,7 +10,7 @@ translationKey: "robot-welding-cell"
 
 Im Mai haben wir eine weitere Roboterschweißzelle in Betrieb genommen — unsere Antwort auf die wachsende Zahl von Serienaufträgen, bei denen Nahtwiederholgenauigkeit und ein stabiler Fertigungstakt entscheidend sind.
 
-## Was Kunden gewinnen
+## Was das für Kunden bedeutet
 
 - **Kürzere Taktzeit** — der Roboter schweißt durchgehend, während der Bediener am zweiten Tisch die nächsten Teile rüstet.
 - **Wiederholgenauigkeit** — die Schweißparameter sind im Programm hinterlegt; jedes Teil der Serie erhält identische Nähte.

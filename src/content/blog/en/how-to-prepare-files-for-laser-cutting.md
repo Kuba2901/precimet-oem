@@ -14,18 +14,18 @@ A well-prepared file means a faster quote, fewer follow-up questions and a short
 
 These work best:
 
-- **DXF / DWG** — 2D geometry ready for programming the laser cutter,
-- **STEP / IGES** — 3D models from which we prepare the flat patterns ourselves,
-- **PDF** — a manufacturing drawing with dimensions, tolerances and material grade.
+- **DXF / DWG** — 2D geometry ready for programming the laser cutter
+- **STEP / IGES** — 3D models from which we prepare the flat patterns ourselves
+- **PDF** — a manufacturing drawing with dimensions, tolerances and material grade
 
 The ideal package is a 3D model **plus** a PDF drawing. The model provides the geometry; the drawing provides the quality requirements.
 
 ## What to check in the geometry
 
-1. **1:1 scale** — the DXF should be drawn at real-world dimensions, in millimetres.
-2. **Closed contours** — gaps in lines stop automatic nesting and programming.
-3. **Minimum hole size** — hole diameter should not be smaller than the sheet thickness.
-4. **Hole spacing** — keep at least 1× material thickness between edges.
+1. **1:1 scale** — the DXF should be drawn at real-world dimensions, in millimetres
+2. **Closed contours** — gaps in lines stop automatic nesting and programming
+3. **Minimum hole size** — hole diameter should not be smaller than the sheet thickness
+4. **Hole spacing** — keep at least 1× material thickness between edges
 
 ## What to include in your inquiry
 

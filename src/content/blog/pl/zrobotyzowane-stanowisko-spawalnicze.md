@@ -8,11 +8,11 @@ tags: ["aktualności", "spawanie"]
 translationKey: "robot-welding-cell"
 ---
 
-W maju uruchomiliśmy kolejne zrobotyzowane stanowisko spawalnicze. To odpowiedź na rosnącą liczbę zleceń seryjnych, w których liczy się powtarzalność spoin i stabilny takt produkcji.
+W maju uruchomiliśmy kolejne zrobotyzowane stanowisko spawalnicze. To nasza odpowiedź na rosnącą liczbę zleceń seryjnych, w których liczy się powtarzalność spoin i stabilny takt produkcji.
 
-## Co zyskują klienci?
+## Co to oznacza dla klientów
 
-- **Krótszy czas cyklu** — robot spawa bez przerw, a operator w tym czasie przygotowuje kolejne detale na drugim stole.
+- **Krótszy czas cyklu** - robot spawa bez przerw, a operator w tym czasie przygotowuje kolejne detale na drugim stole.
 - **Powtarzalność** — parametry spawania są zapisane w programie; każda sztuka w serii ma identyczne spoiny.
 - **Niższy koszt jednostkowy** przy średnich i dużych wolumenach.
 

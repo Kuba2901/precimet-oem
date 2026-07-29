@@ -1,0 +1,5 @@
+# robots.txt for Precimet OEM Manufacturing
+User-agent: *
+Allow: /
+
+Sitemap: https://3d-laser.pl/sitemap-index.xml

@@ -14,18 +14,18 @@ Eine gut vorbereitete Datei bedeutet ein schnelleres Angebot, weniger Rückfrage
 
 Am besten eignen sich:
 
-- **DXF / DWG** — 2D-Geometrie, bereit zur Programmierung der Laseranlage,
-- **STEP / IGES** — 3D-Modelle, aus denen wir die Abwicklungen selbst erstellen,
-- **PDF** — Fertigungszeichnung mit Maßen, Toleranzen und Werkstoffangabe.
+- **DXF / DWG** — 2D-Geometrie, bereit zur Programmierung der Laseranlage
+- **STEP / IGES** — 3D-Modelle, aus denen wir die Abwicklungen selbst erstellen
+- **PDF** — Fertigungszeichnung mit Maßen, Toleranzen und Werkstoffangabe
 
 Das ideale Paket: 3D-Modell **plus** PDF-Zeichnung. Das Modell liefert die Geometrie, die Zeichnung die Qualitätsanforderungen.
 
 ## Worauf bei der Geometrie achten?
 
-1. **Maßstab 1:1** — die DXF-Datei sollte in realen Abmessungen, in Millimetern, gezeichnet sein.
-2. **Geschlossene Konturen** — Lücken in Linien stoppen die automatische Programmierung.
-3. **Minimale Lochgröße** — der Lochdurchmesser sollte nicht kleiner sein als die Blechdicke.
-4. **Lochabstände** — mindestens 1× Materialdicke zwischen den Kanten einhalten.
+1. **Maßstab 1:1** — die DXF-Datei sollte in realen Abmessungen, in Millimetern, gezeichnet sein
+2. **Geschlossene Konturen** — Lücken in Linien stoppen die automatische Programmierung
+3. **Minimale Lochgröße** — der Lochdurchmesser sollte nicht kleiner sein als die Blechdicke
+4. **Lochabstände** — mindestens 1× Materialdicke zwischen den Kanten einhalten
 
 ## Was gehört in die Anfrage?
 
