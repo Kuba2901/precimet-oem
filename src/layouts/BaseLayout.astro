@@ -26,7 +26,7 @@ const dict = t(locale);
 const metaTitle = title ?? dict.seo.title;
 const metaDescription = description ?? dict.seo.description;
 const basePath = pagePath ?? stripLocale(Astro.url);
-const site = Astro.site ?? new URL('https://oem.precimet.pl');
+const site = Astro.site ?? new URL('https://3d-laser.pl');
 const canonical = new URL(path(locale, basePath), site).href;
 const ogImg = ogImage ?? new URL('/logo.png', site).href;
 
@@ -54,7 +54,7 @@ const jsonLd = {
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/png" href="/precimet-oem/logo.png" />
+    <link rel="icon" type="image/png" href="/logo.png" />
 
     {/* hreflang — każda wersja językowa wskazuje pozostałe */}
     {LOCALES.map((l) => (

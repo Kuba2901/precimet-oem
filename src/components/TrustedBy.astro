@@ -1,0 +1,82 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+---
+
+<section class="section trusted">
+  <div class="container">
+    <p class="trusted__label">{dict.industries.eyebrow}</p>
+    <div class="trusted__grid">
+      {dict.industries.items.slice(0, 6).map((name, i) => {
+        const initials = name
+          .split(/[\s-]+/)
+          .map((w) => w[0])
+          .join('')
+          .slice(0, 2)
+          .toUpperCase();
+        return (
+          <div class="trusted__logo">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="0.5" y="0.5" width="47" height="47" rx="8" stroke="currentColor" stroke-opacity="0.2" />
+              <text x="24" y="28" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-size="16" font-weight="700" fill="currentColor" fill-opacity="0.4">{initials}</text>
+            </svg>
+            <span>{name}</span>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trusted {
+    padding-block: calc(var(--section-y) * 0.6);
+    background: var(--c-surface);
+    border-bottom: 1px solid var(--c-line);
+  }
+
+  .trusted__label {
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--c-steel-300);
+    margin-bottom: 1.5rem;
+  }
+
+  .trusted__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem 2.5rem;
+  }
+
+  .trusted__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--c-steel-500);
+    transition: color var(--transition);
+  }
+
+  .trusted__logo:hover {
+    color: var(--c-graphite-700);
+  }
+
+  .trusted__logo span {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+</style>

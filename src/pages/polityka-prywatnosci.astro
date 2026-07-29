@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locale = 'pl' as const;
+---
+
+<BaseLayout locale={locale} title="Polityka prywatności — Precimet OEM Manufacturing">
+  <section class="section legal-page">
+    <div class="container">
+      <header class="legal__head reveal">
+        <p class="eyebrow">Informacje prawne</p>
+        <h1>Polityka prywatności</h1>
+        <hr class="laser-line" />
+        <p class="legal__meta">Ostatnia aktualizacja: {new Date().toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </header>
+
+      <div class="legal__content prose reveal">
+        <h2>1. Administrator danych</h2>
+        <p>
+          Administratorem Twoich danych osobowych jest <strong>PRECIMET H.C.E. Sp. z o.o.</strong> z siedzibą w Łodzi (92-735), ul. Pomorska 555, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego (KRS) prowadzonego przez Sąd Rejonowy dla Łodzi-Śródmieścia XX Wydział Krajowego Rejestru Sądowego pod numerem KRS: 0000503010, NIP: 7272841275, REGON: 363114171, kapitał zakładowy: 100.000,00 PLN (w dalszej części: „Administrator”, „my”, „nas”).
+        </p>
+
+        <h2>2. Dane kontaktowe</h2>
+        <address>
+          PRECIMET H.C.E. Sp. z o.o.<br />
+          ul. Pomorska 555<br />
+          92-735 Łódź, Polska<br />
+          E-mail: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a><br />
+          Telefon: +48 422 080 411
+        </address>
+
+        <h2>3. Cele i podstawy prawne przetwarzania</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Cel przetwarzania</th>
+              <th>Podstawa prawna (RODO)</th>
+              <th>Kategorie danych</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Obsługa zapytań ofertowych / kontaktowych (formularz, e-mail, telefon)</td>
+              <td>Art. 6 ust. 1 lit. b RODO (realizacja umowy / działań na wniosek)</td>
+              <td>Imię, nazwisko, nazwa firmy, e-mail, telefon, treść wiadomości, załączniki</td>
+            </tr>
+            <tr>
+              <td>Realizacja zamówień i współpracy handlowej</td>
+              <td>Art. 6 ust. 1 lit. b RODO (realizacja umowy)</td>
+              <td>Dane identyfikacyjne, adresowe, bankowe, historia zamówień</td>
+            </tr>
+            <tr>
+              <td>Wysyłka informacji handlowych / newslettera (przy wyraźnej zgódzie)</td>
+              <td>Art. 6 ust. 1 lit. a RODO (zgoda)</td>
+              <td>E-mail, imię, preferencje</td>
+            </tr>
+            <tr>
+              <td>Ustalanie, dochodzenie i obrona roszczeń</td>
+              <td>Art. 6 ust. 1 lit. f RODO (uzasadniony interes)</td>
+              <td>Dane niezbędne do realizacji roszczenia</td>
+            </tr>
+            <tr>
+              <td>Zapewnienie bezpieczeństwa strony (logi serwera, ochrona przed botami)</td>
+              <td>Art. 6 ust. 1 lit. f RODO (uzasadniony interes)</td>
+              <td>Adres IP, User Agent, czas wizyty, żądane zasoby</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>4. Odbiorcy danych</h2>
+        <p>Twoje dane mogą zostać przekazane podmiotom przetwarzającym dane na podstawie umów o powierzeniu przetwarzania (art. 28 RODO), w szczególności:</p>
+        <ul>
+          <li>Dostawcom usług hostingowych i IT (serwery, kopie zapasowe, monitoring),</li>
+          <li>Dostawcom usług formularzy kontaktowych / e-mail (np. Formspree, Netlify Forms),</li>
+          <li>Biurom rachunkowym / prawnym (w zakresie niezbędnym do obsługi księgowej i prawnej),</li>
+          <li>Organom uprawnionym na podstawie przepisów (sądy, prokuratura, organy nadzoru).</li>
+        </ul>
+        <p>Nie sprzedajemy ani nie udostępniamy danych osobowych podmiotom trzecim w celach marketingowych bez Twojej zgody.</p>
+
+        <h2>5. Przekazywanie danych poza EOG</h2>
+        <p>Nie przekazujemy danych osobowych do krajów trzecich ani organizacji międzynarodowych. Wszystkie usługi hostingowe i przetwarzania znajdują się w Unii Europejskiej.</p>
+
+        <h2>6. Okres przechowywania danych</h2>
+        <ul>
+          <li>Dane z formularza kontaktowego / zapytania ofertowego: do zakończenia negocjacji, a następnie przez <strong>3 lata</strong> w celach dowodowych i archiwizacyjnych.</li>
+          <li>Dane umowne / księgowe (faktury, zamówienia): <strong>5 lat</strong> po końcu roku kalendarzowego, w którym upłynął termin zapłaty podatku (art. 86 ustawy o VAT, § 74 AO).</li>
+          <li>Logi serwerowe / dane analityczne: <strong>12 miesięcy</strong>.</li>
+          <li>Dane newslettera: do momentu cofnięcia zgody.</li>
+        </ul>
+
+        <h2>7. Twoje prawa</h2>
+        <p>Masz prawo do:</p>
+        <ul>
+          <li>uzyskania dostępu do swoich danych (art. 15 RODO),</li>
+          <li>sprostowania nieprawidłowych danych (art. 16 RODO),</li>
+          <li>usunięcia danych („prawo do bycia zapomnianym”) — w przypadkach z art. 17 RODO,</li>
+          <li>ograniczenia przetwarzania (art. 18 RODO),</li>
+          <li>przenoszenia danych (art. 20 RODO),</li>
+          <li>wspierania przeciwko przetwarzaniu opartemu na uzasadnionym interesie (art. 21 RODO),</li>
+          <li>cofnięcia zgody w dowolnym momencie (jeśli przetwarzanie opiera się na art. 6 ust. 1 lit. a RODO) — cofnięcie nie wpływa na zgodność z prawem przetwarzania dokonanego przed cofnięciem.</li>
+        </ul>
+        <p>Aby skorzystać z powyższych praw, skontaktuj się z nami: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a>.</p>
+
+        <h2>8. Prawo do wniesienia skargi</h2>
+        <p>Masz prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych (PUODO), ul. Stawki 2, 00-193 Warszawa, jeśli uważasz, że przetwarzanie Twoich danych narusza przepisy RODO.</p>
+
+        <h2>9. Pliki cookies i podobne technologie</h2>
+        <p>Nasza strona korzysta wyłącznie z <strong>niezbędnych technicznie</strong> plików cookies (sesyjne, bezpieczeństwo, preferencje językowe). Nie stosujemy plików analitycznych (Google Analytics, Matomo itp.), reklamowych ani trackingowych bez Twojej wyraźnej zgody. W przypadku wdrożenia narzędzi analitycznych w przyszłości, zaprosimy do wyrażenia zgody za pomocą baneru cookies.</p>
+        <p>Możesz zablokować lub usunąć cookies w ustawieniach przeglądarki — może to wpłynąć na działanie formularza kontaktowego i przełącznika języków.</p>
+
+        <h2>10. Bezpieczeństwo danych</h2>
+        <p>Stosujemy odpowiednie środki techniczne i organizacyjne (szyfrowanie TLS 1.2+ w transporcie, zasada minimalnych uprawnień, regularne aktualizacje oprogramowania, kopie zapasowe), aby chronić dane przed nieupoważnionym dostępem, utratą, zmianą lub ujawnieniem.</p>
+
+        <h2>11. Zmiany w polityce</h2>
+        <p>Polityka prywatności może zostać zaktualizowana. Obowiązująca wersja jest zawsze dostępna pod tym adresem. O istotnych zmianach poinformujemy na stronie głównej lub mailowo (jeśli posiadamy Twój kontakt).</p>
+
+        <hr />
+        <p class="spec"><strong>Data wejścia w życie:</strong> {new Date().toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .legal-page { padding-block: var(--section-y); }
+    .legal__head { max-width: 48rem; margin-bottom: 2.5rem; }
+    .legal__meta { color: var(--c-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+    .legal__content { max-width: 48rem; }
+    .legal__content h2 { margin-top: 2.5rem; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+    .legal__content h2:first-child { margin-top: 0; }
+    .legal__content p { margin-bottom: 1em; }
+    .legal__content ul { padding-left: 1.3rem; margin-bottom: 1.5rem; }
+    .legal__content li { margin-bottom: 0.4em; }
+    .legal__content address { font-style: normal; line-height: 1.8; margin-bottom: 2rem; }
+    .legal__content table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem; }
+    .legal__content th, .legal__content td { border: 1px solid var(--c-line); padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+    .legal__content th { background: var(--c-sand-100); font-weight: 600; }
+    .legal__content a { color: var(--c-red-500); text-decoration: underline; text-underline-offset: 2px; }
+    .legal__content a:hover { color: var(--c-red-600); }
+  </style>
+</BaseLayout>

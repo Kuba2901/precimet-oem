@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'de' as const;
+---
+
+<BaseLayout locale={locale} title="Datenschutzerklärung — Precimet OEM Manufacturing">
+  <section class="section legal-page">
+    <div class="container">
+      <header class="legal__head reveal">
+        <p class="eyebrow">Rechtliches</p>
+        <h1>Datenschutzerklärung</h1>
+        <hr class="laser-line" />
+        <p class="legal__meta">Letzte Aktualisierung: {new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </header>
+
+      <div class="legal__content prose reveal">
+        <h2>1. Verantwortlicher</h2>
+        <p>
+          Verantwortlicher für die Verarbeitung Ihrer personenbezogenen Daten ist die <strong>PRECIMET H.C.E. Sp. z o.o.</strong> mit Sitz in Łódź (92-735), ul. Pomorska 555, eingetragen im Unternehmerregister des Nationalen Gerichtsregisters (KRS) unter der Nummer 0000503010, geführt vom Amtsgericht Łódź-Śródmieście, 20. Handelsregisterabteilung, NIP: 7272841275, REGON: 363114171, Stammkapital: 100.000,00 PLN (nachfolgend „wir“, „uns“, „Verantwortlicher“).
+        </p>
+
+        <h2>2. Kontaktdaten</h2>
+        <address>
+          PRECIMET H.C.E. Sp. z o.o.<br />
+          ul. Pomorska 555<br />
+          92-735 Łódź, Polen<br />
+          E-Mail: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a><br />
+          Telefon: +48 422 080 411
+        </address>
+
+        <h2>3. Zwecke und Rechtsgrundlagen der Verarbeitung</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Zweck</th>
+              <th>Rechtsgrundlage (DSGVO)</th>
+              <th>Kategorien personenbezogener Daten</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bearbeitung von Angebots- / Kontaktanfragen (Formular, E-Mail, Telefon)</td>
+              <td>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung oder vorvertragliche Maßnahmen)</td>
+              <td>Vorname, Nachname, Firmenname, E-Mail, Telefon, Nachrichtentext, Anhänge</td>
+            </tr>
+            <tr>
+              <td>Abwicklung von Aufträgen und Geschäftsbeziehungen</td>
+              <td>Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung)</td>
+              <td>Identifikationsdaten, Adressdaten, Bankdaten, Auftragshistorie</td>
+            </tr>
+            <tr>
+              <td>Versand von Werbeinformationen / Newsletter (bei ausdrücklicher Einwilligung)</td>
+              <td>Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)</td>
+              <td>E-Mail, Vorname, Präferenzen</td>
+            </tr>
+            <tr>
+              <td>Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen</td>
+              <td>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</td>
+              <td>Zur Anspruchsdurchsetzung erforderliche Daten</td>
+            </tr>
+            <tr>
+              <td>Gewährleistung der Sicherheit der Website (Server-Logs, Bot-Schutz)</td>
+              <td>Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse)</td>
+              <td>IP-Adresse, User Agent, Zeitpunkt des Besuchs, angeforderte Ressourcen</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>4. Empfänger der Daten</h2>
+        <p>Ihre Daten können an Auftragsverarbeiter im Sinne von Art. 28 DSGVO übermittelt werden, insbesondere an:</p>
+        <ul>
+          <li>Hosting- und IT-Dienstleister (Server, Backups, Monitoring),</li>
+          <li>Anbieter von Kontaktformular- / E-Mail-Diensten (z. B. Formspree, Netlify Forms),</li>
+          <li>Buchhaltungs- / Anwaltskanzleien (soweit für die buchhalterische und rechtliche Betreuung erforderlich),</li>
+          <li>Behörden und Gerichte auf gesetzlicher Grundlage.</li>
+        </ul>
+        <p>Wir verkaufen oder übermitteln personenbezogene Daten nicht an Dritte zu Marketingzwecken ohne Ihre Einwilligung.</p>
+
+        <h2>5. Übermittlung in Drittländer</h2>
+        <p>Eine Übermittlung personenbezogener Daten in Drittstaaten oder an internationale Organisationen findet nicht statt. Sämtliche Hosting- und Verarbeitungsdienste befinden sich innerhalb der Europäischen Union.</p>
+
+        <h2>6. Speicherdauer</h2>
+        <ul>
+          <li>Daten aus Kontaktformular / Angebotsanfrage: bis zum Abschluss der Verhandlungen, danach für <strong>3 Jahre</strong> zu Beweis- und Archivzwecken.</li>
+          <li>Vertrags- / Buchhaltungsdaten (Rechnungen, Aufträge): <strong>5 Jahre</strong> nach Ablauf des Kalenderjahres, in dem die Steuerzahlungsfrist abgelaufen ist (Art. 86 UStG, § 74 AO).</li>
+          <li>Server-Logs / Analysedaten: <strong>12 Monate</strong>.</li>
+          <li>Newsletter-Daten: bis zum Widerruf der Einwilligung.</li>
+        </ul>
+
+        <h2>7. Ihre Rechte</h2>
+        <p>Ihnen stehen folgende Rechte zu:</p>
+        <ul>
+          <li>Auskunft über Ihre Daten (Art. 15 DSGVO),</li>
+          <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO),</li>
+          <li>Löschung („Recht auf Vergessenwerden“) — in den Fällen des Art. 17 DSGVO,</li>
+          <li>Einschränkung der Verarbeitung (Art. 18 DSGVO),</li>
+          <li>Datenübertragbarkeit (Art. 20 DSGVO),</li>
+          <li>Widerspruch gegen Verarbeitung aufgrund berechtigten Interesses (Art. 21 DSGVO),</li>
+          <li>Widerruf der Einwilligung jederzeit (bei Verarbeitung nach Art. 6 Abs. 1 lit. a DSGVO) — der Widerruf berührt nicht die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung.</li>
+        </ul>
+        <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a>.</p>
+
+        <h2>8. Beschwerderecht</h2>
+        <p>Sie haben das Recht, sich bei der Aufsichtsbehörde zu beschweren: Präsident des Amtes für den Schutz personenbezogener Daten (PUODO), ul. Stawki 2, 00-193 Warschau, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen die DSGVO verstößt.</p>
+
+        <h2>9. Cookies und ähnliche Technologien</h2>
+        <p>Unsere Website verwendet ausschließlich <strong>technisch notwendige</strong> Cookies (Sitzung, Sicherheit, Spracheinstellungen). Wir setzen keine Analyse-Cookies (Google Analytics, Matomo etc.), Werbe- oder Tracking-Cookies ohne Ihre ausdrückliche Einwilligung ein. Sollten wir in Zukunft Analysetools einführen, werden wir Sie per Cookie-Banner um Einwilligung bitten.</p>
+        <p>Sie können Cookies in den Einstellungen Ihres Browsers blockieren oder löschen — dies kann die Funktion des Kontaktformulars und des Sprachumschalters beeinträchtigen.</p>
+
+        <h2>10. Datensicherheit</h2>
+        <p>Wir treffen angemessene technische und organisatorische Maßnahmen (TLS 1.2+ Verschlüsselung im Transport, Prinzip der geringsten Privilegien, regelmäßige Software-Aktualisierungen, Backups), um Ihre Daten vor unbefugtem Zugriff, Verlust, Veränderung oder Offenlegung zu schützen.</p>
+
+        <h2>11. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Diese Datenschutzerklärung kann aktualisiert werden. Die jeweils aktuelle Version ist unter dieser Adresse abrufbar. Über wesentliche Änderungen informieren wir auf der Startseite oder per E-Mail (sofern wir Ihren Kontakt haben).</p>
+
+        <hr />
+        <p class="spec"><strong>Geltungsdatum:</strong> {new Date().toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .legal-page { padding-block: var(--section-y); }
+    .legal__head { max-width: 48rem; margin-bottom: 2.5rem; }
+    .legal__meta { color: var(--c-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+    .legal__content { max-width: 48rem; }
+    .legal__content h2 { margin-top: 2.5rem; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+    .legal__content h2:first-child { margin-top: 0; }
+    .legal__content p { margin-bottom: 1em; }
+    .legal__content ul { padding-left: 1.3rem; margin-bottom: 1.5rem; }
+    .legal__content li { margin-bottom: 0.4em; }
+    .legal__content address { font-style: normal; line-height: 1.8; margin-bottom: 2rem; }
+    .legal__content table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem; }
+    .legal__content th, .legal__content td { border: 1px solid var(--c-line); padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+    .legal__content th { background: var(--c-sand-100); font-weight: 600; }
+    .legal__content a { color: var(--c-red-500); text-decoration: underline; text-underline-offset: 2px; }
+    .legal__content a:hover { color: var(--c-red-600); }
+  </style>
+</BaseLayout>

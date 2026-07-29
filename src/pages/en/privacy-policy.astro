@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = 'en' as const;
+---
+
+<BaseLayout locale={locale} title="Privacy Policy — Precimet OEM Manufacturing">
+  <section class="section legal-page">
+    <div class="container">
+      <header class="legal__head reveal">
+        <p class="eyebrow">Legal</p>
+        <h1>Privacy Policy</h1>
+        <hr class="laser-line" />
+        <p class="legal__meta">Last updated: {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </header>
+
+      <div class="legal__content prose reveal">
+        <h2>1. Data Controller</h2>
+        <p>
+          The controller of your personal data is <strong>PRECIMET H.C.E. Sp. z o.o.</strong> with its registered office in Łódź (92-735), ul. Pomorska 555, entered into the National Court Register (KRS) kept by the District Court for Łódź-Śródmieście, 20th Commercial Division, under KRS number 0000503010, NIP: 7272841275, REGON: 363114171, share capital: 100,000.00 PLN (hereinafter "we", "us", "controller").
+        </p>
+
+        <h2>2. Contact Details</h2>
+        <address>
+          PRECIMET H.C.E. Sp. z o.o.<br />
+          ul. Pomorska 555<br />
+          92-735 Łódź, Poland<br />
+          E-mail: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a><br />
+          Phone: +48 422 080 411
+        </address>
+
+        <h2>3. Purposes and Legal Bases of Processing</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Purpose</th>
+              <th>Legal Basis (GDPR)</th>
+              <th>Categories of Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Handling quotation / contact requests (form, e-mail, phone)</td>
+              <td>Art. 6(1)(b) GDPR (performance of a contract or pre-contractual measures)</td>
+              <td>First name, last name, company name, e-mail, phone, message content, attachments</td>
+            </tr>
+            <tr>
+              <td>Fulfilment of orders and commercial cooperation</td>
+              <td>Art. 6(1)(b) GDPR (performance of a contract)</td>
+              <td>Identification data, address data, bank details, order history</td>
+            </tr>
+            <tr>
+              <td>Sending commercial information / newsletter (with explicit consent)</td>
+              <td>Art. 6(1)(a) GDPR (consent)</td>
+              <td>E-mail, first name, preferences</td>
+            </tr>
+            <tr>
+              <td>Handling claims and protection of legal interests</td>
+              <td>Art. 6(1)(f) GDPR (legitimate interest)</td>
+              <td>Data necessary to pursue claims</td>
+            </tr>
+            <tr>
+              <td>Ensuring website security (server logs, bot protection)</td>
+              <td>Art. 6(1)(f) GDPR (legitimate interest)</td>
+              <td>IP address, user agent, visit time, requested resources</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>4. Recipients of Data</h2>
+        <p>Your data may be disclosed to entities processing data on our behalf under data processing agreements (Art. 28 GDPR), in particular:</p>
+        <ul>
+          <li>hosting and IT service providers (servers, backups, monitoring),</li>
+          <li>contact form / e-mail service providers (e.g. Formspree, Netlify Forms),</li>
+          <li>accounting / law firms (to the extent necessary for accounting and legal support),</li>
+          <li>authorities entitled under applicable law (courts, prosecutors, supervisory bodies).</li>
+        </ul>
+        <p>We do not sell or disclose personal data to third parties for marketing purposes without your consent.</p>
+
+        <h2>5. International Transfers</h2>
+        <p>We do not transfer personal data to third countries or international organisations. All hosting and processing services are located within the European Union.</p>
+
+        <h2>6. Data Retention Periods</h2>
+        <ul>
+          <li>Contact form / quotation request data: until the end of commercial negotiations, then for <strong>3 years</strong> for record-keeping and potential claims.</li>
+          <li>Commercial contract / invoice data: <strong>5 years</strong> from the end of the calendar year in which the tax payment deadline expired (Art. 86 VAT Act, Art. 74 Tax Ordinance Act).</li>
+          <li>Server logs / analytics data: <strong>12 months</strong>.</li>
+          <li>Newsletter data: until consent is withdrawn.</li>
+        </ul>
+
+        <h2>7. Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>access your data (Art. 15 GDPR),</li>
+          <li>rectification of inaccurate data (Art. 16 GDPR),</li>
+          <li>erasure ("right to be forgotten") — in cases under Art. 17 GDPR,</li>
+          <li>restriction of processing (Art. 18 GDPR),</li>
+          <li>data portability (Art. 20 GDPR),</li>
+          <li>object to processing based on legitimate interest (Art. 21 GDPR),</li>
+          <li>withdraw consent at any time (if processing based on Art. 6(1)(a) GDPR) — withdrawal does not affect lawfulness of processing before withdrawal.</li>
+        </ul>
+        <p>To exercise the above rights, contact us: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a>.</p>
+
+        <h2>8. Right to Lodge a Complaint</h2>
+        <p>You have the right to lodge a complaint with the President of the Personal Data Protection Office (PUODO), ul. Stawki 2, 00-193 Warsaw, if you consider that the processing of your personal data violates the GDPR.</p>
+
+        <h2>9. Cookies and Similar Technologies</h2>
+        <p>Our website uses only <strong>technically necessary</strong> cookies (session, security, language preferences). We do not use analytical cookies (Google Analytics, Matomo, etc.), advertising or tracking cookies without your explicit consent. If we introduce analytical tools in the future, we will ask for consent via a cookie banner.</p>
+        <p>You can block or delete cookies in your browser settings — this may affect the functioning of the contact form and language switcher.</p>
+
+        <h2>10. Data Security</h2>
+        <p>We implement appropriate technical and organisational measures (TLS 1.2+ encryption in transit, principle of least privilege, regular software updates, backups) to protect data against unauthorised access, loss, alteration or disclosure.</p>
+
+        <h2>11. Changes to This Policy</h2>
+        <p>This privacy policy may be updated. The current version is always available at this address. We will inform about material changes on the homepage or by e-mail (if we have your contact).</p>
+
+        <hr />
+        <p class="spec"><strong>Effective date:</strong> {new Date().toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .legal-page { padding-block: var(--section-y); }
+    .legal__head { max-width: 48rem; margin-bottom: 2.5rem; }
+    .legal__meta { color: var(--c-text-muted); font-size: 0.9rem; margin-top: 1rem; }
+    .legal__content { max-width: 48rem; }
+    .legal__content h2 { margin-top: 2.5rem; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+    .legal__content h2:first-child { margin-top: 0; }
+    .legal__content p { margin-bottom: 1em; }
+    .legal__content ul { padding-left: 1.3rem; margin-bottom: 1.5rem; }
+    .legal__content li { margin-bottom: 0.4em; }
+    .legal__content address { font-style: normal; line-height: 1.8; margin-bottom: 2rem; }
+    .legal__content table { width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.9rem; }
+    .legal__content th, .legal__content td { border: 1px solid var(--c-line); padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+    .legal__content th { background: var(--c-sand-100); font-weight: 600; }
+    .legal__content a { color: var(--c-red-500); text-decoration: underline; text-underline-offset: 2px; }
+    .legal__content a:hover { color: var(--c-red-600); }
+  </style>
+</BaseLayout>

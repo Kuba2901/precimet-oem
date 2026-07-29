@@ -22,6 +22,17 @@ let base = stripLocale(Astro.url);
 // prowadzi do listy bloga w docelowym języku.
 if (/^\/blog\/.+/.test(base)) base = '/blog';
 
+// Privacy policy pages have different paths per locale
+const privacyPaths: Record<Locale, string> = {
+  pl: '/polityka-prywatnosci',
+  en: '/privacy-policy',
+  de: '/datenschutz',
+};
+
+if (Object.values(privacyPaths).some(p => base === p || base === p + '/')) {
+  base = privacyPaths[current];
+}
+
 const target = (l: Locale) => path(l, base);
 ---
 

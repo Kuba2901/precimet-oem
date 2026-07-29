@@ -1,0 +1,138 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+
+const testimonials = {
+  pl: [
+    {
+      quote: 'Współpracujemy z Precimet od pięciu lat. Terminowość i jakość spoin stoją na poziomie, jakiego oczekujemy od naszych dostawców.',
+      author: 'Marek Kowalski',
+      role: 'Kierownik produkcji, Maszyny Przemysłowe Sp. z o.o.',
+    },
+    {
+      quote: 'Elastyczność w podejściu do prototypów i szybkie wdrożenie do serii — to nas przekonało. Magazyn materiału to ogromny atut.',
+      author: 'Anna Nowak',
+      role: 'Dyrektor ds. zakupów, Integrator Automatyki',
+    },
+    {
+      quote: 'Audyt ISO 9001:2015 i dokumentacja jakościowa do każdego zlecenia. Dla nas jako firmy OEM to warunek konieczny — Precimet go spełnia.',
+      author: 'Piotr Wiśniewski',
+      role: 'Dyrektor Techniczny, Producent Maszyn Pakujących',
+    },
+  ],
+  en: [
+    {
+      quote: 'We have been working with Precimet for five years. Punctuality and weld quality meet the standards we expect from our suppliers.',
+      author: 'Mark Kowalski',
+      role: 'Production Manager, Industrial Machines Ltd.',
+    },
+    {
+      quote: 'Flexibility with prototypes and fast ramp-up to series production — that won us over. Having material in stock is a huge advantage.',
+      author: 'Anna Nowak',
+      role: 'Procurement Director, Automation Integrator',
+    },
+    {
+      quote: 'ISO 9001:2015 audit and quality documentation with every order. For us as an OEM company, that is a must — Precimet delivers.',
+      author: 'Peter Wisniewski',
+      role: 'Technical Director, Packaging Machine Manufacturer',
+    },
+  ],
+  de: [
+    {
+      quote: 'Wir arbeiten seit fünf Jahren mit Precimet zusammen. Termintreue und Schweißqualität entsprechen den Standards, die wir von unseren Lieferanten erwarten.',
+      author: 'Marek Kowalski',
+      role: 'Produktionsleiter, Industriemaschinen GmbH',
+    },
+    {
+      quote: 'Flexibilität bei Prototypen und schnelle Serienanlauf — das hat uns überzeugt. Das Materiallager ist ein enormer Vorteil.',
+      author: 'Anna Nowak',
+      role: 'Einkaufsleiterin, Automatisierungsintegrator',
+    },
+    {
+      quote: 'ISO-9001:2015-Audit und Qualitätsdokumentation zu jedem Auftrag. Für uns als OEM-Unternehmen ein Muss — Precimet erfüllt es.',
+      author: 'Piotr Wiśniewski',
+      role: 'Technischer Leiter, Verpackungsmaschinenhersteller',
+    },
+  ],
+};
+
+const items = testimonials[locale] || testimonials.pl;
+---
+
+<section class="section testimonials">
+  <div class="container">
+    <div class="testimonials__grid">
+      {items.map((t) => (
+        <blockquote class="testimonial reveal">
+          <p class="testimonial__quote">„{t.quote}”</p>
+          <footer class="testimonial__attribution">
+            <strong>{t.author}</strong>
+            <span class="testimonial__role">{t.role}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: var(--c-sand-100);
+  }
+
+  .testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial {
+    margin: 0;
+    padding: 1.5rem 1.5rem 1.8rem;
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+  }
+
+  .testimonial__quote {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--c-text);
+    quotes: none;
+  }
+
+  .testimonial__attribution {
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .testimonial__attribution strong {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-graphite-800);
+  }
+
+  .testimonial__role {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--c-text-muted);
+  }
+
+  @media (max-width: 860px) {
+    .testimonials__grid { grid-template-columns: 1fr; }
+  }
+</style>

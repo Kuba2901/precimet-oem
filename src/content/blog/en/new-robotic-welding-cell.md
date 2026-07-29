@@ -10,7 +10,7 @@ translationKey: "robot-welding-cell"
 
 In May we commissioned another robotic welding cell — our answer to the growing number of serial orders where weld repeatability and a stable production takt matter most.
 
-## What customers gain
+## What this means for customers
 
 - **Shorter cycle time** — the robot welds continuously while the operator loads the next parts on a second table.
 - **Repeatability** — welding parameters are stored in the program; every part in the batch gets identical welds.
