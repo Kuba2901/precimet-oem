@@ -424,13 +424,12 @@ export const ui: Record<Locale, Dict> = {
           'Na zapytania ofertowe odpowiadamy zwykle w ciągu 1–2 dni roboczych.',
       },
     },
-footer: {
-      tagline:
-        'Precimet OEM Manufacturing — kooperacja w obróbce metalu: cięcie laserowe, gięcie, spawanie, obróbka CNC i montaż. Produkcja kontraktowa dla firm przemysłowych z całej Polski.',
+    footer: {
+      tagline: 'Kooperacja w obróbce metalu dla firm przemysłowych z całej Polski.',
       navTitle: 'Nawigacja',
       contactTitle: 'Kontakt',
       langTitle: 'Język',
-      legal: 'Wszelkie prawa zastrzeżone. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797 · Sąd Rejonowy dla Łodzi-Śródmieścia XX Wydział Krajowego Rejestru Sądowego.',
+      legal: 'Wszelkie prawa zastrzeżone. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797',
     },
   },
 
@@ -697,12 +696,11 @@ footer: {
       },
     },
     footer: {
-      tagline:
-        'Precimet OEM Manufacturing — metal fabrication partner: laser cutting, bending, welding, CNC machining and assembly. Contract manufacturing for industrial companies across Poland and the EU.',
+      tagline: 'Contract metal fabrication for industrial companies across Poland and the EU.',
       navTitle: 'Navigation',
       contactTitle: 'Contact',
       langTitle: 'Language',
-      legal: 'All rights reserved. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797 · District Court Łódź-Śródmieście, 20th Commercial Division.',
+      legal: 'All rights reserved. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797',
     },
   },
 
@@ -969,12 +967,11 @@ footer: {
       },
     },
     footer: {
-      tagline:
-        'Precimet OEM Manufacturing — Partner für Metallbearbeitung: Laserschneiden, Biegen, Schweißen, CNC-Bearbeitung und Montage. Auftragsfertigung für Industrieunternehmen in Polen und der EU.',
+      tagline: 'Auftragsfertigung in Metallbearbeitung für Industrieunternehmen in Polen und der EU.',
       navTitle: 'Navigation',
       contactTitle: 'Kontakt',
       langTitle: 'Sprache',
-      legal: 'Alle Rechte vorbehalten. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797 · Amtsgericht Łódź-Śródmieście, 20. Handelsregisterabteilung.',
+      legal: 'Alle Rechte vorbehalten. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797',
     },
   },
 };
