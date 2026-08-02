@@ -35,19 +35,23 @@ export function path(locale: Locale, p: string = '/'): string {
   return joined || '/';
 }
 
-/** Odczytuje język z URL-a (np. /en/blog -> 'en'). */
+/** Odczytuje język z URL-a (np. /precimet-oem/en/blog -> 'en'). */
 export function localeFromUrl(url: URL): Locale {
-  const [, first] = url.pathname.split('/');
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const pathname = base ? url.pathname.replace(new RegExp(`^${base}`), '') || '/' : url.pathname;
+  const [, first] = pathname.split('/');
   if (LOCALES.includes(first as Locale) && first !== DEFAULT_LOCALE) {
     return first as Locale;
   }
   return DEFAULT_LOCALE;
 }
 
-/** Ścieżka bez prefiksu językowego (np. /en/blog -> /blog). */
+/** Ścieżka bez prefiksu językowego i base URL (np. /precimet-oem/en/blog -> /blog). */
 export function stripLocale(url: URL): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   const locale = localeFromUrl(url);
-  if (locale === DEFAULT_LOCALE) return url.pathname;
-  const stripped = url.pathname.replace(new RegExp(`^/${locale}`), '');
+  let pathname = base ? url.pathname.replace(new RegExp(`^${base}`), '') || '/' : url.pathname;
+  if (locale === DEFAULT_LOCALE) return pathname;
+  const stripped = pathname.replace(new RegExp(`^/${locale}`), '');
   return stripped === '' ? '/' : stripped;
 }
