@@ -4,8 +4,8 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://3d-laser.pl',
-  base: '/',
+  site: 'https://kuba2901.github.io',
+  base: '/precimet-oem/',
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en', 'de'],
