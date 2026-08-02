@@ -28,7 +28,7 @@ const metaDescription = description ?? dict.seo.description;
 const basePath = pagePath ?? stripLocale(Astro.url);
 const site = Astro.site ?? new URL('https://3d-laser.pl');
 const canonical = new URL(path(locale, basePath), site).href;
-const ogImg = ogImage ?? new URL('/logo.png', site).href;
+const ogImg = ogImage ?? new URL(`${import.meta.env.BASE_URL}logo.png`, site).href;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -36,7 +36,7 @@ const jsonLd = {
   name: 'Precimet',
   alternateName: 'Precimet OEM Manufacturing',
   url: site.href,
-  logo: new URL('/logo.png', site).href,
+  logo: new URL(`${import.meta.env.BASE_URL}logo.png`, site).href,
   description: metaDescription,
   address: {
     '@type': 'PostalAddress',
@@ -54,7 +54,7 @@ const jsonLd = {
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logo.png`} />
 
     {/* hreflang — każda wersja językowa wskazuje pozostałe */}
     {LOCALES.map((l) => (

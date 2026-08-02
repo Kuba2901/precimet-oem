@@ -26,12 +26,13 @@ export function localePrefix(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? '' : `/${locale}`;
 }
 
-/** Buduje ścieżkę w danym języku, np. path('en', '/blog') -> '/en/blog'. */
+/** Buduje ścieżkę w danym języku, np. path('en', '/blog') -> '/precimet-oem/en/blog'. */
 export function path(locale: Locale, p: string = '/'): string {
-  const prefix = localePrefix(locale);
+  const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // '/precimet-oem' or ''
+  const prefix = localePrefix(locale);                       // '' or '/en' or '/de'
   const clean = p.startsWith('/') ? p : `/${p}`;
-  const joined = `${prefix}${clean === '/' ? '/' : clean}`;
-  return joined === '' ? '/' : joined;
+  const joined = `${base}${prefix}${clean}`;
+  return joined || '/';
 }
 
 /** Odczytuje język z URL-a (np. /en/blog -> 'en'). */
