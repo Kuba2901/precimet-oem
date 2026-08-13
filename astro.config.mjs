@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kuba2901.github.io',
-  base: '/precimet-oem/',
+//   base: '/precimet-oem/',
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en', 'de'],

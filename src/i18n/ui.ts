@@ -172,11 +172,11 @@ export const ui: Record<Locale, Dict> = {
     },
     hero: {
       eyebrow: 'Precimet OEM Manufacturing · Kooperacja w obróbce metalu',
-      title1: 'Produkcja metalowa',
-      titleAccent: 'na zamówienie.',
-      title2: 'Od prototypu do serii.',
+      title1: 'Części i zespoły metalowe',
+      titleAccent: 'dla producentów OEM.',
+      title2: 'Od prototypu do produkcji seryjnej.',
       lead:
-        'Jesteśmy zapleczem produkcyjnym dla firm OEM, integratorów i producentów maszyn. Tniemy laserem, gniemy, spawamy, frezujemy i montujemy — terminowo, powtarzalnie i zgodnie z dokumentacją.',
+        'Jesteśmy zapleczem produkcyjnym dla producentów maszyn i integratorów. Tniemy laserem, gniemy, spawamy, toczymy, frezujemy i kompletujemy Wasze zamówienia - zgodnie z dokumentacją, terminowo i powtarzalnie.',
       ctaPrimary: 'Poproś o wycenę',
       ctaSecondary: 'Skontaktuj się',
       chips: [
@@ -209,9 +209,9 @@ export const ui: Record<Locale, Dict> = {
     },
     services: {
       eyebrow: 'Zakres usług',
-      title: 'Kompletny łańcuch obróbki metalu pod jednym dachem',
+      title: 'Kompleksowa produkcja części i zespołów metalowych w jednym miejscu',
       lead:
-        'Od przygotowania technologii, przez cięcie i gięcie, po spawanie, obróbkę CNC i montaż gotowych zespołów. Jeden partner, jedna odpowiedzialność za jakość i termin.',
+        'Łączymy kluczowe etapy produkcji — od przygotowania technologii, przez cięcie laserowe, gięcie, spawanie i obróbkę CNC, aż po montaż gotowych zespołów. Jeden partner odpowiada za cały proces, jego jakość i termin realizacji.',
       items: [
         {
           id: 'laser',
@@ -301,35 +301,35 @@ export const ui: Record<Locale, Dict> = {
     },
     why: {
       eyebrow: 'Dlaczego Precimet',
-      title: 'Sześć powodów, dla których firmy OEM zostają z nami na lata',
+      title: 'Dlaczego producenci OEM współpracują z nami przez lata?',
       items: [
         {
           title: 'Terminowość',
-          desc: 'Planujemy produkcję pod potwierdzone terminy dostaw. Własny magazyn materiału eliminuje najczęstszą przyczynę opóźnień.',
+          desc: 'Planujemy produkcję według potwierdzonych terminów dostaw. Nasz własny magazyn i zapas podstawowych materiałów pomagają nam ograniczać ryzyko przestojów i opóźnień.',
         },
         {
           title: 'Powtarzalność',
-          desc: 'Udokumentowana technologia i programy CNC gwarantują, że tysięczna sztuka jest taka sama jak pierwsza.',
+          desc: 'Udokumentowana technologia oraz zapisane programy CNC pozwalają zachować powtarzalne parametry kolejnych partii produkcyjnych.',
         },
         {
           title: 'Kontrola jakości',
-          desc: 'System ISO 9001:2015, pomiary na wejściu, w trakcie i na końcu procesu. Do zlecenia dołączamy wymaganą dokumentację jakościową.',
+          desc: 'Pracujemy zgodnie z systemem ISO 9001:2015. Prowadzimy kontrolę materiałów, kontrolę międzyoperacyjną i końcową, a na życzenie dostarczamy wymaganą dokumentację jakościową.',
         },
         {
           title: 'Elastyczność produkcji',
-          desc: 'Realizujemy zarówno zlecenia jednostkowe i prototypy, jak i duże wolumeny seryjne — na tym samym parku maszynowym.',
+          desc: 'Na tym samym parku maszynowym realizujemy prototypy, zamówienia jednostkowe oraz powtarzalne małe i średnie serie.',
         },
         {
           title: 'Wsparcie technologiczne',
-          desc: 'Doradzamy przy doborze materiału, technologii i konstrukcji detalu, tak aby obniżyć koszt produkcji bez utraty funkcji.',
+          desc: 'Analizujemy dobór materiału i technologię wykonania, wskazując możliwości obniżenia kosztów bez wpływu na funkcję i jakość wyrobu.',
         },
         {
           title: 'Doświadczenie w kooperacji',
-          desc: 'Ponad 15 lat pracy na dokumentacji klientów przemysłowych. Znamy realia OEM: zmiany rewizji, audyty, harmonogramy dostaw.',
+          desc: 'Od ponad 15 lat produkujemy na podstawie dokumentacji klientów przemysłowych. Znamy realia współpracy OEM: zmiany rewizji, audyty, wymagania jakościowe i harmonogramy dostaw.',
         },
       ],
       machineNote:
-        'Pracujemy na nowoczesnym parku maszynowym renomowanych producentów i materiałach od sprawdzonych dostawców — zarówno przy zleceniach jednostkowych, jak i dużych wolumenach.',
+        'Jeden partner produkcyjny, jeden kontakt i odpowiedzialność za cały zakres realizacji.',
     },
     process: {
       eyebrow: 'Proces współpracy',
@@ -338,52 +338,48 @@ export const ui: Record<Locale, Dict> = {
         'Prosty, przewidywalny proces. Na każdym etapie wiesz, co się dzieje z Twoim zleceniem.',
       steps: [
         {
-          title: 'Kontakt',
-          desc: 'Wyślij zapytanie z rysunkiem, modelem 3D lub opisem detalu. Wystarczy plik DXF, STEP lub PDF.',
+          title: 'Zapytanie',
+          desc: 'Prześlij zapytanie i dokumentację w formacie DXF, STEP lub PDF, określ materiał, liczbę sztuk i oczekiwany termin realizacji.',
         },
         {
           title: 'Analiza zapytania',
-          desc: 'Technolog weryfikuje dokumentację, dobiera technologię i materiał, zgłasza ewentualne uwagi konstrukcyjne.',
+          desc: 'Technolog sprawdza kompletność dokumentacji i wykonalność detalu, dobiera technologię produkcji oraz zgłasza ewentualne pytania lub propozycje optymalizacji.',
         },
         {
           title: 'Wycena',
-          desc: 'Otrzymujesz konkretną ofertę: cenę, termin realizacji i warunki — bez ukrytych kosztów.',
+          desc: 'Otrzymujesz ofertę określającą zakres realizacji, cenę, termin oraz warunki współpracy.',
         },
         {
           title: 'Realizacja',
-          desc: 'Produkcja zgodnie z dokumentacją i zatwierdzoną technologią, z bieżącym nadzorem nad procesem.',
+          desc: 'Po zaakceptowaniu oferty uruchamiamy produkcję zgodnie z dokumentacją i uzgodnioną technologią.',
         },
         {
           title: 'Kontrola jakości',
-          desc: 'Pomiary i kontrola zgodnie z ISO 9001:2015. Na życzenie raporty pomiarowe i świadectwa materiałowe.',
+          desc: 'Produkcja podlega kontroli zgodnej z procedurami systemu ISO 9001:2015. Na życzenie dostarczamy uzgodnioną dokumentację jakościową i świadectwa materiałowe.',
         },
         {
           title: 'Dostawa',
-          desc: 'Pakowanie chroniące detale i dostawa pod wskazany adres w uzgodnionym terminie — w całej Polsce i UE.',
+          desc: 'Gotowe elementy odpowiednio zabezpieczamy i dostarczamy pod wskazany adres — w Polsce i Europie.',
         },
       ],
     },
     industries: {
       eyebrow: 'Branże, które obsługujemy',
-      title: 'Zaufali nam producenci z wymagających branż',
+      title: 'Produkcja kontraktowa dla firm przemysłowych',
       lead:
-        'Realizujemy produkcję kontraktową m.in. dla producentów maszyn, integratorów automatyki i firm OEM.',
+        'Współpracujemy z producentami maszyn i urządzeń, integratorami automatyki oraz firmami rozwijającymi własne produkty. Dostarczamy pojedyncze komponenty, części seryjne i gotowe zespoły.',
       items: [
-        'Producenci maszyn i urządzeń',
-        'Automatyka i robotyka',
-        'Branża spożywcza',
-        'Energetyka',
-        'Transport i logistyka',
-        'Budownictwo i infrastruktura',
-        'Meble metalowe i wyposażenie',
-        'Rolnictwo i agrotechnika',
+        'Branża spożywcza - elementy i części maszyn dla przemysłu spożywczego',
+        'Transport i logistyka - elementy i części urządzeń transportowych i logistycznych',
+        'Meble metalowe i wyposażenie - elementy i części konstrukcyjne',
+        'Budownictwo - elementy stalowe dla firm budowlanych',
       ],
     },
     blog: {
       eyebrow: 'Blog / Aktualności',
-      title: 'Wiedza i aktualności z hali produkcyjnej',
+      title: 'Realizacje i wiedza produkcyjna',
       lead:
-        'Case studies, porady technologiczne i informacje o nowych możliwościach produkcyjnych.',
+        'Pokazujemy wybrane realizacje, dzielimy się wiedzą technologiczną i informujemy o rozwoju naszych możliwości produkcyjnych.',
       readMore: 'Czytaj dalej',
       all: 'Zobacz wszystkie wpisy',
       backToList: 'Wróć do listy wpisów',
