@@ -124,29 +124,29 @@ type Dict = {
 
 const STOCK = {
   laser:
-    'https://images.unsplash.com/photo-1738162837438-92ff852619a1?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1764114235896-034c8772de01?auto=format&fit=crop&w=1200&q=70',
   bending:
-    'https://images.unsplash.com/photo-1738162837340-da3e7a323a09?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1738162837340-da3e7a323a09?auto=format&fit=crop&w=1200&q=70',
   welding:
-    'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=1200&q=70',
+    'https://images.unsplash.com/photo-1780701247845-974f99e95984?auto=format&fit=crop&w=1200&q=70',
   robotWelding:
-    'https://images.unsplash.com/photo-1717386255773-1e3037c81788?auto=format&fit=crop&w=1200&q=70',
+    'https://images.unsplash.com/photo-1752614671119-4868a91efc14?auto=format&fit=crop&w=1200&q=70',
   cncMill:
-    'https://images.unsplash.com/photo-1713371398485-7bde1bde9def?q=80&w=2743&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1740209475472-aa7d280f7452?auto=format&fit=crop&w=1200&q=70',
   cncTurn:
-    'https://images.unsplash.com/photo-1666634157070-6fd830fb5672?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1727292486976-6fd4bc056761?auto=format&fit=crop&w=1200&q=70',
   tubes:
-    'https://images.unsplash.com/photo-1678446332693-0952df3ffc86?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1764835746713-34a671e73569?auto=format&fit=crop&w=1200&q=70',
   assembly:
-    'https://images.unsplash.com/photo-1604071334368-bb3cb256180b?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1717386255773-1e3037c81788?auto=format&fit=crop&w=1200&q=70',
   electrical:
-    'https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1200&q=70',
+    'https://images.unsplash.com/photo-1635335874521-7987db781153?auto=format&fit=crop&w=1200&q=70',
   cad:
-    'https://images.unsplash.com/photo-1636484227749-9bbeaf58be1e?q=80&w=2625&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1769149068959-b11392164add?auto=format&fit=crop&w=1200&q=70',
   locksmith:
-    'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=70',
+    'https://images.unsplash.com/photo-1529479627062-5f1f0b88912a?auto=format&fit=crop&w=1200&q=70',
   hall:
-    'https://images.unsplash.com/photo-1585201731775-0597e1be4bfb?q=80&w=1315&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1730584475256-9055b74420a2?auto=format&fit=crop&w=1200&q=70',
 };
 
 export const ui: Record<Locale, Dict> = {
