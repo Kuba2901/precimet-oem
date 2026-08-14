@@ -28,7 +28,7 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
 <script define:vars={{ GA4_ID }}>
   (function () {
     var KEY = 'precimet-cookie-consent';
-    var EXPIRY_MS = 180 * 24 * 60 * 60 * 1000; // 6 months
+    var EXPIRY_MS = 180 * 24 * 60 * 60 * 1000;
 
     function loadGA4() {
       var s = document.createElement('script');
@@ -41,29 +41,37 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
       gtag('config', GA4_ID);
     }
 
-    try {
-      var raw = localStorage.getItem(KEY);
-      if (raw) {
+    function hasConsent() {
+      try {
+        var raw = localStorage.getItem(KEY);
+        if (!raw) return false;
         var stored = JSON.parse(raw);
-        if (Date.now() - stored.ts < EXPIRY_MS) {
-          if (stored.value === 'accept') loadGA4();
-          return;
-        }
-      }
-    } catch {}
+        return Date.now() - stored.ts < EXPIRY_MS;
+      } catch { return false; }
+    }
+
+    function getConsentValue() {
+      try {
+        var raw = localStorage.getItem(KEY);
+        return raw ? JSON.parse(raw).value : null;
+      } catch { return null; }
+    }
+
+    if (hasConsent()) {
+      if (getConsentValue() === 'accept') loadGA4();
+      return;
+    }
 
     var banner = document.getElementById('cookie-consent');
     if (!banner) return;
     banner.hidden = false;
 
-    banner.querySelector('[data-accept]').addEventListener('click', function () {
-      localStorage.setItem(KEY, JSON.stringify({ value: 'accept', ts: Date.now() }));
-      loadGA4();
-      banner.remove();
-    });
-
-    banner.querySelector('[data-decline]').addEventListener('click', function () {
-      localStorage.setItem(KEY, JSON.stringify({ value: 'decline', ts: Date.now() }));
+    document.addEventListener('click', function (e) {
+      var target = e.target.closest('[data-accept], [data-decline]');
+      if (!target) return;
+      var value = target.hasAttribute('data-accept') ? 'accept' : 'decline';
+      try { localStorage.setItem(KEY, JSON.stringify({ value: value, ts: Date.now() })); } catch {}
+      if (value === 'accept') loadGA4();
       banner.remove();
     });
   })();

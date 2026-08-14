@@ -65,12 +65,12 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
     </div>
 
     <form
-      id="contact-form"
       class="contact__form reveal"
       method="POST"
-      action="https://formspree.io/f/xppaljbe"
+      action="https://formsubmit.co/ajax/kubanenczakdev@gmail.com"
       enctype="multipart/form-data"
     >
+      <input type="hidden" name="_captcha" value="false" />
       <div class="field-row">
         <label class="field">
           <span>{f.name}</span>
@@ -99,11 +99,13 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
         ></textarea>
       </label>
 
-      <label class="field">
+      <div class="field">
         <span>{f.file}</span>
-        <input type="file" name="attachment" accept=".dxf,.dwg,.step,.stp,.iges,.igs,.pdf,.zip" />
+        <label class="file-label">
+          <input type="file" name="attachment" accept=".dxf,.dwg,.step,.stp,.iges,.igs,.pdf,.zip" />
+        </label>
         <small class="spec">{f.fileHint}</small>
-      </label>
+      </div>
 
       <label class="field field--consent">
         <input type="checkbox" name="consent" required />
@@ -112,34 +114,28 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
 
       <button class="btn btn--primary" type="submit">{f.submit}</button>
       <p class="spec contact__required">{f.note}</p>
-      <p class="contact__error" hidden>{f.error}</p>
     </form>
   </div>
 </section>
 
 <script define:vars={{ thankYouPath }}>
-  const form = document.getElementById('contact-form');
+  const form = document.querySelector('.contact__form');
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
-      const err = form.querySelector('.contact__error');
       btn.disabled = true;
-      err.hidden = true;
       try {
         const res = await fetch(form.action, {
           method: 'POST',
           body: new FormData(form),
-          headers: { Accept: 'application/json' },
         });
         if (res.ok) {
           window.location.href = thankYouPath;
         } else {
-          err.hidden = false;
           btn.disabled = false;
         }
       } catch {
-        err.hidden = false;
         btn.disabled = false;
       }
     });
@@ -232,6 +228,8 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
 
   .field input[type='file'] { font-size: 0.85rem; }
 
+  .file-label { display: block; }
+
   .field--consent {
     grid-template-columns: auto 1fr;
     align-items: start;
@@ -260,12 +258,6 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
   .contact__directions:hover { color: #fff; border-color: #fff; }
 
   .contact__map { margin-top: 1.5rem; }
-
-  .contact__error {
-    color: var(--c-red-500);
-    font-size: 0.9rem;
-    margin: 0;
-  }
 
   @media (max-width: 860px) {
     .contact__grid { grid-template-columns: 1fr; }
