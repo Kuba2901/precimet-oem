@@ -1,0 +1,141 @@
+---
+import type { Locale } from '../i18n/config';
+import { path } from '../i18n/config';
+import { t } from '../i18n/ui';
+import { GA4_ID } from '../lib/analytics';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const cookie = dict.cookie;
+const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
+---
+
+<div class="cookie-consent" id="cookie-consent" hidden>
+  <p class="cookie-consent__text">
+    {cookie.message}
+    <a href={privacyUrl} target="_blank" rel="noopener noreferrer">{cookie.linkLabel}</a>.
+  </p>
+  <div class="cookie-consent__actions">
+    <button class="cookie-consent__btn cookie-consent__btn--accept" data-accept>{cookie.accept}</button>
+    <button class="cookie-consent__btn cookie-consent__btn--decline" data-decline>{cookie.decline}</button>
+  </div>
+</div>
+
+<script define:vars={{ GA4_ID }}>
+  (function () {
+    var KEY = 'precimet-cookie-consent';
+    var EXPIRY_MS = 180 * 24 * 60 * 60 * 1000; // 6 months
+
+    function loadGA4() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', GA4_ID);
+    }
+
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var stored = JSON.parse(raw);
+        if (Date.now() - stored.ts < EXPIRY_MS) {
+          if (stored.value === 'accept') loadGA4();
+          return;
+        }
+      }
+    } catch {}
+
+    var banner = document.getElementById('cookie-consent');
+    if (!banner) return;
+    banner.hidden = false;
+
+    banner.querySelector('[data-accept]').addEventListener('click', function () {
+      localStorage.setItem(KEY, JSON.stringify({ value: 'accept', ts: Date.now() }));
+      loadGA4();
+      banner.remove();
+    });
+
+    banner.querySelector('[data-decline]').addEventListener('click', function () {
+      localStorage.setItem(KEY, JSON.stringify({ value: 'decline', ts: Date.now() }));
+      banner.remove();
+    });
+  })();
+</script>
+
+<style>
+  .cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: var(--c-graphite-900);
+    color: var(--c-text-inverse);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    box-shadow: 0 -4px 20px rgb(0 0 0 / 0.35);
+  }
+
+  .cookie-consent__text {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--c-text-inverse-muted);
+  }
+
+  .cookie-consent__actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .cookie-consent__btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition);
+  }
+
+  .cookie-consent__btn--accept {
+    background: var(--c-red-500);
+    color: #fff;
+    border-color: var(--c-red-500);
+  }
+
+  .cookie-consent__btn--accept:hover {
+    background: var(--c-red-600);
+    border-color: var(--c-red-600);
+  }
+
+  .cookie-consent__btn--decline {
+    background: transparent;
+    color: var(--c-text-inverse-muted);
+    border-color: var(--c-graphite-700);
+  }
+
+  .cookie-consent__btn--decline:hover {
+    color: var(--c-text-inverse);
+    border-color: var(--c-steel-500);
+  }
+
+  @media (max-width: 600px) {
+    .cookie-consent {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

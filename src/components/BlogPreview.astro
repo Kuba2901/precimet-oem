@@ -41,7 +41,7 @@ const slugOf = (id: string) => id.replace(`${locale}/`, '');
           <article class="card bp__card reveal">
             {post.data.cover && (
               <a href={path(locale, `/blog/${slugOf(post.id)}`)} class="bp__media" tabindex="-1">
-                <img src={post.data.cover} alt="" loading="lazy" width="600" height="380" />
+                <img src={post.data.cover} alt={post.data.title} loading="lazy" width="600" height="380" />
               </a>
             )}
             <div class="bp__body">

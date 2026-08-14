@@ -19,6 +19,7 @@ type Dict = {
     description: string;
     blogTitle: string;
     blogDescription: string;
+    privacyDescription: string;
   };
   nav: {
     about: string;
@@ -83,6 +84,11 @@ type Dict = {
     published: string;
     empty: string;
   };
+  faq: {
+    eyebrow: string;
+    title: string;
+    items: { q: string; a: string }[];
+  };
   contact: {
     eyebrow: string;
     title: string;
@@ -99,6 +105,7 @@ type Dict = {
       consent: string;
       submit: string;
       note: string;
+      error: string;
     };
     info: {
       title: string;
@@ -112,6 +119,14 @@ type Dict = {
       hours: string;
       responseNote: string;
     };
+    map: {
+      directions: string;
+    };
+  };
+  thankYou: {
+    title: string;
+    text: string;
+    cta: string;
   };
   footer: {
     tagline: string;
@@ -119,6 +134,12 @@ type Dict = {
     contactTitle: string;
     langTitle: string;
     legal: string;
+  };
+  cookie: {
+    message: string;
+    linkLabel: string;
+    accept: string;
+    decline: string;
   };
 };
 
@@ -160,6 +181,8 @@ export const ui: Record<Locale, Dict> = {
       blogTitle: 'Blog i aktualności — Precimet OEM Manufacturing',
       blogDescription:
         'Aktualności firmowe, case studies i wiedza technologiczna z obszaru obróbki metalu: cięcie laserowe, gięcie blach, spawanie, obróbka CNC i produkcja kontraktowa.',
+      privacyDescription:
+        'Polityka prywatności serwisu Precimet OEM Manufacturing — jak przetwarzamy dane osobowe, jakie pliki cookies stosujemy i jakie przysługują Ci prawa.',
     },
     nav: {
       about: 'O firmie',
@@ -386,6 +409,36 @@ export const ui: Record<Locale, Dict> = {
       published: 'Opublikowano',
       empty: 'Wkrótce pojawią się tu pierwsze wpisy.',
     },
+    faq: {
+      eyebrow: 'Pytania i odpowiedzi',
+      title: 'Najczęściej zadawane pytania',
+      items: [
+        {
+          q: 'Z jakimi formatami plików pracujecie?',
+          a: 'Przyjmujemy modele i rysunki w formatach STEP, STP, IGES, IGS, DXF, DWG oraz PDF. Nie masz modelu 3D? Prześlij szkic lub próbkę — pomożemy uzupełnić dokumentację.',
+        },
+        {
+          q: 'Czy realizujecie zamówienia prototypowe i małe serie?',
+          a: 'Tak. Traktujemy prototypy i zamówienia jednostkowe tak samo poważnie jak duże serie — ten sam park maszynowy, ta sama kontrola jakości. Często prototyp przechodzi płynnie w produkcję seryjną.',
+        },
+        {
+          q: 'Jakie są minimalne i maksymalne ilości zamówienia?',
+          a: 'Nie narzucamy minimalnej wielkości zamówienia. Specjalizujemy się w produkcji od pojedynczych sztuk po duże serie — wycena i technologia zawsze zależą od detalu.',
+        },
+        {
+          q: 'Jakie gatunki materiałów macie w magazynie?',
+          a: 'Stale nierdzewne i konstrukcyjne, aluminium, miedź i mosiądz — ponad 50 gatunków blach w magazynie. To skraca czasy realizacji i chroni Cię przed wahaniami cen surowców.',
+        },
+        {
+          q: 'Ile trwa wycena i realizacja zamówienia?',
+          a: 'Oferty wysyłamy zwykle w ciągu 1–2 dni roboczych. Czas realizacji zależy od złożoności detalu i obłożenia maszyn — potwierdzamy go w ofercie i trzymamy się go.',
+        },
+        {
+          q: 'Czy dysponujecie certyfikatem jakości?',
+          a: 'Tak, od 2015 r. utrzymujemy certyfikowany system jakości ISO 9001:2015 z kontrolą wejściową, międzyoperacyjną i końcową. W razie potrzeby dostarczamy dokumentację jakościową do zamówienia.',
+        },
+      ],
+    },
     contact: {
       eyebrow: 'Kontakt',
       title: 'Prześlij rysunek — odezwiemy się z wyceną',
@@ -404,6 +457,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. *',
         submit: 'Wyślij zapytanie',
         note: 'Pola oznaczone * są wymagane.',
+        error: 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub napisz do nas e-mail.',
       },
       info: {
         title: 'Dane kontaktowe',
@@ -418,6 +472,14 @@ export const ui: Record<Locale, Dict> = {
         responseNote:
           'Na zapytania ofertowe odpowiadamy zwykle w ciągu 1–2 dni roboczych.',
       },
+      map: {
+        directions: 'Wyznacz trasę',
+      },
+    },
+    thankYou: {
+      title: 'Dziękujemy za zapytanie',
+      text: 'Twoja wiadomość została wysłana. Odpowiadamy zwykle w ciągu 1–2 dni roboczych. Jeśli sprawa jest pilna, zadzwoń: +48 42 672 57 10.',
+      cta: 'Wróć na stronę główną',
     },
     footer: {
       tagline: 'Kooperacja w obróbce metalu dla firm przemysłowych z całej Polski.',
@@ -425,6 +487,12 @@ export const ui: Record<Locale, Dict> = {
       contactTitle: 'Kontakt',
       langTitle: 'Język',
       legal: 'Wszelkie prawa zastrzeżone. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797',
+    },
+    cookie: {
+      message: 'Używamy plików cookie i podobnych technologii, aby zapewnić prawidłowe działanie naszej strony, analizować ruch i personalizować Twoje doświadczenia. Możesz zaakceptować wszystkie pliki cookie, odrzucić opcjonalne lub zarządzać swoimi preferencjami w dowolnym momencie.',
+      linkLabel: ' Polityka prywatności',
+      accept: 'Akceptuję',
+      decline: 'Odrzucam',
     },
   },
 
@@ -438,6 +506,8 @@ export const ui: Record<Locale, Dict> = {
       blogTitle: 'Blog & news — Precimet OEM Manufacturing',
       blogDescription:
         'Company news, case studies and engineering know-how on metal fabrication: laser cutting, sheet metal bending, welding, CNC machining and contract manufacturing.',
+      privacyDescription:
+        'Precimet OEM Manufacturing privacy policy — how we process personal data, what cookies we use and what rights you have.',
     },
     nav: {
       about: 'About us',
@@ -659,9 +729,39 @@ export const ui: Record<Locale, Dict> = {
       published: 'Published',
       empty: 'First posts coming soon.',
     },
+    faq: {
+      eyebrow: 'Questions & answers',
+      title: 'Frequently asked questions',
+      items: [
+        {
+          q: 'Which file formats do you accept?',
+          a: 'We work with STEP, STP, IGES, IGS, DXF, DWG and PDF models and drawings. No 3D model? Send a sketch or a sample part and we will help you complete the documentation.',
+        },
+        {
+          q: 'Do you take on prototypes and small batches?',
+          a: 'Yes. We treat prototypes and one-off orders as seriously as large series — same machine park, same quality control. Prototypes often flow straight into series production.',
+        },
+        {
+          q: 'Is there a minimum order quantity?',
+          a: 'We do not impose a minimum order size. We produce anything from single parts to large volumes — pricing and technology always depend on the part.',
+        },
+        {
+          q: 'Which materials do you keep in stock?',
+          a: 'Stainless and structural steels, aluminium, copper and brass — over 50 sheet metal grades in stock. That shortens lead times and protects you from raw material price swings.',
+        },
+        {
+          q: 'How long do quotes and production take?',
+          a: 'Quotes usually go out within 1–2 business days. Production time depends on part complexity and machine capacity — we confirm it in the quote and stick to it.',
+        },
+        {
+          q: 'Are you quality certified?',
+          a: 'Yes — we have maintained a certified ISO 9001:2015 quality system since 2015, with incoming, in-process and final inspection. Quality documentation is available on request.',
+        },
+      ],
+    },
     contact: {
       eyebrow: 'Contact',
-      title: 'Send us a drawing — we’ll come back with a quote',
+      title: 'Send us a drawing — we\u2019ll come back with a quote',
       lead: 'Got documentation, a 3D model or just a sketch? Write to us. We quote quickly and concretely.',
       form: {
         name: 'Full name *',
@@ -676,6 +776,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'I consent to the processing of my data to answer this inquiry. *',
         submit: 'Send inquiry',
         note: 'Fields marked * are required.',
+        error: 'Something went wrong while sending. Try again or email us directly.',
       },
       info: {
         title: 'Contact details',
@@ -689,6 +790,14 @@ export const ui: Record<Locale, Dict> = {
         hours: 'Mon–Fri: 8:00–16:00 CET',
         responseNote: 'We usually answer inquiries within 1–2 business days.',
       },
+      map: {
+        directions: 'Get directions',
+      },
+    },
+    thankYou: {
+      title: 'Thank you for your inquiry',
+      text: 'Your message has been sent. We usually reply within 1–2 business days. For urgent matters, call: +48 42 672 57 10.',
+      cta: 'Back to homepage',
     },
     footer: {
       tagline: 'Contract metal fabrication for industrial companies across Poland and the EU.',
@@ -696,6 +805,12 @@ export const ui: Record<Locale, Dict> = {
       contactTitle: 'Contact',
       langTitle: 'Language',
       legal: 'All rights reserved. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797',
+    },
+    cookie: {
+      message: 'We use cookies and similar technologies to help our site work, analyze traffic, and personalize your experience. You can accept all cookies, decline non-essential ones, or manage your preferences at any time.',
+      linkLabel: 'Privacy Policy',
+      accept: 'Accept',
+      decline: 'Decline',
     },
   },
 
@@ -709,6 +824,8 @@ export const ui: Record<Locale, Dict> = {
       blogTitle: 'Blog & Aktuelles — Precimet OEM Manufacturing',
       blogDescription:
         'Unternehmensnachrichten, Case Studies und technisches Know-how zur Metallbearbeitung: Laserschneiden, Blechbiegen, Schweißen, CNC-Bearbeitung und Auftragsfertigung.',
+      privacyDescription:
+        'Datenschutzerklärung von Precimet OEM Manufacturing — wie wir personenbezogene Daten verarbeiten, welche Cookies wir einsetzen und welche Rechte Ihnen zustehen.',
     },
     nav: {
       about: 'Über uns',
@@ -930,6 +1047,36 @@ export const ui: Record<Locale, Dict> = {
       published: 'Veröffentlicht',
       empty: 'Die ersten Beiträge erscheinen in Kürze.',
     },
+    faq: {
+      eyebrow: 'Fragen & Antworten',
+      title: 'Häufig gestellte Fragen',
+      items: [
+        {
+          q: 'Welche Dateiformate akzeptieren Sie?',
+          a: 'Wir arbeiten mit STEP, STP, IGES, IGS, DXF, DWG und PDF. Kein 3D-Modell? Senden Sie eine Skizze oder ein Musterteil — wir helfen, die Dokumentation zu vervollständigen.',
+        },
+        {
+          q: 'Fertigen Sie auch Prototypen und Kleinserien?',
+          a: 'Ja. Prototypen und Einzelteile behandeln wir genauso sorgfältig wie große Serien — derselbe Maschinenpark, dieselbe Qualitätskontrolle. Häufig geht der Prototyp direkt in die Serienfertigung über.',
+        },
+        {
+          q: 'Gibt es eine Mindestbestellmenge?',
+          a: 'Wir legen keine Mindestmenge fest. Wir fertigen vom Einzelteil bis zur Großserie — Kalkulation und Technologie hängen immer vom Bauteil ab.',
+        },
+        {
+          q: 'Welche Materialien halten Sie auf Lager?',
+          a: 'Rostfreie und Baustähle, Aluminium, Kupfer und Messing — über 50 Blechgüten auf Lager. Das verkürzt Lieferzeiten und schützt Sie vor Rohstoffpreisschwankungen.',
+        },
+        {
+          q: 'Wie lange dauern Angebot und Fertigung?',
+          a: 'Angebote erhalten Sie in der Regel innerhalb von 1–2 Werktagen. Die Fertigungszeit hängt von der Komplexität des Bauteils und der Maschinenauslastung ab — wir bestätigen sie im Angebot und halten sie ein.',
+        },
+        {
+          q: 'Sind Sie zertifiziert?',
+          a: 'Ja — seit 2015 unterhalten wir ein zertifiziertes Qualitätsmanagementsystem nach ISO 9001:2015 mit Eingangs-, Zwischen- und Endprüfung. Qualitätsdokumentation stellen wir auf Wunsch bereit.',
+        },
+      ],
+    },
     contact: {
       eyebrow: 'Kontakt',
       title: 'Senden Sie uns eine Zeichnung — wir melden uns mit einem Angebot',
@@ -947,6 +1094,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'Ich stimme der Verarbeitung meiner Daten zur Beantwortung dieser Anfrage zu. *',
         submit: 'Anfrage senden',
         note: 'Mit * gekennzeichnete Felder sind Pflichtfelder.',
+        error: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns.',
       },
       info: {
         title: 'Kontaktdaten',
@@ -960,6 +1108,14 @@ export const ui: Record<Locale, Dict> = {
         hours: 'Mo–Fr: 8:00–16:00 Uhr MEZ',
         responseNote: 'Anfragen beantworten wir in der Regel innerhalb von 1–2 Werktagen.',
       },
+      map: {
+        directions: 'Route anzeigen',
+      },
+    },
+    thankYou: {
+      title: 'Vielen Dank für Ihre Anfrage',
+      text: 'Ihre Nachricht wurde gesendet. Wir antworten in der Regel innerhalb von 1–2 Werktagen. Bei Eilfragen erreichen Sie uns unter: +48 42 672 57 10.',
+      cta: 'Zurück zur Startseite',
     },
     footer: {
       tagline: 'Auftragsfertigung in Metallbearbeitung für Industrieunternehmen in Polen und der EU.',
@@ -967,6 +1123,12 @@ export const ui: Record<Locale, Dict> = {
       contactTitle: 'Kontakt',
       langTitle: 'Sprache',
       legal: 'Alle Rechte vorbehalten. PRECIMET H.C.E. Sp. z o.o. · NIP: 728-280-49-18 · KRS: 0000587797',
+    },
+    cookie: {
+      message: 'Wir verwenden Cookies und ähnliche Technologien, um die Funktionalität unserer Website zu gewährleisten, den Datenverkehr zu analysieren und Ihr Erlebnis zu personalisieren. Sie können alle Cookies akzeptieren, nicht essenzielle ablehnen oder Ihre Einstellungen jederzeit verwalten.',
+      linkLabel: 'Datenschutzerklärung',
+      accept: 'Akzeptieren',
+      decline: 'Ablehnen',
     },
   },
 };

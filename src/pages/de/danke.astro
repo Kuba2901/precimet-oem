@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { t } from '../../i18n/ui';
+import { path } from '../../i18n/config';
+
+const locale = 'de' as const;
+const dict = t(locale);
+const ty = dict.thankYou;
+---
+
+<BaseLayout locale={locale} title={`${ty.title} — Precimet OEM Manufacturing`} noindex>
+  <section class="section thank-you">
+    <div class="container thank-you__inner">
+      <p class="eyebrow">Precimet OEM Manufacturing</p>
+      <h1>{ty.title}</h1>
+      <hr class="laser-line" />
+      <p class="thank-you__text">{ty.text}</p>
+      <a class="btn btn--primary" href={path(locale, '/')}>{ty.cta}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you__inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .thank-you__inner h1 { margin-bottom: 1rem; }
+  .thank-you__text { color: var(--c-text-muted); margin-bottom: 2rem; }
+</style>

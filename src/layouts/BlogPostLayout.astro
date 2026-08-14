@@ -20,6 +20,8 @@ const fmt = dateFormatter(locale);
   description={post.data.description}
   pagePath={`/blog/${postSlug(post)}`}
   ogImage={post.data.cover}
+  ogImageAlt={post.data.title}
+  ogType="article"
 >
   <article class="section post">
     <div class="container">
@@ -39,7 +41,7 @@ const fmt = dateFormatter(locale);
 
       {post.data.cover && (
         <figure class="post__cover">
-          <img src={post.data.cover} alt="" width="1200" height="640" />
+          <img src={post.data.cover} alt={post.data.title} width="1200" height="640" />
         </figure>
       )}
 
