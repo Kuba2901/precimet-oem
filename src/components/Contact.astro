@@ -11,6 +11,8 @@ const { locale } = Astro.props;
 const dict = t(locale);
 const f = dict.contact.form;
 const info = dict.contact.info;
+const map = dict.contact.map;
+const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === 'de' ? '/danke' : '/thank-you');
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
 ---
 
@@ -41,10 +43,29 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
           <dd>{info.hours}</dd>
         </dl>
         <p class="contact__note">{info.responseNote}</p>
+        <a
+          class="contact__directions"
+          href="https://www.google.com/maps/dir/?api=1&destination=51.7854674,19.5891212"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{map.directions} &nearr;</a>
+      </div>
+
+      <div class="contact__map reveal">
+        <iframe
+          title="Precimet OEM Manufacturing — Łódź"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=19.5861,51.7824,19.5921,51.7884&layer=mapnik&marker=51.78547,19.58912"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          width="100%"
+          height="300"
+          style="border:0; border-radius: var(--radius);"
+        ></iframe>
       </div>
     </div>
 
     <form
+      id="contact-form"
       class="contact__form reveal"
       method="POST"
       action="https://formspree.io/f/xppaljbe"
@@ -91,9 +112,39 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
 
       <button class="btn btn--primary" type="submit">{f.submit}</button>
       <p class="spec contact__required">{f.note}</p>
+      <p class="contact__error" hidden>{f.error}</p>
     </form>
   </div>
 </section>
+
+<script define:vars={{ thankYouPath }}>
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const err = form.querySelector('.contact__error');
+      btn.disabled = true;
+      err.hidden = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          window.location.href = thankYouPath;
+        } else {
+          err.hidden = false;
+          btn.disabled = false;
+        }
+      } catch {
+        err.hidden = false;
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
 
 <style>
   .contact__grid {
@@ -192,6 +243,29 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
   .field--consent input { margin-top: 0.2rem; accent-color: var(--c-red-500); }
 
   .contact__required { margin: 0; }
+
+  .contact__directions {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--c-sand-500);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-sand-500);
+    transition: color var(--transition), border-color var(--transition);
+  }
+
+  .contact__directions:hover { color: #fff; border-color: #fff; }
+
+  .contact__map { margin-top: 1.5rem; }
+
+  .contact__error {
+    color: var(--c-red-500);
+    font-size: 0.9rem;
+    margin: 0;
+  }
 
   @media (max-width: 860px) {
     .contact__grid { grid-template-columns: 1fr; }

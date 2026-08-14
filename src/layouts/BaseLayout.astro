@@ -10,6 +10,8 @@ import {
   type Locale,
 } from '../i18n/config';
 import { t } from '../i18n/ui';
+import CookieConsent from '../components/CookieConsent.astro';
+
 
 interface Props {
   locale: Locale;
@@ -18,17 +20,21 @@ interface Props {
   /** Ścieżka bez prefiksu językowego, np. '/blog' — używana do hreflang. */
   pagePath?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogType?: string;
+  noindex?: boolean;
 }
 
-const { locale, title, description, pagePath, ogImage } = Astro.props;
+const { locale, title, description, pagePath, ogImage, ogImageAlt, ogType, noindex } = Astro.props;
 const dict = t(locale);
 
 const metaTitle = title ?? dict.seo.title;
 const metaDescription = description ?? dict.seo.description;
 const basePath = pagePath ?? stripLocale(Astro.url);
-const site = Astro.site ?? new URL('https://3d-laser.pl');
+const site = Astro.site ?? new URL('https://oem.precimet.pl');
 const canonical = new URL(path(locale, basePath), site).href;
-const ogImg = ogImage ?? new URL(`${import.meta.env.BASE_URL}logo.png`, site).href;
+const ogImg = ogImage ?? new URL(`${import.meta.env.BASE_URL}og-image.png`, site).href;
+const ogAlt = ogImageAlt ?? metaTitle;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -53,6 +59,7 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logo.png`} />
 
@@ -63,17 +70,23 @@ const jsonLd = {
     <link rel="alternate" hreflang="x-default" href={new URL(path('pl', basePath), site).href} />
 
     {/* Open Graph / Twitter */}
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType ?? 'website'} />
     <meta property="og:site_name" content="Precimet OEM Manufacturing" />
     <meta property="og:title" content={metaTitle} />
     <meta property="og:description" content={metaDescription} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImg} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogAlt} />
     <meta property="og:locale" content={OG_LOCALES[locale]} />
     {LOCALES.filter((l) => l !== locale).map((l) => (
       <meta property="og:locale:alternate" content={OG_LOCALES[l]} />
     ))}
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImg} />
 
     {/* Fonty */}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -91,6 +104,7 @@ const jsonLd = {
       <slot />
     </main>
     <Footer locale={locale} />
+    <CookieConsent locale={locale} />
 
     {/* Subtelne animacje wejścia sekcji */}
     <script>

@@ -1,0 +1,108 @@
+---
+import type { Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = t(locale);
+const faq = dict.faq;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
+---
+
+<section id="faq" class="section">
+  <div class="container">
+    <header class="faq__head reveal">
+      <p class="eyebrow">{faq.eyebrow}</p>
+      <h2>{faq.title}</h2>
+      <hr class="laser-line" />
+    </header>
+
+    <dl class="faq__list">
+      {faq.items.map((item) => (
+        <div class="faq__item reveal">
+          <dt>
+            <details>
+              <summary>{item.q}</summary>
+              <dd>{item.a}</dd>
+            </details>
+          </dt>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+<style>
+  .faq__head { max-width: 640px; margin-bottom: 2.25rem; }
+
+  .faq__list {
+    max-width: 720px;
+    display: grid;
+    gap: 1px;
+    background: var(--c-line);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .faq__item { background: var(--c-bg); }
+
+  .faq__item details { padding: 0; }
+
+  .faq__item summary {
+    cursor: pointer;
+    padding: 1.15rem 1.4rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--c-text);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .faq__item summary::-webkit-details-marker { display: none; }
+
+  .faq__item summary::after {
+    content: '+';
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--c-red-500);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .faq__item details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq__item summary:hover { background: var(--c-sand-100); }
+
+  .faq__item dd {
+    margin: 0;
+    padding: 0 1.4rem 1.25rem;
+    color: var(--c-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+</style>

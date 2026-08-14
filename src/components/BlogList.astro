@@ -32,7 +32,7 @@ const fmt = dateFormatter(locale);
             <article class="card post-card">
               {post.data.cover && (
                 <a href={url} class="post-card__media" tabindex="-1">
-                  <img src={post.data.cover} alt="" loading="lazy" width="600" height="380" />
+                  <img src={post.data.cover} alt={post.data.title} loading="lazy" width="600" height="380" />
                 </a>
               )}
               <div class="post-card__body">
