@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://3d-laser.pl/sitemap-index.xml
+Sitemap: https://oem.precimet.pl/sitemap-index.xml

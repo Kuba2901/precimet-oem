@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 
 # Astro dev cache
 .astro/
+
+.playwright-mcp/

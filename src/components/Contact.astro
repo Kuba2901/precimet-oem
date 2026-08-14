@@ -28,7 +28,13 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
           <dt class="spec">{info.addressLabel}</dt>
           <dd>{info.address.split('\n').map((line) => <span>{line}<br /></span>)}</dd>
           <dt class="spec">{info.phoneLabel}</dt>
-          <dd><a href={`tel:${info.phone.replace(/\s/g, '')}`}>{info.phone}</a></dd>
+          <dd class="contact__phones">
+            {info.phone.split('\n').filter((line) => line.trim() !== '').map((line) => {
+              const isPhone = /^\+?[\d\s()-]+$/.test(line.trim());
+              if (isPhone) return <a href={`tel:${line.replace(/\s/g, '')}`}>{line}</a>;
+              return <span class="spec">{line}</span>;
+            })}
+          </dd>
           <dt class="spec">{info.emailLabel}</dt>
           <dd><a href={`mailto:${info.email}`}>{info.email}</a></dd>
           <dt class="spec">{info.hoursLabel}</dt>
@@ -38,15 +44,10 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
       </div>
     </div>
 
-    {/*
-      Formularz jest statyczny — przed publikacją podłącz backend:
-      np. action="https://formspree.io/f/XXXX" method="POST"
-      albo własny endpoint / Netlify Forms.
-    */}
     <form
       class="contact__form reveal"
       method="POST"
-      action="https://formspree.io/f/XXXXXXXX"
+      action="https://formspree.io/f/xppaljbe"
       enctype="multipart/form-data"
     >
       <div class="field-row">
@@ -118,6 +119,12 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
   .contact__info dt { align-self: start; padding-top: 0.15rem; color: var(--c-sand-500); }
 
   .contact__info dd { margin: 0; color: var(--c-text-inverse); }
+
+  .contact__phones { display: grid; gap: 0.25rem; }
+
+  .contact__phones a { display: block; width: fit-content; }
+
+  .contact__phones .spec:not(:first-child) { margin-top: 0.6rem; }
 
   .contact__info a {
     color: inherit;
