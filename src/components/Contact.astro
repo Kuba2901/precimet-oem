@@ -14,6 +14,8 @@ const info = dict.contact.info;
 const map = dict.contact.map;
 const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === 'de' ? '/danke' : '/thank-you');
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
+
+const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
 ---
 
 <section id="kontakt" class="section section--dark contact">
@@ -67,10 +69,14 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
     <form
       class="contact__form reveal"
       method="POST"
-      action="https://formsubmit.co/ajax/kubanenczakdev@gmail.com"
+      action={`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`}
       enctype="multipart/form-data"
     >
       <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_subject" value={`Nowe zapytanie OEM (${locale.toUpperCase()}) - Precimet`} />
+      <input type="hidden" name="_next" value={new URL(thankYouPath, Astro.site ?? 'https://oem.precimet.pl').href} />
+
       <div class="field-row">
         <label class="field">
           <span>{f.name}</span>
@@ -112,34 +118,72 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
         <span>{f.consent} <a href={privacyUrl} target="_blank" rel="noopener noreferrer">{locale === 'pl' ? 'Polityka prywatności' : locale === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}</a>.</span>
       </label>
 
-      <button class="btn btn--primary" type="submit">{f.submit}</button>
+      <div class="contact__error" role="alert" hidden>
+        {f.error}
+      </div>
+
+      <button class="btn btn--primary" type="submit">
+        <span class="btn__text">{f.submit}</span>
+        <span class="btn__spinner" aria-hidden="true"></span>
+      </button>
       <p class="spec contact__required">{f.note}</p>
     </form>
   </div>
 </section>
 
-<script define:vars={{ thankYouPath }}>
-  const form = document.querySelector('.contact__form');
-  if (form) {
+<script is:inline define:vars={{ thankYouPath }}>
+  (function () {
+    const form = document.querySelector('.contact__form');
+    if (!form) return;
+
+    const errorMsg = form.querySelector('.contact__error');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true;
+      if (errorMsg) errorMsg.hidden = true;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('is-loading');
+      }
+
       try {
+        const formData = new FormData(form);
+        const fileInput = form.querySelector('input[type="file"][name="attachment"]');
+        if (fileInput && (!fileInput.files || fileInput.files.length === 0 || fileInput.files[0].size === 0)) {
+          formData.delete('attachment');
+        }
+
         const res = await fetch(form.action, {
           method: 'POST',
-          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json',
+          },
+          body: formData,
         });
-        if (res.ok) {
+
+        const data = await res.json().catch(() => null);
+
+        if (res.ok && (data === null || data.success === 'true' || data.success === true || res.status === 200)) {
           window.location.href = thankYouPath;
         } else {
-          btn.disabled = false;
+          console.error('FormSubmit response status:', res.status, data);
+          if (errorMsg) errorMsg.hidden = false;
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('is-loading');
+          }
         }
-      } catch {
-        btn.disabled = false;
+      } catch (err) {
+        console.error('Contact form submission error:', err);
+        if (errorMsg) errorMsg.hidden = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('is-loading');
+        }
       }
     });
-  }
+  })();
 </script>
 
 <style>
@@ -258,6 +302,52 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
   .contact__directions:hover { color: #fff; border-color: #fff; }
 
   .contact__map { margin-top: 1.5rem; }
+
+  .contact__error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.88rem;
+    line-height: 1.4;
+  }
+
+  .contact__error[hidden] {
+    display: none !important;
+  }
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .btn.is-loading .btn__text {
+    opacity: 0.5;
+  }
+
+  .btn__spinner {
+    display: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  .btn.is-loading .btn__spinner {
+    display: inline-block;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
   @media (max-width: 860px) {
     .contact__grid { grid-template-columns: 1fr; }

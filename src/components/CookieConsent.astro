@@ -25,7 +25,7 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
   </div>
 </div>
 
-<script define:vars={{ GA4_ID }}>
+<script is:inline define:vars={{ GA4_ID }}>
   (function () {
     var KEY = 'precimet-cookie-consent';
     var EXPIRY_MS = 180 * 24 * 60 * 60 * 1000;
@@ -57,12 +57,14 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
       } catch { return null; }
     }
 
+    var banner = document.getElementById('cookie-consent');
+
     if (hasConsent()) {
       if (getConsentValue() === 'accept') loadGA4();
+      if (banner) banner.remove();
       return;
     }
 
-    var banner = document.getElementById('cookie-consent');
     if (!banner) return;
     banner.hidden = false;
 
@@ -78,6 +80,10 @@ const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : loca
 </script>
 
 <style>
+  .cookie-consent[hidden] {
+    display: none !important;
+  }
+
   .cookie-consent {
     position: fixed;
     bottom: 0;
