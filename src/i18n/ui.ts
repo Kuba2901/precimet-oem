@@ -13,6 +13,25 @@ type ServiceItem = {
   imgAlt: string;
 };
 
+type MachineSpec = {
+  label: string;
+  value: string;
+};
+
+type MachineItem = {
+  name: string;
+  brand: string;
+  img: string;
+  imgAlt: string;
+  specs: MachineSpec[];
+};
+
+type MachineGroup = {
+  id: string;
+  title: string;
+  machines: MachineItem[];
+};
+
 type Dict = {
   seo: {
     title: string;
@@ -24,6 +43,7 @@ type Dict = {
   nav: {
     about: string;
     services: string;
+    machines: string;
     why: string;
     process: string;
     blog: string;
@@ -55,6 +75,14 @@ type Dict = {
     title: string;
     lead: string;
     items: ServiceItem[];
+  };
+  machines: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    note: string;
+    cta: string;
+    groups: MachineGroup[];
   };
   why: {
     eyebrow: string;
@@ -170,6 +198,9 @@ const STOCK = {
     'https://images.unsplash.com/photo-1730584475256-9055b74420a2?auto=format&fit=crop&w=1200&q=70',
 };
 
+/** Zdjęcia maszyn z parku maszynowego (public/maszyny). */
+const MACHINE = (name: string): string => `${import.meta.env.BASE_URL}maszyny/${name}.webp`;
+
 export const ui: Record<Locale, Dict> = {
   /* ------------------------------------------------------------------ PL */
   pl: {
@@ -187,6 +218,7 @@ export const ui: Record<Locale, Dict> = {
     nav: {
       about: 'O firmie',
       services: 'Usługi',
+      machines: 'Park maszynowy',
       why: 'Dlaczego my',
       process: 'Proces',
       blog: 'Blog',
@@ -319,6 +351,148 @@ export const ui: Record<Locale, Dict> = {
           desc: 'Prace ślusarskie, wiercenie, gwintowanie, szlifowanie i wykończenie detali — wszystko, czego wymaga kompletne zlecenie kooperacyjne.',
           img: STOCK.hall,
           imgAlt: 'Stanowisko ślusarskie w hali produkcyjnej',
+        },
+      ],
+    },
+    machines: {
+      eyebrow: 'Park maszynowy',
+      title: 'Maszyny, na których realizujemy Państwa zlecenia',
+      lead:
+        'Prezentujemy nasz aktualny park maszynowy. Stale go modernizujemy, inwestując w nowe maszyny, narzędzia i technologie.',
+      note: 'Potrzebują Państwo detalu wykraczającego poza powyższe zakresy? Prosimy o przesłanie dokumentacji — po analizie potwierdzimy wykonalność.',
+      cta: 'Prześlij dokumentację',
+      groups: [
+        {
+          id: 'lasery',
+          title: 'Wycinarki laserowe',
+          machines: [
+            {
+              name: 'NEXUS OPTIPLEX 2D',
+              brand: 'Mazak',
+              img: MACHINE('laser-mazak-nexus'),
+              imgAlt: 'Wycinarka laserowa Mazak Nexus Optiplex 2D z laserem światłowodowym',
+              specs: [
+                { label: 'Źródło', value: 'Laser Fiber, 4 kW' },
+                { label: 'Maks. arkusz', value: '3000 × 1500 mm' },
+                { label: 'Blachy czarne', value: 'do 20 mm' },
+                { label: 'Nierdzewne i kwasoodporne', value: 'do 20 mm' },
+                { label: 'Aluminium', value: 'do 10 mm' },
+                { label: 'Metale kolorowe', value: 'mosiądz, miedź' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'prasy',
+          title: 'Prasy krawędziowe',
+          machines: [
+            {
+              name: 'Serwoelektryczna prasa krawędziowa',
+              brand: 'Safan',
+              img: MACHINE('prasa-safan'),
+              imgAlt: 'Serwoelektryczna prasa krawędziowa Safan',
+              specs: [
+                { label: 'Maks. długość gięcia', value: '3000 mm' },
+                { label: 'Maks. nacisk', value: '160 ton' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'cnc',
+          title: 'Obróbka mechaniczna CNC — frezowanie i toczenie',
+          machines: [
+            {
+              name: 'DNM-750L',
+              brand: 'Doosan',
+              img: MACHINE('frezarka-doosan-dnm-750l'),
+              imgAlt: 'Centrum frezarskie CNC Doosan DNM-750L',
+              specs: [
+                { label: 'Typ', value: 'Frezarka CNC' },
+                { label: 'Zakres obróbki', value: '2160 × 762 × 650 mm' },
+              ],
+            },
+            {
+              name: 'VMC 650',
+              brand: 'Avia',
+              img: MACHINE('frezarka-avia-vmc-650'),
+              imgAlt: 'Centrum frezarskie CNC Avia VMC 650',
+              specs: [
+                { label: 'Typ', value: 'Frezarka CNC' },
+                { label: 'Zakres obróbki', value: '650 × 540 × 620 mm' },
+              ],
+            },
+            {
+              name: '510',
+              brand: 'Romi',
+              img: MACHINE('tokarka-romi-510'),
+              imgAlt: 'Tokarka CNC Romi 510',
+              specs: [
+                { label: 'Typ', value: 'Tokarka CNC' },
+                { label: 'Maks. długość toczenia', value: '1500 mm' },
+                { label: 'Maks. średnica', value: '255 mm' },
+              ],
+            },
+            {
+              name: 'Lynx 300M',
+              brand: 'Doosan',
+              img: MACHINE('tokarka-doosan-lynx-300m'),
+              imgAlt: 'Tokarka CNC Doosan Lynx 300M',
+              specs: [
+                { label: 'Typ', value: 'Tokarka CNC' },
+                { label: 'Maks. długość toczenia', value: '712 mm' },
+                { label: 'Maks. średnica', value: '254 mm' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'spawanie',
+          title: 'Spawanie zrobotyzowane',
+          machines: [
+            {
+              name: 'Robot spawalniczy',
+              brand: 'OTC Daihen',
+              img: MACHINE('robot-otc-daihen'),
+              imgAlt: 'Zrobotyzowane stanowisko spawalnicze OTC Daihen podczas pracy',
+              specs: [
+                { label: 'Zakres spawania', value: 'dł. 2000 × szer. 1000 × gł. 400 mm' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'ksztaltowniki',
+          title: 'Cięcie kształtowników CNC',
+          machines: [
+            {
+              name: 'Piła CNC',
+              brand: 'IMET',
+              img: MACHINE('pila-imet'),
+              imgAlt: 'Automatyczna piła taśmowa CNC IMET do cięcia kształtowników',
+              specs: [
+                { label: 'Podawanie', value: 'Automatyczne' },
+                { label: 'Ukosowanie', value: 'Automatyczne, −60° / 0 / +60°' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'giecie-rur',
+          title: 'Gięcie rur na giętarce CNC',
+          machines: [
+            {
+              name: 'Giętarka CNC',
+              brand: 'SOCO',
+              img: MACHINE('gietarka-soco'),
+              imgAlt: 'Numeryczna giętarka do rur SOCO',
+              specs: [
+                { label: 'Gięcie', value: 'W jednej płaszczyźnie' },
+                { label: 'Średnice rur', value: '⌀25, ⌀32, ⌀50 mm' },
+                { label: 'Inne wymiary', value: 'na zapytanie' },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -512,6 +686,7 @@ export const ui: Record<Locale, Dict> = {
     nav: {
       about: 'About us',
       services: 'Services',
+      machines: 'Machine park',
       why: 'Why us',
       process: 'Process',
       blog: 'Blog',
@@ -638,6 +813,148 @@ export const ui: Record<Locale, Dict> = {
           desc: 'Workshop metalwork, drilling, tapping, grinding and finishing — everything a complete subcontracted order requires.',
           img: STOCK.hall,
           imgAlt: 'Metalwork station in the production hall',
+        },
+      ],
+    },
+    machines: {
+      eyebrow: 'Machine park',
+      title: 'The machines your parts are made on',
+      lead:
+        'This is our current machine park. We keep modernising it, investing in new machines, tooling and technologies.',
+      note: 'Need a part outside the ranges listed above? Send us your documentation — we will confirm feasibility after reviewing it.',
+      cta: 'Send your drawings',
+      groups: [
+        {
+          id: 'lasers',
+          title: 'Laser cutting machines',
+          machines: [
+            {
+              name: 'NEXUS OPTIPLEX 2D',
+              brand: 'Mazak',
+              img: MACHINE('laser-mazak-nexus'),
+              imgAlt: 'Mazak Nexus Optiplex 2D fibre laser cutting machine',
+              specs: [
+                { label: 'Source', value: 'Fibre laser, 4 kW' },
+                { label: 'Max. sheet size', value: '3000 × 1500 mm' },
+                { label: 'Mild steel', value: 'up to 20 mm' },
+                { label: 'Stainless & acid-resistant', value: 'up to 20 mm' },
+                { label: 'Aluminium', value: 'up to 10 mm' },
+                { label: 'Non-ferrous metals', value: 'brass, copper' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'press-brakes',
+          title: 'Press brakes',
+          machines: [
+            {
+              name: 'Servo-electric press brake',
+              brand: 'Safan',
+              img: MACHINE('prasa-safan'),
+              imgAlt: 'Safan servo-electric press brake',
+              specs: [
+                { label: 'Max. bending length', value: '3000 mm' },
+                { label: 'Max. tonnage', value: '160 t' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'cnc',
+          title: 'CNC machining — milling and turning',
+          machines: [
+            {
+              name: 'DNM-750L',
+              brand: 'Doosan',
+              img: MACHINE('frezarka-doosan-dnm-750l'),
+              imgAlt: 'Doosan DNM-750L CNC machining centre',
+              specs: [
+                { label: 'Type', value: 'CNC milling machine' },
+                { label: 'Working envelope', value: '2160 × 762 × 650 mm' },
+              ],
+            },
+            {
+              name: 'VMC 650',
+              brand: 'Avia',
+              img: MACHINE('frezarka-avia-vmc-650'),
+              imgAlt: 'Avia VMC 650 CNC machining centre',
+              specs: [
+                { label: 'Type', value: 'CNC milling machine' },
+                { label: 'Working envelope', value: '650 × 540 × 620 mm' },
+              ],
+            },
+            {
+              name: '510',
+              brand: 'Romi',
+              img: MACHINE('tokarka-romi-510'),
+              imgAlt: 'Romi 510 CNC lathe',
+              specs: [
+                { label: 'Type', value: 'CNC lathe' },
+                { label: 'Max. turning length', value: '1500 mm' },
+                { label: 'Max. diameter', value: '255 mm' },
+              ],
+            },
+            {
+              name: 'Lynx 300M',
+              brand: 'Doosan',
+              img: MACHINE('tokarka-doosan-lynx-300m'),
+              imgAlt: 'Doosan Lynx 300M CNC lathe',
+              specs: [
+                { label: 'Type', value: 'CNC lathe' },
+                { label: 'Max. turning length', value: '712 mm' },
+                { label: 'Max. diameter', value: '254 mm' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'robotic-welding',
+          title: 'Robotic welding',
+          machines: [
+            {
+              name: 'Welding robot',
+              brand: 'OTC Daihen',
+              img: MACHINE('robot-otc-daihen'),
+              imgAlt: 'OTC Daihen robotic welding cell in operation',
+              specs: [
+                { label: 'Welding envelope', value: 'L 2000 × W 1000 × D 400 mm' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'profile-cutting',
+          title: 'CNC profile cutting',
+          machines: [
+            {
+              name: 'CNC saw',
+              brand: 'IMET',
+              img: MACHINE('pila-imet'),
+              imgAlt: 'IMET automatic CNC band saw for cutting profiles',
+              specs: [
+                { label: 'Feeding', value: 'Automatic' },
+                { label: 'Mitre cutting', value: 'Automatic, −60° / 0 / +60°' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'tube-bending',
+          title: 'CNC tube bending',
+          machines: [
+            {
+              name: 'CNC tube bender',
+              brand: 'SOCO',
+              img: MACHINE('gietarka-soco'),
+              imgAlt: 'SOCO CNC tube bending machine',
+              specs: [
+                { label: 'Bending', value: 'Single plane' },
+                { label: 'Tube diameters', value: '⌀25, ⌀32, ⌀50 mm' },
+                { label: 'Other sizes', value: 'on request' },
+              ],
+            },
+          ],
         },
       ],
     },
@@ -830,6 +1147,7 @@ export const ui: Record<Locale, Dict> = {
     nav: {
       about: 'Über uns',
       services: 'Leistungen',
+      machines: 'Maschinenpark',
       why: 'Warum wir',
       process: 'Ablauf',
       blog: 'Blog',
@@ -956,6 +1274,148 @@ export const ui: Record<Locale, Dict> = {
           desc: 'Werkstattschlosserei, Bohren, Gewindeschneiden, Schleifen und Finish — alles, was ein kompletter Lohnfertigungsauftrag erfordert.',
           img: STOCK.hall,
           imgAlt: 'Schlosserarbeitsplatz in der Fertigungshalle',
+        },
+      ],
+    },
+    machines: {
+      eyebrow: 'Maschinenpark',
+      title: 'Maschinen, auf denen wir Ihre Teile fertigen',
+      lead:
+        'Hier stellen wir Ihnen unseren aktuellen Maschinenpark vor. Wir modernisieren ihn laufend und investieren in neue Maschinen, Werkzeuge und Technologien.',
+      note: 'Sie benötigen ein Teil außerhalb der genannten Bereiche? Senden Sie uns Ihre Unterlagen — nach der Prüfung bestätigen wir die Machbarkeit.',
+      cta: 'Zeichnungen senden',
+      groups: [
+        {
+          id: 'laser',
+          title: 'Laserschneidanlagen',
+          machines: [
+            {
+              name: 'NEXUS OPTIPLEX 2D',
+              brand: 'Mazak',
+              img: MACHINE('laser-mazak-nexus'),
+              imgAlt: 'Faserlaser-Schneidanlage Mazak Nexus Optiplex 2D',
+              specs: [
+                { label: 'Strahlquelle', value: 'Faserlaser, 4 kW' },
+                { label: 'Max. Tafelformat', value: '3000 × 1500 mm' },
+                { label: 'Baustahl', value: 'bis 20 mm' },
+                { label: 'Edelstahl und säurebeständig', value: 'bis 20 mm' },
+                { label: 'Aluminium', value: 'bis 10 mm' },
+                { label: 'NE-Metalle', value: 'Messing, Kupfer' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'abkantpressen',
+          title: 'Abkantpressen',
+          machines: [
+            {
+              name: 'Servoelektrische Abkantpresse',
+              brand: 'Safan',
+              img: MACHINE('prasa-safan'),
+              imgAlt: 'Servoelektrische Abkantpresse von Safan',
+              specs: [
+                { label: 'Max. Biegelänge', value: '3000 mm' },
+                { label: 'Max. Presskraft', value: '160 t' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'cnc',
+          title: 'CNC-Zerspanung — Fräsen und Drehen',
+          machines: [
+            {
+              name: 'DNM-750L',
+              brand: 'Doosan',
+              img: MACHINE('frezarka-doosan-dnm-750l'),
+              imgAlt: 'CNC-Bearbeitungszentrum Doosan DNM-750L',
+              specs: [
+                { label: 'Typ', value: 'CNC-Fräsmaschine' },
+                { label: 'Bearbeitungsbereich', value: '2160 × 762 × 650 mm' },
+              ],
+            },
+            {
+              name: 'VMC 650',
+              brand: 'Avia',
+              img: MACHINE('frezarka-avia-vmc-650'),
+              imgAlt: 'CNC-Bearbeitungszentrum Avia VMC 650',
+              specs: [
+                { label: 'Typ', value: 'CNC-Fräsmaschine' },
+                { label: 'Bearbeitungsbereich', value: '650 × 540 × 620 mm' },
+              ],
+            },
+            {
+              name: '510',
+              brand: 'Romi',
+              img: MACHINE('tokarka-romi-510'),
+              imgAlt: 'CNC-Drehmaschine Romi 510',
+              specs: [
+                { label: 'Typ', value: 'CNC-Drehmaschine' },
+                { label: 'Max. Drehlänge', value: '1500 mm' },
+                { label: 'Max. Durchmesser', value: '255 mm' },
+              ],
+            },
+            {
+              name: 'Lynx 300M',
+              brand: 'Doosan',
+              img: MACHINE('tokarka-doosan-lynx-300m'),
+              imgAlt: 'CNC-Drehmaschine Doosan Lynx 300M',
+              specs: [
+                { label: 'Typ', value: 'CNC-Drehmaschine' },
+                { label: 'Max. Drehlänge', value: '712 mm' },
+                { label: 'Max. Durchmesser', value: '254 mm' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'roboterschweissen',
+          title: 'Roboterschweißen',
+          machines: [
+            {
+              name: 'Schweißroboter',
+              brand: 'OTC Daihen',
+              img: MACHINE('robot-otc-daihen'),
+              imgAlt: 'Roboterschweißzelle OTC Daihen im Betrieb',
+              specs: [
+                { label: 'Schweißbereich', value: 'L 2000 × B 1000 × T 400 mm' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'profilsaegen',
+          title: 'CNC-Profilsägen',
+          machines: [
+            {
+              name: 'CNC-Säge',
+              brand: 'IMET',
+              img: MACHINE('pila-imet'),
+              imgAlt: 'Automatische CNC-Bandsäge IMET zum Sägen von Profilen',
+              specs: [
+                { label: 'Zuführung', value: 'Automatisch' },
+                { label: 'Gehrungsschnitt', value: 'Automatisch, −60° / 0 / +60°' },
+              ],
+            },
+          ],
+        },
+        {
+          id: 'rohrbiegen',
+          title: 'CNC-Rohrbiegen',
+          machines: [
+            {
+              name: 'CNC-Rohrbiegemaschine',
+              brand: 'SOCO',
+              img: MACHINE('gietarka-soco'),
+              imgAlt: 'CNC-Rohrbiegemaschine von SOCO',
+              specs: [
+                { label: 'Biegen', value: 'In einer Ebene' },
+                { label: 'Rohrdurchmesser', value: '⌀25, ⌀32, ⌀50 mm' },
+                { label: 'Weitere Abmessungen', value: 'auf Anfrage' },
+              ],
+            },
+          ],
         },
       ],
     },
