@@ -6,12 +6,12 @@ import {
   LOCALES,
   OG_LOCALES,
   path,
+  localizedPath,
   stripLocale,
   type Locale,
 } from '../i18n/config';
 import { t } from '../i18n/ui';
 import CookieConsent from '../components/CookieConsent.astro';
-
 
 interface Props {
   locale: Locale;
@@ -63,11 +63,18 @@ const jsonLd = {
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logo.png`} />
 
-    {/* hreflang — każda wersja językowa wskazuje pozostałe */}
+    {/* hreflang — każda wersja językowa wskazuje właściwy przetłumaczony URL */}
     {LOCALES.map((l) => (
-      <link rel="alternate" hreflang={l} href={new URL(path(l, basePath), site).href} />
+      <link rel="alternate" hreflang={l} href={new URL(localizedPath(l, basePath), site).href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(path('pl', basePath), site).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('pl', basePath), site).href} />
+
+    {/* Markdown content negotiation for AI agents (acceptmarkdown.com / RFC 8288) */}
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href={new URL(basePath === '/' ? (locale === 'pl' ? '/index.md' : `/${locale}/index.md`) : `${path(locale, basePath)}.md`, site).href}
+    />
 
     {/* Open Graph / Twitter */}
     <meta property="og:type" content={ogType ?? 'website'} />

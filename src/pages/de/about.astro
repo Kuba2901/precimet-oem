@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { path } from '../../i18n/config';
+
+const locale = 'de' as const;
+
+const aboutJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'Über uns — Precimet OEM Manufacturing',
+  description: 'Unternehmensprofil, CNC-Fertigungskapazitäten, Maschinenpark und ISO 9001:2015 Qualitätsstandards von PRECIMET H.C.E. Sp. z o.o.',
+  mainEntity: {
+    '@type': 'Organization',
+    name: 'PRECIMET H.C.E. Sp. z o.o.',
+    alternateName: 'Precimet OEM Manufacturing',
+    foundingDate: '1990',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'ul. Pomorska 555',
+      addressLocality: 'Łódź',
+      postalCode: '92-735',
+      addressCountry: 'PL',
+    },
+    taxID: 'PL7272841275',
+    telephone: '+48 422 080 411',
+    email: 'produkcja@precimet.pl',
+  },
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title="Über uns — Precimet OEM Manufacturing | Lohnfertigung & Metallverarbeitung"
+  description="Lernen Sie Precimet OEM Manufacturing kennen: über 30 Jahre Erfahrung in der Blechbearbeitung, ISO 9001:2015 Zertifizierung, CNC-Maschinenpark und Serienfertigung in Polen."
+  pagePath="/about"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(aboutJsonLd)} />
+
+  <section class="section about-page">
+    <div class="container">
+      <header class="about-page__head reveal">
+        <p class="eyebrow">Über Precimet</p>
+        <h1>Über Precimet OEM Manufacturing</h1>
+        <hr class="laser-line" />
+        <p class="about-page__lead">
+          Ihr zuverlässiger europäischer Partner für die industrielle Lohnfertigung von Blechteilen, Schweißbaugruppen und Präzisionsteilen für anspruchsvolle Kunden in der gesamten EU.
+        </p>
+      </header>
+
+      <div class="about-page__grid">
+        <div class="about-page__main prose reveal">
+          <h2>1. Über 30 Jahre Erfahrung in der Metallverarbeitung</h2>
+          <p>
+            <strong>PRECIMET H.C.E. Sp. z o.o.</strong> ist ein moderner Produktionsbetrieb mit Sitz in Łódź, Polen. Seit mehr als drei Jahrzehnten bieten wir umfassende Fertigungsdienstleistungen in den Bereichen CNC-Laserschneiden, Abkanten, spanende Bearbeitung (Fräsen & Drehen), Roboterschweißen, Pulverbeschichtung und Baugruppenmontage.
+          </p>
+          <p>
+            Wir beliefern namhafte OEM-Hersteller in der DACH-Region und ganz Europa in den Branchen HVAC (Klima/Lüftung), Bahntechnik, Maschinenbau, Energietechnik, Automotive und Gehäusebau. Unsere Produktionskapazitäten sind optimal auf Prototypen, mittlere Losgrößen und Großserien ausgelegt.
+          </p>
+
+          <h2>2. Ganzheitliche Fertigungskette aus einer Hand</h2>
+          <p>
+            Bei Precimet erhalten Sie alle Fertigungsschritte unter einem Dach — dies garantiert höchste Qualitätskontrolle, kurze Lieferzeiten und transparente Prozesse:
+          </p>
+          <ul>
+            <li><strong>Faserlaserschneiden (Fiber):</strong> Mazak Optiplex Nexus 3015 Fiber 4kW Schneidanlage. Wir bearbeiten Baustahl bis 20 mm, Edelstahl bis 15 mm und Aluminium bis 12 mm.</li>
+            <li><strong>CNC-Abkanten / Blechbiegen:</strong> Hochpräzise SafanDarley Abkantpressen mit bis zu 320 Tonnen Presskraft und 4000 mm Biegelänge mit aktiver Bombierung.</li>
+            <li><strong>CNC-Zerspanung:</strong> Vertikale Bearbeitungszentren Doosan DNM 750L und Avia VMC 650 sowie CNC-Drehzentren Doosan Lynx 300M mit angetriebenen Werkzeugen.</li>
+            <li><strong>Roboter- und Handschweißen:</strong> OTC Daihen 6-Achs-Schweißroboterzelle sowie zertifizierte WIG-, MIG- und MAG-Schweißarbeitsplätze.</li>
+            <li><strong>Pulverbeschichtung & Oberflächentechnik:</strong> Automatische Pulverbeschichtungsanlage mit mehrstufiger chemischer Vorbehandlung (Korrosionsschutzklassen C2 bis C5).</li>
+            <li><strong>Montage & Logistik:</strong> Einpressbefestiger (PEM), Dichtungsmontage, Baugruppenfertigung und europaweite Speditionslieferungen (DAP / EXW).</li>
+          </ul>
+
+          <h2>3. Qualitätsmanagement und ISO 9001:2015</h2>
+          <p>
+            Qualität wird bei Precimet in jeder Phase des Produktionsprozesses systematisch überwacht. Wir verfügen über ein zertifiziertes Qualitätsmanagementsystem nach <strong>ISO 9001:2015</strong>. Unsere Qualitätssicherung nutzt 3D-Koordinatenmessarme, digitale Höhenmessgeräte und kalibrierte optische Prüfmittel, um 100%ige Maßhaltigkeit und Konformität gemäß 3.1 Werkszeugnissen sicherzustellen.
+          </p>
+
+          <h2>4. Unternehmensdaten und Handelsregister</h2>
+          <div class="legal-box">
+            <dl class="legal-box__grid">
+              <div><dt>Rechtsform:</dt><dd>PRECIMET H.C.E. Sp. z o.o.</dd></div>
+              <div><dt>Firmensitz:</dt><dd>ul. Pomorska 555, 92-735 Łódź, Polen</dd></div>
+              <div><dt>Handelsregister (KRS):</dt><dd>0000503010</dd></div>
+              <div><dt>Umsatzsteuer-ID (USt-IdNr.):</dt><dd>PL7272841275</dd></div>
+              <div><dt>Statistische Nummer (REGON):</dt><dd>363114171</dd></div>
+              <div><dt>Stammkapital:</dt><dd>100.000,00 PLN</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <aside class="about-page__sidebar reveal">
+          <div class="info-card">
+            <h3>Fakten im Überblick</h3>
+            <dl class="facts-list">
+              <div class="fact-item">
+                <dt>Branchenerfahrung</dt>
+                <dd>30+ Jahre</dd>
+              </div>
+              <div class="fact-item">
+                <dt>Qualitätszertifikat</dt>
+                <dd>ISO 9001:2015</dd>
+              </div>
+              <div class="fact-item">
+                <dt>Max. Presskraft</dt>
+                <dd>320T / 4m</dd>
+              </div>
+              <div class="fact-item">
+                <dt>Liefergebiet</dt>
+                <dd>EU-weit / DACH</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="info-card info-card--cta">
+            <h3>OEM-Partner gesucht?</h3>
+            <p>Senden Sie uns Ihre CAD-Daten (.STEP, .DXF) — wir erstellen Ihnen innerhalb von 24–48 Stunden ein Angebot.</p>
+            <a href={path(locale, '/contact')} class="btn btn--primary">Kontakt aufnehmen</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-block: var(--section-y);
+  }
+
+  .about-page__head {
+    max-width: 50rem;
+    margin-bottom: 3rem;
+  }
+
+  .about-page__lead {
+    font-size: 1.2rem;
+    color: var(--c-text-muted);
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  .about-page__grid {
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .about-page__main h2 {
+    margin-top: 2.2rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    color: var(--c-graphite-800);
+  }
+
+  .about-page__main p {
+    margin-bottom: 1.1rem;
+    line-height: 1.7;
+    color: var(--c-text);
+  }
+
+  .about-page__main ul {
+    padding-left: 1.25rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .legal-box {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .legal-box__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .legal-box dt {
+    font-size: 0.8rem;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .legal-box dd {
+    margin: 0.2rem 0 0;
+    font-weight: 600;
+    color: var(--c-graphite-800);
+  }
+
+  .about-page__sidebar {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .info-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  .facts-list {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+  }
+
+  .fact-item dt {
+    font-size: 0.82rem;
+    color: var(--c-text-muted);
+  }
+
+  .fact-item dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--c-red-500);
+  }
+
+  .info-card--cta {
+    background: var(--c-graphite-900);
+    color: var(--c-text-inverse);
+    border-color: var(--c-graphite-700);
+  }
+
+  .info-card--cta h3 {
+    color: var(--c-text-inverse);
+  }
+
+  .info-card--cta p {
+    color: var(--c-steel-300);
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 960px) {
+    .about-page__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .legal-box__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

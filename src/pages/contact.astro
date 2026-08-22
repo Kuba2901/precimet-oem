@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactSection from '../components/Contact.astro';
+
+const locale = 'pl' as const;
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Kontakt & Zapytania Ofertowe — Precimet OEM Manufacturing',
+  description: 'Skontaktuj się z Precimet OEM Manufacturing w sprawie wyceny cięcia laserowego, gięcia CNC, spawania i produkcji seryjnej wyrobów z metalu.',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: 'PRECIMET H.C.E. Sp. z o.o.',
+    image: 'https://oem.precimet.pl/logo.png',
+    telephone: '+48 422 080 411',
+    email: 'produkcja@precimet.pl',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'ul. Pomorska 555',
+      addressLocality: 'Łódź',
+      postalCode: '92-735',
+      addressCountry: 'PL',
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '15:00',
+    },
+  },
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title="Kontakt & Zapytania Ofertowe (RFQ) — Precimet OEM Manufacturing"
+  description="Skontaktuj się z działem produkcji Precimet w Łodzi. Prześlij pliki CAD (.STEP, .DXF) do bezpłatnej wyceny cięcia laserowego, gięcia CNC i konstrukcji spawanych."
+  pagePath="/contact"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(contactJsonLd)} />
+
+  <ContactSection locale={locale} />
+</BaseLayout>
