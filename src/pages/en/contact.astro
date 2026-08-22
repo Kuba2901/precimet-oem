@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactSection from '../../components/Contact.astro';
+
+const locale = 'en' as const;
+
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact & RFQ — Precimet OEM Manufacturing',
+  description: 'Get in touch with Precimet OEM Manufacturing for contract metal fabrication, laser cutting, CNC bending, and serial OEM production.',
+  mainEntity: {
+    '@type': 'LocalBusiness',
+    name: 'PRECIMET H.C.E. Sp. z o.o.',
+    image: 'https://oem.precimet.pl/logo.png',
+    telephone: '+48 422 080 411',
+    email: 'produkcja@precimet.pl',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'ul. Pomorska 555',
+      addressLocality: 'Łódź',
+      postalCode: '92-735',
+      addressCountry: 'PL',
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '15:00',
+    },
+  },
+};
+---
+
+<BaseLayout
+  locale={locale}
+  title="Contact Us & RFQ — Precimet OEM Manufacturing | Request a Quote"
+  description="Contact Precimet OEM Manufacturing in Łódź, Poland. Submit CAD drawings (.STEP, .DXF) for rapid quotation on laser cutting, CNC bending, and welding."
+  pagePath="/contact"
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(contactJsonLd)} />
+
+  <ContactSection locale={locale} />
+</BaseLayout>

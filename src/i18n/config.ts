@@ -46,6 +46,51 @@ export function localeFromUrl(url: URL): Locale {
   return DEFAULT_LOCALE;
 }
 
+/** Mapa przetłumaczonych ścieżek między językami dla stron o unikalnych slugach */
+export const ROUTE_MAP: Record<string, Record<Locale, string>> = {
+  '/polityka-prywatnosci': {
+    pl: '/polityka-prywatnosci',
+    en: '/privacy-policy',
+    de: '/datenschutz',
+  },
+  '/privacy-policy': {
+    pl: '/polityka-prywatnosci',
+    en: '/privacy-policy',
+    de: '/datenschutz',
+  },
+  '/datenschutz': {
+    pl: '/polityka-prywatnosci',
+    en: '/privacy-policy',
+    de: '/datenschutz',
+  },
+  '/dziekujemy': {
+    pl: '/dziekujemy',
+    en: '/thank-you',
+    de: '/danke',
+  },
+  '/thank-you': {
+    pl: '/dziekujemy',
+    en: '/thank-you',
+    de: '/danke',
+  },
+  '/danke': {
+    pl: '/dziekujemy',
+    en: '/thank-you',
+    de: '/danke',
+  },
+};
+
+/** Zwraca przetłumaczoną ścieżkę dla docelowego języka, uwzględniając unikalne slugi */
+export function localizedPath(targetLocale: Locale, currentPath: string = '/'): string {
+  const clean = currentPath.startsWith('/') ? currentPath : `/${currentPath}`;
+  const normalized = clean.replace(/\/$/, '') || '/';
+  const mapped = ROUTE_MAP[normalized];
+  if (mapped) {
+    return path(targetLocale, mapped[targetLocale]);
+  }
+  return path(targetLocale, clean);
+}
+
 /** Ścieżka bez prefiksu językowego i base URL (np. /precimet-oem/en/blog -> /blog). */
 export function stripLocale(url: URL): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');

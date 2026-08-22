@@ -156,6 +156,21 @@ type Dict = {
     text: string;
     cta: string;
   };
+  notFound: {
+    badge: string;
+    title: string;
+    lead: string;
+    homeCta: string;
+    contactCta: string;
+    shortcutsTitle: string;
+    links: {
+      services: string;
+      machines: string;
+      about: string;
+      blog: string;
+      contact: string;
+    };
+  };
   footer: {
     tagline: string;
     navTitle: string;
@@ -655,6 +670,21 @@ export const ui: Record<Locale, Dict> = {
       text: 'Twoja wiadomość została wysłana. Odpowiadamy zwykle w ciągu 1–2 dni roboczych. Jeśli sprawa jest pilna, zadzwoń: +48 42 672 57 10.',
       cta: 'Wróć na stronę główną',
     },
+    notFound: {
+      badge: 'Błąd 404',
+      title: 'Strona nie została znaleziona',
+      lead: 'Przepraszamy, ale strona, której szukasz, nie istnieje, została usunięta lub zmieniono jej adres URL.',
+      homeCta: 'Wróć na stronę główną',
+      contactCta: 'Skontaktuj się z nami',
+      shortcutsTitle: 'Przydatne działy',
+      links: {
+        services: 'Usługi produkcyjne',
+        machines: 'Park maszynowy',
+        about: 'O firmie Precimet',
+        blog: 'Baza wiedzy & DFM',
+        contact: 'Wycena & Kontakt',
+      },
+    },
     footer: {
       tagline: 'Kooperacja w obróbce metalu dla firm przemysłowych z całej Polski.',
       navTitle: 'Nawigacja',
@@ -1116,6 +1146,21 @@ export const ui: Record<Locale, Dict> = {
       text: 'Your message has been sent. We usually reply within 1–2 business days. For urgent matters, call: +48 42 672 57 10.',
       cta: 'Back to homepage',
     },
+    notFound: {
+      badge: 'Error 404',
+      title: 'Page Not Found',
+      lead: 'Sorry, the page you are looking for does not exist, has been removed, or the URL has changed.',
+      homeCta: 'Back to homepage',
+      contactCta: 'Contact us',
+      shortcutsTitle: 'Quick links',
+      links: {
+        services: 'Manufacturing Services',
+        machines: 'Machine Park',
+        about: 'About Precimet',
+        blog: 'Engineering Blog & DFM',
+        contact: 'RFQ & Contact',
+      },
+    },
     footer: {
       tagline: 'Contract metal fabrication for industrial companies across Poland and the EU.',
       navTitle: 'Navigation',
@@ -1576,6 +1621,21 @@ export const ui: Record<Locale, Dict> = {
       title: 'Vielen Dank für Ihre Anfrage',
       text: 'Ihre Nachricht wurde gesendet. Wir antworten in der Regel innerhalb von 1–2 Werktagen. Bei Eilfragen erreichen Sie uns unter: +48 42 672 57 10.',
       cta: 'Zurück zur Startseite',
+    },
+    notFound: {
+      badge: 'Fehler 404',
+      title: 'Seite nicht gefunden',
+      lead: 'Entschuldigung, die gesuchte Seite existiert nicht, wurde gelöscht oder die URL hat sich geändert.',
+      homeCta: 'Zurück zur Startseite',
+      contactCta: 'Kontakt aufnehmen',
+      shortcutsTitle: 'Nützliche Bereiche',
+      links: {
+        services: 'Leistungen & Technologien',
+        machines: 'Maschinenpark',
+        about: 'Über Precimet',
+        blog: 'Wissensblog & DFM',
+        contact: 'Preisanfrage & Kontakt',
+      },
     },
     footer: {
       tagline: 'Auftragsfertigung in Metallbearbeitung für Industrieunternehmen in Polen und der EU.',

@@ -1,0 +1,76 @@
+# .htaccess for Precimet OEM Manufacturing (oem.precimet.pl)
+# Supports RFC 9110 content negotiation (acceptmarkdown.com) and AI agent crawler reachability
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 301 Canonical Redirects for Trust Anchors & Aliases
+  RewriteRule ^privacy/?$ /polityka-prywatnosci [R=301,L]
+  RewriteRule ^en/privacy/?$ /en/privacy-policy [R=301,L]
+  RewriteRule ^de/privacy/?$ /de/datenschutz [R=301,L]
+  RewriteRule ^o-firmie/?$ /about [R=301,L]
+  RewriteRule ^kontakt/?$ /contact [R=301,L]
+  RewriteRule ^de/ueber-uns/?$ /de/about [R=301,L]
+  RewriteRule ^de/kontakt/?$ /de/contact [R=301,L]
+
+  # Skip static assets (images, css, js, fonts, etc.)
+  RewriteCond %{REQUEST_URI} \.(?:css|js|mjs|map|png|jpe?g|webp|gif|svg|avif|ico|woff2?|ttf|otf|eot|xml|txt|json|pdf|mp4|webm|mp3|wav|ogg|zip)$ [NC]
+  RewriteRule ^ - [L]
+
+  # Markdown Content Negotiation for AI Agents (acceptmarkdown.com)
+  # When client sends Accept: text/markdown without q=0
+  RewriteCond %{HTTP:Accept} "text/markdown" [NC]
+  RewriteCond %{HTTP:Accept} !"text/markdown\s*;\s*q\s*=\s*0" [NC]
+  RewriteCond %{DOCUMENT_ROOT}/$1.md -f
+  RewriteRule ^(.+?)/?$ /$1.md [L]
+
+  RewriteCond %{HTTP:Accept} "text/markdown" [NC]
+  RewriteCond %{HTTP:Accept} !"text/markdown\s*;\s*q\s*=\s*0" [NC]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}/index.md -f
+  RewriteRule ^(.+?)/?$ /$1/index.md [L]
+
+  # Root markdown negotiation
+  RewriteCond %{HTTP:Accept} "text/markdown" [NC]
+  RewriteCond %{HTTP:Accept} !"text/markdown\s*;\s*q\s*=\s*0" [NC]
+  RewriteRule ^$ /index.md [L]
+
+  # Localized 404 routing for EN and DE paths
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^/en/ [NC]
+  RewriteCond %{REQUEST_URI} !^/en/404(\.html)?$ [NC]
+  RewriteRule ^ /en/404.html [L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^/de/ [NC]
+  RewriteCond %{REQUEST_URI} !^/de/404(\.html)?$ [NC]
+  RewriteRule ^ /de/404.html [L]
+</IfModule>
+
+# Custom Error Documents
+ErrorDocument 404 /404.html
+
+# MIME Types and Content-Type Headers
+<IfModule mod_mime.c>
+  AddType text/markdown;charset=utf-8 .md
+  AddType text/plain;charset=utf-8 .txt
+  AddCharset utf-8 .html .css .js .xml .json .md .txt
+</IfModule>
+
+# Set correct headers and Vary for caching / CDNs
+<IfModule mod_headers.c>
+  # Crucial for acceptmarkdown.com: caches must vary by Accept and Accept-Encoding
+  Header merge Vary Accept
+  Header merge Vary Accept-Encoding
+
+  <FilesMatch "\.md$">
+    ForceType text/markdown
+    Header set Content-Type "text/markdown; charset=utf-8"
+  </FilesMatch>
+
+  <FilesMatch "(llms\.txt|llms-full\.txt|robots\.txt)">
+    ForceType text/plain
+    Header set Content-Type "text/plain; charset=utf-8"
+  </FilesMatch>
+</IfModule>

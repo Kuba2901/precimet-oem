@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { path } from '../../i18n/config';
+import { t } from '../../i18n/ui';
+
+const locale = 'en' as const;
+const dict = t(locale);
+const nf = dict.notFound;
+const home = path(locale, '/');
+---
+
+<BaseLayout
+  locale={locale}
+  title={`404 — ${nf.title} | Precimet OEM Manufacturing`}
+  description={nf.lead}
+  noindex={true}
+>
+  <section class="section not-found">
+    <div class="container not-found__inner">
+      <h1 class="not-found__code">404</h1>
+      <h2>{nf.title}</h2>
+      <hr class="laser-line not-found__line" />
+      <p class="not-found__lead">{nf.lead}</p>
+
+      <div class="not-found__actions">
+        <a href={home} class="btn btn--primary">{nf.homeCta}</a>
+        <a href={path(locale, '/contact')} class="btn btn--secondary">{nf.contactCta}</a>
+      </div>
+
+      <div class="not-found__shortcuts">
+        <p class="spec not-found__shortcuts-title">{nf.shortcutsTitle}</p>
+        <ul class="not-found__links">
+          <li><a href={`${home}#uslugi`}>{nf.links.services} &rarr;</a></li>
+          <li><a href={`${home}#park-maszynowy`}>{nf.links.machines} &rarr;</a></li>
+          <li><a href={path(locale, '/about')}>{nf.links.about} &rarr;</a></li>
+          <li><a href={path(locale, '/blog')}>{nf.links.blog} &rarr;</a></li>
+          <li><a href={path(locale, '/contact')}>{nf.links.contact} &rarr;</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: clamp(4rem, 10vw, 8rem);
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+  }
+
+  .not-found__inner {
+    max-width: 44rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .not-found__code {
+    font-size: clamp(5rem, 15vw, 8.5rem);
+    font-weight: 800;
+    line-height: 0.9;
+    color: var(--c-red-500);
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.04em;
+  }
+
+  .not-found h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .not-found__line {
+    max-width: 6rem;
+    margin-inline: auto;
+    margin-block: 1.25rem;
+  }
+
+  .not-found__lead {
+    font-size: 1.15rem;
+    color: var(--c-text-muted);
+    max-width: 34rem;
+    margin-inline: auto;
+    margin-bottom: 2.25rem;
+    line-height: 1.6;
+  }
+
+  .not-found__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+
+  .not-found__shortcuts {
+    border-top: 1px solid var(--c-line);
+    padding-top: 2rem;
+  }
+
+  .not-found__shortcuts-title {
+    color: var(--c-text-muted);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .not-found__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 1.25rem;
+  }
+
+  .not-found__links a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--c-graphite-800);
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    transition: color var(--transition), border-color var(--transition), background var(--transition);
+  }
+
+  .not-found__links a:hover {
+    color: var(--c-red-500);
+    border-color: var(--c-red-500);
+    background: var(--c-sand-100);
+  }
+</style>
