@@ -45,7 +45,7 @@ export const GET: APIRoute = async () => {
 - **Adres**: ul. Pomorska 555, 92-735 Łódź, Polska
 - **KRS**: 0000503010 | **NIP**: PL7272841275 | **REGON**: 363114171
 - **E-mail RFQ**: produkcja@precimet.pl
-- **Telefon**: +48 422 080 411
+- **Telefon**: +48 422 080 402
 `;
 
   return new Response(content, {

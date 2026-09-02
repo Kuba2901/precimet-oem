@@ -1,4 +1,16 @@
 import type { Locale } from './config';
+import laser from '../assets/laser.jpg';
+import bending from '../assets/bending.jpg';
+import welding from '../assets/welding.jpg';
+import robotWelding from '../assets/robot_welding.jpg';
+import cncMill from '../assets/cnc_mill.jpg';
+import cncTurn from '../assets/cnc_turn.jpg';
+import tubes from '../assets/tubes.jpg';
+import assembly from '../assets/assembly.jpg';
+import electrical from '../assets/electrical.jpg';
+import cad from '../assets/cad.jpg';
+import locksmith from '../assets/locksmith.jpg';
+import hall from '../assets/hall.jpg';
 
 /**
  * Cała treść interfejsu w trzech językach.
@@ -187,30 +199,18 @@ type Dict = {
 };
 
 const STOCK = {
-  laser:
-    'https://images.unsplash.com/photo-1764114235896-034c8772de01?auto=format&fit=crop&w=1200&q=70',
-  bending:
-    'https://images.unsplash.com/photo-1738162837340-da3e7a323a09?auto=format&fit=crop&w=1200&q=70',
-  welding:
-    'https://images.unsplash.com/photo-1780701247845-974f99e95984?auto=format&fit=crop&w=1200&q=70',
-  robotWelding:
-    'https://images.unsplash.com/photo-1752614671119-4868a91efc14?auto=format&fit=crop&w=1200&q=70',
-  cncMill:
-    'https://images.unsplash.com/photo-1740209475472-aa7d280f7452?auto=format&fit=crop&w=1200&q=70',
-  cncTurn:
-    'https://images.unsplash.com/photo-1727292486976-6fd4bc056761?auto=format&fit=crop&w=1200&q=70',
-  tubes:
-    'https://images.unsplash.com/photo-1764835746713-34a671e73569?auto=format&fit=crop&w=1200&q=70',
-  assembly:
-    'https://images.unsplash.com/photo-1717386255773-1e3037c81788?auto=format&fit=crop&w=1200&q=70',
-  electrical:
-    'https://images.unsplash.com/photo-1635335874521-7987db781153?auto=format&fit=crop&w=1200&q=70',
-  cad:
-    'https://images.unsplash.com/photo-1769149068959-b11392164add?auto=format&fit=crop&w=1200&q=70',
-  locksmith:
-    'https://images.unsplash.com/photo-1529479627062-5f1f0b88912a?auto=format&fit=crop&w=1200&q=70',
-  hall:
-    'https://images.unsplash.com/photo-1730584475256-9055b74420a2?auto=format&fit=crop&w=1200&q=70',
+  laser: laser.src,
+  bending: bending.src,
+  welding: welding.src,
+  robotWelding: robotWelding.src,
+  cncMill: cncMill.src,
+  cncTurn: cncTurn.src,
+  tubes: tubes.src,
+  assembly: assembly.src,
+  electrical: electrical.src,
+  cad: cad.src,
+  locksmith: locksmith.src,
+  hall: hall.src,
 };
 
 /** Zdjęcia maszyn z parku maszynowego (public/maszyny). */
@@ -329,15 +329,15 @@ export const ui: Record<Locale, Dict> = {
           id: 'tube-bending',
           title: 'Gięcie rur CNC',
           desc: 'Gięcie rur i profili na giętarkach CNC — ramy, poręcze, konstrukcje przestrzenne i elementy instalacji, z zachowaniem geometrii przekroju.',
-          img: STOCK.tubes,
-          imgAlt: 'Wygięte rury stalowe na stanowisku produkcyjnym',
+          img: STOCK.locksmith,
+          imgAlt: 'Cięcie profili stalowych na maszynie CNC',
         },
         {
           id: 'profile-cutting',
           title: 'Cięcie kształtowników CNC',
           desc: 'Cięcie profili, rur i kształtowników na maszynach CNC — dokładne długości i kąty pod konstrukcje spawane i ramy maszyn.',
-          img: STOCK.locksmith,
-          imgAlt: 'Cięcie profili stalowych na maszynie CNC',
+          img: STOCK.tubes,
+          imgAlt: 'Wygięte rury stalowe na stanowisku produkcyjnym',
         },
         {
           id: 'assembly',
@@ -541,7 +541,7 @@ export const ui: Record<Locale, Dict> = {
         },
       ],
       machineNote:
-        'Jeden partner produkcyjny, jeden kontakt i odpowiedzialność za cały zakres realizacji.',
+        'Jako partner, przejmujemy odpowiedzialność za cały zakres realizacji powierzonej produkcji',
     },
     process: {
       eyebrow: 'Proces współpracy',
@@ -616,7 +616,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           q: 'Jakie gatunki materiałów macie w magazynie?',
-          a: 'Stale nierdzewne i konstrukcyjne, aluminium, miedź i mosiądz — ponad 50 gatunków blach w magazynie. To skraca czasy realizacji i chroni Cię przed wahaniami cen surowców.',
+          a: 'Stale nierdzewne i konstrukcyjne, aluminium — ponad 50 gatunków blach w magazynie.',
         },
         {
           q: 'Ile trwa wycena i realizacja zamówienia?',
@@ -624,7 +624,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           q: 'Czy dysponujecie certyfikatem jakości?',
-          a: 'Tak, od 2015 r. utrzymujemy certyfikowany system jakości ISO 9001:2015 z kontrolą wejściową, międzyoperacyjną i końcową. W razie potrzeby dostarczamy dokumentację jakościową do zamówienia.',
+          a: 'Tak, od 2015 r. utrzymujemy certyfikowany system jakości ISO 9001:2015. W razie potrzeby dostarczamy dokumentację jakościową do zamówienia.',
         },
       ],
     },
@@ -653,7 +653,7 @@ export const ui: Record<Locale, Dict> = {
         addressLabel: 'Adres',
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Polska',
         phoneLabel: 'Telefon',
-        phone: 'Biuro:\n+48 42 672 57 10\n+48 422 080 400\n\nCięcie laserowe, obróbka metalu:\n+48 422 080 411\n+48 422 080 412\n+48 422 080 413\n+48 422 080 416',
+        phone: 'Biuro:\n+48 42 672 57 10\n+48 422 080 400\n\nCięcie laserowe, obróbka metalu:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
         emailLabel: 'E-mail',
         email: 'produkcja@precimet.pl',
         hoursLabel: 'Godziny pracy',
@@ -806,15 +806,15 @@ export const ui: Record<Locale, Dict> = {
           id: 'tube-bending',
           title: 'CNC tube bending',
           desc: 'Bending of tubes and profiles on CNC benders — frames, handrails, spatial structures and piping components with preserved cross-section geometry.',
-          img: STOCK.tubes,
-          imgAlt: 'Bent steel tubes at a production station',
+          img: STOCK.locksmith,
+          imgAlt: 'Cutting steel profiles on a CNC machine',
         },
         {
           id: 'profile-cutting',
           title: 'CNC profile cutting',
           desc: 'Cutting of profiles, tubes and sections on CNC machines — accurate lengths and angles for welded structures and machine frames.',
-          img: STOCK.locksmith,
-          imgAlt: 'Cutting steel profiles on a CNC machine',
+          img: STOCK.tubes,
+          imgAlt: 'Bent steel tubes at a production station',
         },
         {
           id: 'assembly',
@@ -1018,7 +1018,7 @@ export const ui: Record<Locale, Dict> = {
         },
       ],
       machineNote:
-        'We run a modern machine park from reputable manufacturers and use materials from proven suppliers — for single-piece orders and high volumes alike.',
+        'As your partner, we take full responsibility for the entire scope of the production entrusted to us.',
     },
     process: {
       eyebrow: 'How we work',
@@ -1094,7 +1094,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           q: 'Which materials do you keep in stock?',
-          a: 'Stainless and structural steels, aluminium, copper and brass — over 50 sheet metal grades in stock. That shortens lead times and protects you from raw material price swings.',
+          a: 'Stainless and structural steels, aluminium — over 50 sheet metal grades in stock.',
         },
         {
           q: 'How long do quotes and production take?',
@@ -1102,7 +1102,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           q: 'Are you quality certified?',
-          a: 'Yes — we have maintained a certified ISO 9001:2015 quality system since 2015, with incoming, in-process and final inspection. Quality documentation is available on request.',
+          a: 'Yes — we have maintained a certified ISO 9001:2015 quality system since 2015. Quality documentation is available on request.',
         },
       ],
     },
@@ -1130,7 +1130,7 @@ export const ui: Record<Locale, Dict> = {
         addressLabel: 'Address',
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Poland',
         phoneLabel: 'Phone',
-        phone: 'Office:\n+48 42 672 57 10\n+48 422 080 400\n\nLaser cutting, metalworking:\n+48 422 080 411\n+48 422 080 412\n+48 422 080 413\n+48 422 080 416',
+        phone: 'Office:\n+48 42 672 57 10\n+48 422 080 400\n\nLaser cutting, metalworking:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
         emailLabel: 'E-mail',
         email: 'produkcja@precimet.pl',
         hoursLabel: 'Working hours',
@@ -1282,15 +1282,15 @@ export const ui: Record<Locale, Dict> = {
           id: 'tube-bending',
           title: 'CNC-Rohrbiegen',
           desc: 'Biegen von Rohren und Profilen auf CNC-Biegemaschinen — Rahmen, Geländer, Raumkonstruktionen und Leitungskomponenten mit erhaltener Querschnittsgeometrie.',
-          img: STOCK.tubes,
-          imgAlt: 'Gebogene Stahlrohre an einem Fertigungsplatz',
+          img: STOCK.locksmith,
+          imgAlt: 'Zuschnitt von Stahlprofilen auf einer CNC-Maschine',
         },
         {
           id: 'profile-cutting',
           title: 'CNC-Profilzuschnitt',
           desc: 'Zuschnitt von Profilen, Rohren und Formstahl auf CNC-Maschinen — exakte Längen und Winkel für Schweißkonstruktionen und Maschinenrahmen.',
-          img: STOCK.locksmith,
-          imgAlt: 'Zuschnitt von Stahlprofilen auf einer CNC-Maschine',
+          img: STOCK.tubes,
+          imgAlt: 'Gebogene Stahlrohre an einem Fertigungsplatz',
         },
         {
           id: 'assembly',
@@ -1494,7 +1494,7 @@ export const ui: Record<Locale, Dict> = {
         },
       ],
       machineNote:
-        'Wir arbeiten mit einem modernen Maschinenpark renommierter Hersteller und Materialien bewährter Lieferanten — bei Einzelaufträgen wie bei großen Stückzahlen.',
+        'Als Partner übernehmen wir die Verantwortung für den gesamten Umfang der uns anvertrauten Fertigung.',
     },
     process: {
       eyebrow: 'So arbeiten wir',
@@ -1570,7 +1570,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           q: 'Welche Materialien halten Sie auf Lager?',
-          a: 'Rostfreie und Baustähle, Aluminium, Kupfer und Messing — über 50 Blechgüten auf Lager. Das verkürzt Lieferzeiten und schützt Sie vor Rohstoffpreisschwankungen.',
+          a: 'Rostfreie und Baustähle, Aluminium — über 50 Blechgüten auf Lager.',
         },
         {
           q: 'Wie lange dauern Angebot und Fertigung?',
@@ -1578,7 +1578,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           q: 'Sind Sie zertifiziert?',
-          a: 'Ja — seit 2015 unterhalten wir ein zertifiziertes Qualitätsmanagementsystem nach ISO 9001:2015 mit Eingangs-, Zwischen- und Endprüfung. Qualitätsdokumentation stellen wir auf Wunsch bereit.',
+          a: 'Ja — seit 2015 unterhalten wir ein zertifiziertes Qualitätsmanagementsystem nach ISO 9001:2015. Qualitätsdokumentation stellen wir auf Wunsch bereit.',
         },
       ],
     },
@@ -1606,7 +1606,7 @@ export const ui: Record<Locale, Dict> = {
         addressLabel: 'Adresse',
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Polen',
         phoneLabel: 'Telefon',
-        phone: 'Büro:\n+48 42 672 57 10\n+48 422 080 400\n\nLaserschneiden, Metallbearbeitung:\n+48 422 080 411\n+48 422 080 412\n+48 422 080 413\n+48 422 080 416',
+        phone: 'Büro:\n+48 42 672 57 10\n+48 422 080 400\n\nLaserschneiden, Metallbearbeitung:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
         emailLabel: 'E-Mail',
         email: 'produkcja@precimet.pl',
         hoursLabel: 'Arbeitszeiten',

@@ -9,7 +9,7 @@ The controller of your personal data is **PRECIMET H.C.E. Sp. z o.o.**, located 
 ## 2. Contact Information
 - **Address**: ul. Pomorska 555, 92-735 Łódź, Poland
 - **Email**: produkcja@precimet.pl
-- **Phone**: +48 422 080 411
+- **Phone**: +48 422 080 402
 
 ## 3. Purposes and Legal Bases of Processing
 - **Handling quotation and contact inquiries**: Art. 6(1)(b) GDPR (pre-contractual steps).

@@ -45,7 +45,7 @@ export const GET: APIRoute = async () => {
 - **Standort**: ul. Pomorska 555, 92-735 Łódź, Polen
 - **Handelsregister**: KRS 0000503010 | **USt-IdNr.**: PL7272841275 | **REGON**: 363114171
 - **E-Mail für Anfragen**: produkcja@precimet.pl
-- **Telefon**: +48 422 080 411
+- **Telefon**: +48 422 080 402
 `;
 
   return new Response(content, {

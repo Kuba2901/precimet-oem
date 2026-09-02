@@ -27,7 +27,7 @@ For more than 30 years, Precimet has been a reliable OEM partner for industrial 
 - **Tax Number (NIP / EU VAT)**: PL7272841275
 - **Statistical Number (REGON)**: 363114171
 - **Share Capital**: 100,000.00 PLN
-- **Direct RFQ Email**: produkcja@precimet.pl | Tel: +48 422 080 411
+- **Direct RFQ Email**: produkcja@precimet.pl | Tel: +48 422 080 402
 `;
 
   return new Response(content, {

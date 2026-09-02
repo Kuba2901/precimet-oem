@@ -27,7 +27,7 @@ Seit über 30 Jahren ist Precimet ein bewährter Lohnfertiger für Industriekund
 - **Umsatzsteuer-ID (USt-IdNr.)**: PL7272841275
 - **Statistische Nummer (REGON)**: 363114171
 - **Stammkapital**: 100.000,00 PLN
-- **E-Mail für Anfragen**: produkcja@precimet.pl | Tel: +48 422 080 411
+- **E-Mail für Anfragen**: produkcja@precimet.pl | Tel: +48 422 080 402
 `;
 
   return new Response(content, {

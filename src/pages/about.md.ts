@@ -27,7 +27,7 @@ Od ponad trzech dekad dostarczamy kompleksowe usługi produkcji kontraktowej OEM
 - **NIP (VAT UE)**: PL7272841275
 - **REGON**: 363114171
 - **Kapitał zakładowy**: 100.000,00 PLN
-- **Kontakt RFQ**: produkcja@precimet.pl | Tel: +48 422 080 411
+- **Kontakt RFQ**: produkcja@precimet.pl | Tel: +48 422 080 402
 `;
 
   return new Response(content, {

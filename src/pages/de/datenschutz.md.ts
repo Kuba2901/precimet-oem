@@ -9,7 +9,7 @@ Verantwortlicher für die Datenverarbeitung ist **PRECIMET H.C.E. Sp. z o.o.**, 
 ## 2. Kontaktdaten
 - **Adresse**: ul. Pomorska 555, 92-735 Łódź, Polen
 - **E-Mail**: produkcja@precimet.pl
-- **Telefon**: +48 422 080 411
+- **Telefon**: +48 422 080 402
 
 ## 3. Zwecke und Rechtsgrundlagen der Verarbeitung
 - **Bearbeitung von Anfragen und Angebotserstellung**: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen).

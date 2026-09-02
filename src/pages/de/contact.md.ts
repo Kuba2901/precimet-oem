@@ -6,7 +6,7 @@ export const GET: APIRoute = async () => {
 ## Kontaktdaten des Produktionswerks
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Standort**: ul. Pomorska 555, 92-735 Łódź, Polen
-- **Telefon**: +48 422 080 411
+- **Telefon**: +48 422 080 402
 - **E-Mail für Angebote**: produkcja@precimet.pl
 - **Öffnungszeiten**: Montag – Freitag, 07:00 – 15:00 Uhr MEZ
 - **Online-Anfrageformular**: [https://oem.precimet.pl/de/contact](https://oem.precimet.pl/de/contact)

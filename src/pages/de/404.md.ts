@@ -22,7 +22,7 @@ Die angeforderte Seite oder der Endpunkt existiert nicht auf \`oem.precimet.pl\`
 - **PRECIMET H.C.E. Sp. z o.o.**, ul. Pomorska 555, 92-735 Łódź, Polen
 - **Handelsregister**: KRS 0000503010 | **USt-IdNr.**: PL7272841275 | **REGON**: 363114171
 - **Qualitätsmanagement**: ISO 9001:2015
-- **E-Mail für Anfragen**: produkcja@precimet.pl | **Tel**: +48 422 080 411
+- **E-Mail für Anfragen**: produkcja@precimet.pl | **Tel**: +48 422 080 402
 `;
 
   return new Response(content, {

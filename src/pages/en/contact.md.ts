@@ -6,7 +6,7 @@ export const GET: APIRoute = async () => {
 ## Production Facility Contact Details
 - **Company**: PRECIMET H.C.E. Sp. z o.o.
 - **Address**: ul. Pomorska 555, 92-735 Łódź, Poland
-- **Phone**: +48 422 080 411
+- **Phone**: +48 422 080 402
 - **Direct RFQ Email**: produkcja@precimet.pl
 - **Working Hours**: Monday – Friday, 07:00 – 15:00 CET
 - **Online RFQ Form**: [https://oem.precimet.pl/en/contact](https://oem.precimet.pl/en/contact)

@@ -46,7 +46,7 @@ export const GET: APIRoute = async () => {
 - **Facility**: ul. Pomorska 555, 92-735 Łódź, Poland
 - **Registration**: KRS 0000503010 | **VAT ID**: PL7272841275 | **REGON**: 363114171
 - **Direct RFQ Email**: produkcja@precimet.pl
-- **Phone**: +48 422 080 411
+- **Phone**: +48 422 080 402
 `;
 
   return new Response(content, {

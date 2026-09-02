@@ -22,7 +22,7 @@ The requested resource or endpoint does not exist on \`oem.precimet.pl\`.
 - **PRECIMET H.C.E. Sp. z o.o.**, ul. Pomorska 555, 92-735 Łódź, Poland
 - **KRS**: 0000503010 | **VAT ID**: PL7272841275 | **REGON**: 363114171
 - **Quality**: ISO 9001:2015 certified
-- **Direct RFQ**: produkcja@precimet.pl | **Phone**: +48 422 080 411
+- **Direct RFQ**: produkcja@precimet.pl | **Phone**: +48 422 080 402
 `;
 
   return new Response(content, {

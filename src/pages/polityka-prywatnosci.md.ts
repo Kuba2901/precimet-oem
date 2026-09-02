@@ -9,7 +9,7 @@ Administratorem Twoich danych osobowych jest **PRECIMET H.C.E. Sp. z o.o.** z si
 ## 2. Dane kontaktowe
 - **Adres**: ul. Pomorska 555, 92-735 Łódź, Polska
 - **E-mail**: produkcja@precimet.pl
-- **Telefon**: +48 422 080 411
+- **Telefon**: +48 422 080 402
 
 ## 3. Cele i podstawy prawne przetwarzania
 - **Obsługa zapytań ofertowych i kontaktowych**: Art. 6 ust. 1 lit. b RODO (działania przed zawarciem umowy).
