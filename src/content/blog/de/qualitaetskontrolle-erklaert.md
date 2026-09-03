@@ -1,7 +1,7 @@
 ---
 title: "Über Qualitätskontrolle"
 description: "Wareneingangsprüfung, Fertigungskontrollen, Endprüfung und Qualitätsdokumentationspaket — wie der Weg der Qualitätskontrolle bei einem Standard-Lohnfertigungsauftrag aussieht."
-date: 2026-09-10
+date: 2026-09-01
 lang: de
 cover: "https://images.unsplash.com/photo-1758873263563-5ba4aa330799?auto=format&fit=crop&w=1400&q=70"
 tags: ["Qualitätskontrolle", "ISO 9001", "Auftragsfertigung"]

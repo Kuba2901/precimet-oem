@@ -63,6 +63,9 @@ const links = [
       <a href={path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy')}>
         {locale === 'pl' ? 'Polityka prywatności' : locale === 'de' ? 'Datenschutz' : 'Privacy Policy'}
       </a>
+      <a href="/documents/ows.pdf" target="_blank" rel="noopener noreferrer">OWS</a>
+      <a href="https://www.linkedin.com/showcase/production-partner-for-oem-manufacturers-laser-%E2%80%A2-cnc-%E2%80%A2-welding-eu/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://www.facebook.com/profile.php?id=61558685276427" target="_blank" rel="noopener noreferrer">Facebook</a>
     </nav>
   </div>
 </footer>
@@ -151,6 +154,19 @@ const links = [
   }
 
   .footer__bottom .spec { color: var(--c-steel-300); }
+
+  .footer__legal {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__legal a:not(:first-child)::before {
+    content: '·';
+    margin-right: 0.6rem;
+    color: var(--c-steel-300);
+  }
 
   @media (max-width: 900px) {
     .footer__grid { grid-template-columns: 1fr 1fr; }

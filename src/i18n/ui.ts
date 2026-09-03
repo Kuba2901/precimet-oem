@@ -725,9 +725,9 @@ export const ui: Record<Locale, Dict> = {
     },
     hero: {
       eyebrow: 'Precimet OEM Manufacturing · Metal fabrication partner',
-      title1: 'Metal parts built',
-      titleAccent: 'to your drawing.',
-      title2: 'From prototype to series.',
+      title1: 'From drawing to metal parts.',
+      titleAccent: 'From prototype to series.',
+      title2: '',
       lead:
         'We are the production backbone for OEMs, integrators and machine builders. Laser cutting, bending, welding, CNC machining and assembly — on time, repeatable, to spec.',
       ctaPrimary: 'Request a quote',

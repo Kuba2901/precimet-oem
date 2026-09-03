@@ -1,7 +1,7 @@
 ---
 title: "O kontroli jakości"
 description: "Kontrola przychodząca, kontrola w trakcie produkcji, odbiór końcowy i pakiet dokumentacji jakościowej — jak wygląda ścieżka kontroli jakości przy standardowym zleceniu kooperacyjnym."
-date: 2026-09-10
+date: 2026-09-01
 lang: pl
 cover: "https://images.unsplash.com/photo-1758873263563-5ba4aa330799?auto=format&fit=crop&w=1400&q=70"
 tags: ["kontrola jakości", "ISO 9001", "produkcja kontraktowa"]

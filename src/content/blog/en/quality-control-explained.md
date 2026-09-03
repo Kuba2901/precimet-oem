@@ -1,7 +1,7 @@
 ---
 title: "About quality control"
 description: "Incoming inspection, in-process control, final inspection and the quality documentation package — what the quality control path looks like on a standard subcontracted order."
-date: 2026-09-10
+date: 2026-09-01
 lang: en
 cover: "https://images.unsplash.com/photo-1758873263563-5ba4aa330799?auto=format&fit=crop&w=1400&q=70"
 tags: ["quality control", "ISO 9001", "contract manufacturing"]
