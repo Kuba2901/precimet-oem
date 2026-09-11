@@ -1,37 +1,22 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { path } from '../../i18n/config';
+import { pageEntitySchema } from '../../lib/schema';
 
 const locale = 'de' as const;
 
-const aboutJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'Über uns — Precimet OEM Manufacturing',
-  description: 'Unternehmensprofil, CNC-Fertigungskapazitäten, Maschinenpark und ISO 9001:2015 Qualitätsstandards von PRECIMET H.C.E. Sp. z o.o.',
-  mainEntity: {
-    '@type': 'Organization',
-    name: 'PRECIMET H.C.E. Sp. z o.o.',
-    alternateName: 'Precimet OEM Manufacturing',
-    foundingDate: '1990',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'ul. Pomorska 555',
-      addressLocality: 'Łódź',
-      postalCode: '92-735',
-      addressCountry: 'PL',
-    },
-    taxID: 'PL7272841275',
-    telephone: '+48 422 080 402',
-    email: 'produkcja@precimet.pl',
-  },
-};
+const aboutJsonLd = pageEntitySchema(
+  Astro.site ?? new URL('https://oem.precimet.pl'),
+  'AboutPage',
+  'Über uns — Precimet OEM Manufacturing',
+  'Unternehmensprofil, CNC-Fertigungskapazitäten, Maschinenpark und ISO 9001:2015 Qualitätsstandards von PRECIMET H.C.E. Sp. z o.o.'
+);
 ---
 
 <BaseLayout
   locale={locale}
-  title="Über uns — Precimet OEM Manufacturing | Lohnfertigung & Metallverarbeitung"
-  description="Lernen Sie Precimet OEM Manufacturing kennen: über 30 Jahre Erfahrung in der Blechbearbeitung, ISO 9001:2015 Zertifizierung, CNC-Maschinenpark und Serienfertigung in Polen."
+  title="Über Precimet OEM Manufacturing — Polen"
+  description="Über 30 Jahre Blechbearbeitung, ISO 9001:2015 zertifiziert, eigener CNC-Maschinenpark und Serienfertigung in Łódź, Polen."
   pagePath="/about"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(aboutJsonLd)} />

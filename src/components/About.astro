@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import type { Locale } from '../i18n/config';
 import { t } from '../i18n/ui';
+import hall from '../assets/hall.jpg';
 
 interface Props {
   locale: Locale;
@@ -8,9 +10,6 @@ interface Props {
 
 const { locale } = Astro.props;
 const dict = t(locale);
-
-const aboutImg =
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT22GtlmMxJgQmV6L5hzwhwxT97ojJMVI9CKUaS-6s11ivcpu-VY_8Af9hC&s=10';
 ---
 
 <section id="o-firmie" class="section">
@@ -26,7 +25,15 @@ const aboutImg =
 
     <div class="about__aside reveal">
       <figure class="about__figure">
-        <img src={aboutImg} alt={dict.about.imgAlt} loading="lazy" width="700" height="470" />
+        <Image
+          src={hall}
+          alt={dict.about.imgAlt}
+          loading="lazy"
+          width={700}
+          height={470}
+          format="webp"
+          quality={78}
+        />
       </figure>
       <dl class="about__facts">
         {dict.about.facts.map((f) => (

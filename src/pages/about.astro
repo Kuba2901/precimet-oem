@@ -1,37 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { path } from '../i18n/config';
+import { pageEntitySchema } from '../lib/schema';
 
 const locale = 'pl' as const;
 
-const aboutJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'O firmie — Precimet OEM Manufacturing',
-  description: 'Historia, możliwości produkcyjne, park maszynowy i certyfikaty jakości ISO 9001:2015 PRECIMET H.C.E. Sp. z o.o.',
-  mainEntity: {
-    '@type': 'Organization',
-    name: 'PRECIMET H.C.E. Sp. z o.o.',
-    alternateName: 'Precimet OEM Manufacturing',
-    foundingDate: '1990',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'ul. Pomorska 555',
-      addressLocality: 'Łódź',
-      postalCode: '92-735',
-      addressCountry: 'PL',
-    },
-    taxID: 'PL7272841275',
-    telephone: '+48 422 080 402',
-    email: 'produkcja@precimet.pl',
-  },
-};
+const aboutJsonLd = pageEntitySchema(
+  Astro.site ?? new URL('https://oem.precimet.pl'),
+  'AboutPage',
+  'O firmie — Precimet OEM Manufacturing',
+  'Historia, możliwości produkcyjne, park maszynowy i certyfikaty jakości ISO 9001:2015 PRECIMET H.C.E. Sp. z o.o.'
+);
 ---
 
 <BaseLayout
   locale={locale}
-  title="O firmie — Precimet OEM Manufacturing | Produkcja kontraktowa i obróbka metali"
-  description="Poznaj Precimet OEM Manufacturing: ponad 30 lat doświadczenia w obróbce metali, certyfikat ISO 9001:2015, park maszynowy CNC i kompleksowa produkcja seryjna w Łodzi."
+  title="O firmie — Precimet OEM Manufacturing, Łódź"
+  description="Ponad 30 lat w obróbce metali, ISO 9001:2015, własny park maszynowy CNC i produkcja seryjna w Łodzi. Poznaj zaplecze Precimet OEM Manufacturing."
   pagePath="/about"
 >
   <script type="application/ld+json" is:inline set:html={JSON.stringify(aboutJsonLd)} />

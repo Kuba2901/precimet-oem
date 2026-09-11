@@ -53,6 +53,8 @@ type Dict = {
     privacyDescription: string;
   };
   nav: {
+    /** Etykieta strony głównej — używana w okruszkach (BreadcrumbList). */
+    home: string;
     about: string;
     services: string;
     machines: string;
@@ -223,9 +225,9 @@ export const ui: Record<Locale, Dict> = {
   pl: {
     seo: {
       title:
-        'Precimet OEM Manufacturing — kooperacja w obróbce metalu | cięcie laserowe, gięcie, spawanie, CNC',
+        'Produkcja kontraktowa metalu — Precimet OEM, Łódź',
       description:
-        'Precimet OEM Manufacturing: partner kooperacyjny w obróbce metalu. Cięcie laserowe blach, gięcie, spawanie ręczne i zrobotyzowane, frezowanie i toczenie CNC, montaż. 15+ lat doświadczenia, ISO 9001:2015, produkcja kontraktowa dla firm OEM z całej Polski.',
+        'Cięcie laserowe, gięcie, spawanie i obróbka CNC dla firm OEM. ISO 9001:2015, od prototypu do serii. Prześlij rysunek — wycenimy w 1–2 dni.',
       blogTitle: 'Blog i aktualności — Precimet OEM Manufacturing',
       blogDescription:
         'Aktualności firmowe, case studies i wiedza technologiczna z obszaru obróbki metalu: cięcie laserowe, gięcie blach, spawanie, obróbka CNC i produkcja kontraktowa.',
@@ -233,6 +235,7 @@ export const ui: Record<Locale, Dict> = {
         'Polityka prywatności serwisu Precimet OEM Manufacturing — jak przetwarzamy dane osobowe, jakie pliki cookies stosujemy i jakie przysługują Ci prawa.',
     },
     nav: {
+      home: 'Strona główna',
       about: 'O firmie',
       services: 'Usługi',
       machines: 'Park maszynowy',
@@ -707,9 +710,9 @@ export const ui: Record<Locale, Dict> = {
   en: {
     seo: {
       title:
-        'Precimet OEM Manufacturing — metal fabrication partner | laser cutting, bending, welding, CNC',
+        'Contract Metal Fabrication in Poland — Precimet OEM',
       description:
-        'Precimet OEM Manufacturing: your contract manufacturing partner for metal parts. Sheet metal laser cutting, bending, manual and robotic welding, CNC milling and turning, assembly. 15+ years of experience, ISO 9001:2015, serving OEMs across Poland and the EU.',
+        'Laser cutting, bending, welding and CNC machining for OEMs. ISO 9001:2015, prototype to series. Send a drawing — quoted in 1–2 working days.',
       blogTitle: 'Blog & news — Precimet OEM Manufacturing',
       blogDescription:
         'Company news, case studies and engineering know-how on metal fabrication: laser cutting, sheet metal bending, welding, CNC machining and contract manufacturing.',
@@ -717,6 +720,7 @@ export const ui: Record<Locale, Dict> = {
         'Precimet OEM Manufacturing privacy policy — how we process personal data, what cookies we use and what rights you have.',
     },
     nav: {
+      home: 'Home',
       about: 'About us',
       services: 'Services',
       machines: 'Machine park',
@@ -1184,16 +1188,17 @@ export const ui: Record<Locale, Dict> = {
   de: {
     seo: {
       title:
-        'Precimet OEM Manufacturing — Partner für Metallbearbeitung | Laserschneiden, Biegen, Schweißen, CNC',
+        'Lohnfertigung Metall aus Polen — Precimet OEM',
       description:
-        'Precimet OEM Manufacturing: Ihr Partner für Lohnfertigung in der Metallbearbeitung. Laserschneiden von Blechen, Abkanten, manuelles und Roboterschweißen, CNC-Fräsen und -Drehen, Montage. 15+ Jahre Erfahrung, ISO 9001:2015, Auftragsfertigung für OEMs in Polen und der EU.',
+        'Laserschneiden, Abkanten, Schweißen und CNC-Bearbeitung für OEMs. ISO 9001:2015, Prototyp bis Serie. Zeichnung senden — Angebot in 1–2 Tagen.',
       blogTitle: 'Blog & Aktuelles — Precimet OEM Manufacturing',
       blogDescription:
-        'Unternehmensnachrichten, Case Studies und technisches Know-how zur Metallbearbeitung: Laserschneiden, Blechbiegen, Schweißen, CNC-Bearbeitung und Auftragsfertigung.',
+        'Case Studies und technisches Know-how zur Metallbearbeitung: Laserschneiden, Blechbiegen, Schweißen, CNC-Bearbeitung und Lohnfertigung.',
       privacyDescription:
         'Datenschutzerklärung von Precimet OEM Manufacturing — wie wir personenbezogene Daten verarbeiten, welche Cookies wir einsetzen und welche Rechte Ihnen zustehen.',
     },
     nav: {
+      home: 'Startseite',
       about: 'Über uns',
       services: 'Leistungen',
       machines: 'Maschinenpark',

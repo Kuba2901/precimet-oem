@@ -1,9 +1,9 @@
 ---
-title: "O gięciu detali na prasie"
+title: "Projektowanie pod gięcie blach: 5 zasad"
 description: "Minimalna długość podparcia, promień gięcia, korekta gięcia i współczynnik K, nacięcia ulgowe oraz realistyczne tolerancje — pięć zasad, które stosujemy przy zleceniach gięcia kooperacyjnego."
 date: 2026-08-27
 lang: pl
-cover: "https://images.unsplash.com/photo-1598299803213-d894fb2ab97d?auto=format&fit=crop&w=1400&q=70"
+cover: "/blog/giecie-blach.webp"
 tags: ["gięcie blach", "projektowanie pod wytwarzanie", "porady technologiczne"]
 translationKey: "bending-dfm-tips"
 ---

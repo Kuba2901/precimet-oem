@@ -1,7 +1,7 @@
 # SEO task list — audit remediation
 
 Date: 2026-09-11
-Status: Phase 1 complete (2026-09-11, branch `seo/phase-1-critical-fixes`); Phases 2–3 not started
+Status: Phases 1–2 complete (2026-09-11, branch `seo/phase-1-critical-fixes`); Phase 3 not started
 Source: full-site SEO audit of `https://oem.precimet.pl` (11 live pages, 3 locales, crawled against commit `449f497`)
 
 Verification for every task: `npm run astro check && npm run build`. There is no test suite or linter.
@@ -104,7 +104,7 @@ Fix in `path()` so all canonicals, hreflang and internal links agree with Astro'
 
 ### 2.1 Rewrite titles and meta descriptions
 
-- [ ] **File:** `src/i18n/ui.ts` — `seo` blocks at lines 222, 705, 1181 (pl / en / de)
+- [x] **File:** `src/i18n/ui.ts` — `seo` blocks at lines 222, 705, 1181 (pl / en / de)
 
 Measured lengths vs. the ~60 / ~160 char SERP limits:
 
@@ -118,13 +118,13 @@ Measured lengths vs. the ~60 / ~160 char SERP limits:
 
 Titles are cut off after ~60 chars — on the PL homepage, "CNC", "spawanie" and the brand all fall outside the visible portion. Descriptions are truncated in every SERP.
 
-- [ ] Target 50–60 chars for titles, 150–160 for descriptions, front-loading service + city, ending with a CTA.
-- [ ] Example PL home title: `Produkcja kontraktowa metalu — Precimet OEM, Łódź` (49).
-- [ ] Blog post titles are set in `BlogPostLayout.astro:19` as `${post.data.title} — Precimet OEM Manufacturing`; see 2.7.
+- [x] Target 50–60 chars for titles, 150–160 for descriptions, front-loading service + city, ending with a CTA.
+- [x] Example PL home title: `Produkcja kontraktowa metalu — Precimet OEM, Łódź` (49).
+- [x] Blog post titles are set in `BlogPostLayout.astro:19` as `${post.data.title} — Precimet OEM Manufacturing`; see 2.7.
 
 ### 2.2 Fix the homepage H1 word spacing
 
-- [ ] **File:** `src/components/Hero.astro:21-24`
+- [x] **File:** `src/components/Hero.astro:21-24`
 
 `{dict.hero.title1}<br />` with no surrounding whitespace means crawlers read the H1 as:
 
@@ -136,29 +136,29 @@ Affects all three locales. Add a space before each `<br />`, or compose the H1 f
 
 ### 2.3 Promote the LocalBusiness schema site-wide
 
-- [ ] **Files:** `src/layouts/BaseLayout.astro:31-45`, `src/pages/contact.astro:7-32` (+ en/de equivalents)
+- [x] **Files:** `src/layouts/BaseLayout.astro:31-45`, `src/pages/contact.astro:7-32` (+ en/de equivalents)
 
 The site-wide `Organization` block in `BaseLayout` carries only `addressLocality` and `addressCountry`.
 
 **`src/pages/contact.astro` already has a complete, correct `LocalBusiness` graph** with `streetAddress`, `postalCode`, `telephone`, `email` and `openingHoursSpecification`. It just isn't used anywhere else.
 
-- [ ] Lift that object into a shared module (e.g. `src/lib/schema.ts`) and emit it from `BaseLayout` so every page carries it.
-- [ ] Add `geo` — coordinates `51.7854674, 19.5891212` are already in the footer's Google Maps directions link.
-- [ ] De-duplicate: don't emit both the thin `Organization` and the full `LocalBusiness` on contact pages.
+- [x] Lift that object into a shared module (e.g. `src/lib/schema.ts`) and emit it from `BaseLayout` so every page carries it.
+- [x] Add `geo` — coordinates `51.7854674, 19.5891212` are already in the footer's Google Maps directions link.
+- [x] De-duplicate: don't emit both the thin `Organization` and the full `LocalBusiness` on contact pages.
 
 ### 2.4 Replace the three hotlinked external images
 
-- [ ] **Urgent:** `src/components/About.astro` — the hall image is hotlinked from `encrypted-tbn0.gstatic.com`, a **Google Images thumbnail CDN**. Unstable URL, no cache control, and a copyright exposure. There is already a local `src/assets/hall.jpg`.
-- [ ] Blog covers: both posts use `images.unsplash.com` at `w=1400` for a 600×380 slot. Set in each post's `cover` frontmatter (6 files).
-- [ ] Move all into `src/assets/` so Astro emits optimized, hashed, responsive WebP — matching how the rest of the site's images are already handled.
+- [x] **Urgent:** `src/components/About.astro` — the hall image is hotlinked from `encrypted-tbn0.gstatic.com`, a **Google Images thumbnail CDN**. Unstable URL, no cache control, and a copyright exposure. There is already a local `src/assets/hall.jpg`.
+- [x] Blog covers: both posts use `images.unsplash.com` at `w=1400` for a 600×380 slot. Set in each post's `cover` frontmatter (6 files).
+- [x] Move all into `src/assets/` so Astro emits optimized, hashed, responsive WebP — matching how the rest of the site's images are already handled.
 
 ### 2.5 Compress `og-image.png`
 
-- [ ] **File:** `public/og-image.png` — currently **957 KB** for a 1200×630 frame. Target under 100 KB. Affects every social share and link preview.
+- [x] **File:** `public/og-image.png` — currently **957 KB** for a 1200×630 frame. Target under 100 KB. Affects every social share and link preview.
 
 ### 2.6 De-orphan `/contact`
 
-- [ ] **File:** `src/components/Header.astro:21,47`
+- [x] **File:** `src/components/Header.astro:21,47`
 
 The homepage links to `/#kontakt` six times and to `/contact` zero times, so the page has no internal inbound links. Point the nav item and CTA at `path(locale, '/contact')`.
 
@@ -166,17 +166,28 @@ The homepage links to `/#kontakt` six times and to `/contact` zero times, so the
 
 ### 2.7 Retitle the blog posts
 
-- [ ] **Files:** the 6 files in `src/content/blog/{pl,en,de}/`
+- [x] **Files:** the 6 files in `src/content/blog/{pl,en,de}/`
 
 "O kontroli jakości" and "O gięciu detali na prasie" carry no searchable keyword — they read as internal labels. The article bodies are genuinely good (737 and 765 words of real engineering content); the titles are what's holding them back.
 
-- [ ] Retitle to the query, e.g. *"Kontrola jakości w produkcji kooperacyjnej — jak wygląda krok po kroku"*.
-- [ ] These titles also feed the homepage `BlogPreview` H3s and the `/blog` index H2s.
+- [x] Retitle to the query, e.g. *"Kontrola jakości w produkcji kooperacyjnej — jak wygląda krok po kroku"*.
+- [x] These titles also feed the homepage `BlogPreview` H3s and the `/blog` index H2s.
 
 ### 2.8 Add BreadcrumbList and BlogPosting schema
 
-- [ ] `BreadcrumbList` in `src/layouts/BaseLayout.astro`, derived from `basePath` (clean 2-level hierarchy, nothing custom needed).
-- [ ] `BlogPosting` in `src/layouts/BlogPostLayout.astro` with `datePublished`, `author`, `image` — all already present in frontmatter.
+- [x] `BreadcrumbList` in `src/layouts/BaseLayout.astro`, derived from `basePath` (clean 2-level hierarchy, nothing custom needed).
+- [x] `BlogPosting` in `src/layouts/BlogPostLayout.astro` with `datePublished`, `author`, `image` — all already present in frontmatter.
+
+---
+
+## Found during Phase 2 — not yet actioned
+
+- [ ] **NIP conflict.** `src/pages/about.astro` schema declares `taxID: 'PL7272841275'`, the footer declares `NIP: 728-280-49-18` (= PL7282804918). These are different numbers; one is wrong. Left untouched pending confirmation — `taxID` is deliberately absent from `src/lib/schema.ts`.
+- [ ] **`src/assets/0.jpg` is a byte-identical duplicate of `hall.jpg`** (780 KB) and is referenced nowhere. Safe to delete.
+- [ ] **`.astro/` is gitignored but tracked**, so its build cache shows as modified after every build. Needs `git rm -r --cached .astro/`.
+- [ ] **Dangling markdown alternates.** `/blog`, `/dziekujemy`, `/thank-you` and `/danke` advertise a `text/markdown` variant, but no `.md.ts` route exists for them. Pre-existing.
+- [ ] **Hero image is still stock.** Now self-hosted and optimised, but the `podmień na własne` TODO in `src/components/Hero.astro` still stands — a real shop-floor photo would serve better.
+- [ ] **Blog covers now reuse service photos** (`bending.jpg`, `cad.jpg`). A genuine QC/inspection photo would suit the quality-control post better than the CAD workstation shot.
 
 ---
 
