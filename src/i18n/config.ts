@@ -26,13 +26,21 @@ export function localePrefix(locale: Locale): string {
   return locale === DEFAULT_LOCALE ? '' : `/${locale}`;
 }
 
-/** Buduje ścieżkę w danym języku, np. path('en', '/blog') -> '/precimet-oem/en/blog'. */
+/**
+ * Buduje ścieżkę w danym języku, np. path('en', '/blog') -> '/precimet-oem/en/blog/'.
+ *
+ * Zawsze kończy się ukośnikiem — zgodnie z `trailingSlash: 'always'` w
+ * `astro.config.mjs` i z formatem katalogowym builda. Dzięki temu canonical,
+ * hreflang i linki wewnętrzne wskazują dokładnie ten URL, który serwer wydaje,
+ * zamiast adresu, który przekierowuje 301.
+ */
 export function path(locale: Locale, p: string = '/'): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // '/precimet-oem' or ''
   const prefix = localePrefix(locale);                       // '' or '/en' or '/de'
   const clean = p.startsWith('/') ? p : `/${p}`;
-  const joined = `${base}${prefix}${clean}`;
-  return joined || '/';
+  const normalized = clean.replace(/\/+$/, '');              // '/blog/' -> '/blog', '/' -> ''
+  const joined = `${base}${prefix}${normalized}`;
+  return joined ? `${joined}/` : '/';
 }
 
 /** Odczytuje język z URL-a (np. /precimet-oem/en/blog -> 'en'). */

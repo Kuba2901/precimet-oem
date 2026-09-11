@@ -132,6 +132,8 @@ type Dict = {
   contact: {
     eyebrow: string;
     title: string;
+    /** Nagłówek samodzielnej strony /contact (h1) — niesie frazę kluczową. */
+    pageTitle: string;
     lead: string;
     form: {
       name: string;
@@ -631,6 +633,7 @@ export const ui: Record<Locale, Dict> = {
     contact: {
       eyebrow: 'Kontakt',
       title: 'Prześlij rysunek — odezwiemy się z wyceną',
+      pageTitle: 'Zapytanie ofertowe — cięcie laserowe, gięcie i obróbka CNC',
       lead:
         'Masz dokumentację, model 3D albo tylko szkic? Napisz do nas. Zapytania wyceniamy szybko i konkretnie.',
       form: {
@@ -1109,6 +1112,7 @@ export const ui: Record<Locale, Dict> = {
     contact: {
       eyebrow: 'Contact',
       title: 'Send us a drawing — we\u2019ll come back with a quote',
+      pageTitle: 'Request a quote — laser cutting, bending and CNC machining',
       lead: 'Got documentation, a 3D model or just a sketch? Write to us. We quote quickly and concretely.',
       form: {
         name: 'Full name *',
@@ -1585,6 +1589,7 @@ export const ui: Record<Locale, Dict> = {
     contact: {
       eyebrow: 'Kontakt',
       title: 'Senden Sie uns eine Zeichnung — wir melden uns mit einem Angebot',
+      pageTitle: 'Angebotsanfrage — Laserschneiden, Biegen und CNC-Bearbeitung',
       lead: 'Sie haben eine Dokumentation, ein 3D-Modell oder nur eine Skizze? Schreiben Sie uns. Wir kalkulieren schnell und konkret.',
       form: {
         name: 'Vor- und Nachname *',

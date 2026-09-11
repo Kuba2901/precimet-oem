@@ -109,6 +109,7 @@ p { margin: 0 0 1em; }
   color: var(--c-text-inverse);
 }
 
+.section--dark h1,
 .section--dark h2,
 .section--dark h3 {
   color: var(--c-text-inverse);

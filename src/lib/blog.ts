@@ -26,6 +26,33 @@ export async function blogStaticPaths(locale: Locale) {
   }));
 }
 
+/**
+ * Ścieżki wersji językowych danego wpisu (bez prefiksu językowego), np.
+ * `{ pl: '/blog/kontrola-jakosci-w-produkcji', en: '/blog/quality-control-explained' }`.
+ *
+ * Wersje łączy `translationKey` z frontmattera. Języki bez tłumaczenia są
+ * pomijane — lepiej nie wystawić hreflang niż wskazać stronę, która zwraca 404.
+ */
+export async function postAlternates(
+  post: BlogPost
+): Promise<Partial<Record<Locale, string>>> {
+  const key = post.data.translationKey;
+  if (!key) {
+    return { [post.data.lang]: `/blog/${postSlug(post)}` };
+  }
+
+  const siblings = await getCollection(
+    'blog',
+    ({ data }) => !data.draft && data.translationKey === key
+  );
+
+  const out: Partial<Record<Locale, string>> = {};
+  for (const sibling of siblings) {
+    out[sibling.data.lang] = `/blog/${postSlug(sibling)}`;
+  }
+  return out;
+}
+
 export function dateFormatter(locale: Locale) {
   const tag = locale === 'pl' ? 'pl-PL' : locale === 'de' ? 'de-DE' : 'en-GB';
   return new Intl.DateTimeFormat(tag, { dateStyle: 'long' });

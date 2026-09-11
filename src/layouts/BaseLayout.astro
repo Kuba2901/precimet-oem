@@ -19,13 +19,20 @@ interface Props {
   description?: string;
   /** Ścieżka bez prefiksu językowego, np. '/blog' — używana do hreflang. */
   pagePath?: string;
+  /**
+   * Nadpisuje hreflang dla stron, których slug różni się między językami
+   * (np. wpisy bloga). Klucz = język, wartość = ścieżka bez prefiksu językowego.
+   * Brakujący język = brak wpisu hreflang, zamiast linku do nieistniejącej strony.
+   */
+  alternates?: Partial<Record<Locale, string>>;
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: string;
   noindex?: boolean;
 }
 
-const { locale, title, description, pagePath, ogImage, ogImageAlt, ogType, noindex } = Astro.props;
+const { locale, title, description, pagePath, alternates, ogImage, ogImageAlt, ogType, noindex } =
+  Astro.props;
 const dict = t(locale);
 
 const metaTitle = title ?? dict.seo.title;
@@ -35,6 +42,22 @@ const site = Astro.site ?? new URL('https://oem.precimet.pl');
 const canonical = new URL(path(locale, basePath), site).href;
 const ogImg = ogImage ?? new URL(`${import.meta.env.BASE_URL}og-image.png`, site).href;
 const ogAlt = ogImageAlt ?? metaTitle;
+
+/* x-default wskazuje wersję polską — z mapy `alternates`, jeśli została podana. */
+const xDefault = new URL(
+  alternates ? path('pl', alternates.pl ?? basePath) : localizedPath('pl', basePath),
+  site
+).href;
+
+/* Wariant markdown dla agentów AI: /about/ -> /about.md, / -> /index.md */
+const markdownHref = new URL(
+  basePath === '/'
+    ? locale === 'pl'
+      ? '/index.md'
+      : `/${locale}/index.md`
+    : `${path(locale, basePath).replace(/\/$/, '')}.md`,
+  site
+).href;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -64,17 +87,17 @@ const jsonLd = {
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logo.png`} />
 
     {/* hreflang — każda wersja językowa wskazuje właściwy przetłumaczony URL */}
-    {LOCALES.map((l) => (
-      <link rel="alternate" hreflang={l} href={new URL(localizedPath(l, basePath), site).href} />
-    ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('pl', basePath), site).href} />
+    {LOCALES.map((l) =>
+      alternates
+        ? alternates[l] && (
+            <link rel="alternate" hreflang={l} href={new URL(path(l, alternates[l]!), site).href} />
+          )
+        : <link rel="alternate" hreflang={l} href={new URL(localizedPath(l, basePath), site).href} />
+    )}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
 
     {/* Markdown content negotiation for AI agents (acceptmarkdown.com / RFC 8288) */}
-    <link
-      rel="alternate"
-      type="text/markdown"
-      href={new URL(basePath === '/' ? (locale === 'pl' ? '/index.md' : `/${locale}/index.md`) : `${path(locale, basePath)}.md`, site).href}
-    />
+    <link rel="alternate" type="text/markdown" href={markdownHref} />
 
     {/* Open Graph / Twitter */}
     <meta property="og:type" content={ogType ?? 'website'} />
