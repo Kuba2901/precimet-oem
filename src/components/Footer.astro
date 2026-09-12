@@ -46,7 +46,7 @@ const links = [
       <address>
         {dict.contact.info.address.split('\n').map((line) => <span>{line}</span>)}
         <a href="tel:+48426725710">+48 42 672 57 10</a>
-        <a href={`mailto:${dict.contact.info.email}`}>{dict.contact.info.email}</a>
+        <a href={path(locale, '/contact')}>{dict.nav.cta}</a>
       </address>
     </div>
 

@@ -6,7 +6,6 @@ export const GET: APIRoute = async () => {
 ## Contact
 - **Company**: PRECIMET H.C.E. Sp. z o.o.
 - **Address**: ul. Pomorska 555, 92-735 Łódź, Poland
-- **RFQ email**: produkcja@precimet.pl
 - **Laser cutting & metalworking**: +48 422 080 402, +48 422 080 419, +48 422 080 413, +48 422 080 418
 - **Office**: +48 42 672 57 10, +48 422 080 400
 - **Opening hours**: Mon–Fri, 8:00–16:00 CET

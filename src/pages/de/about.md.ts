@@ -30,7 +30,7 @@ Pulverbeschichtung und andere Beschichtungsleistungen bieten wir nicht an.
 - **Umsatzsteuer-ID (USt-IdNr.)**: PL7282804918
 - **Statistische Nummer (REGON)**: 363114171
 - **Stammkapital**: 101.000,00 PLN
-- **Anfragen**: produkcja@precimet.pl | Tel: +48 422 080 402
+- **Anfragen**: [Anfrageformular](https://oem.precimet.pl/de/contact/) | Tel: +48 422 080 402
 `;
 
   return new Response(content, {

@@ -11,8 +11,7 @@ This document specifies calling protocols, knowledge ingestion endpoints, and RF
 - **Core Processes**: Fiber Laser Cutting, CNC Sheet Bending, Manual & Robotic Welding, CNC Milling, CNC Turning, CNC Tube Bending, CNC Profile Cutting, Mechanical & Electrical Assembly, CAD/CAM Engineering.
 - **Not offered**: Powder coating or other coating services.
 - **Quality Standard**: ISO 9001:2015
-- **Primary RFQ Channel**: `mailto:produkcja@precimet.pl`
-- **Web Form**: `https://oem.precimet.pl/contact`
+- **RFQ Channel**: web form only — `https://oem.precimet.pl/contact/` (no public email address)
 
 ---
 

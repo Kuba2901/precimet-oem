@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { path } from '../i18n/config';
 import { t } from '../i18n/ui';
 
 const locale = 'pl' as const;
@@ -27,7 +28,7 @@ const dict = t(locale);
           PRECIMET H.C.E. Sp. z o.o.<br />
           ul. Pomorska 555<br />
           92-735 Łódź, Polska<br />
-          E-mail: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a><br />
+          Formularz kontaktowy: <a href={path(locale, '/contact')}>oem.precimet.pl/contact</a><br />
           Telefon: +48 422 080 402
         </address>
 
@@ -101,7 +102,7 @@ const dict = t(locale);
           <li>wspierania przeciwko przetwarzaniu opartemu na uzasadnionym interesie (art. 21 RODO),</li>
           <li>cofnięcia zgody w dowolnym momencie (jeśli przetwarzanie opiera się na art. 6 ust. 1 lit. a RODO) — cofnięcie nie wpływa na zgodność z prawem przetwarzania dokonanego przed cofnięciem.</li>
         </ul>
-        <p>Aby skorzystać z powyższych praw, skontaktuj się z nami: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a>.</p>
+        <p>Aby skorzystać z powyższych praw, skontaktuj się z nami przez <a href={path(locale, '/contact')}>formularz kontaktowy</a>, telefonicznie pod numerem +48 422 080 402 lub listownie na adres podany w punkcie 2.</p>
 
         <h2>8. Prawo do wniesienia skargi</h2>
         <p>Masz prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych (PUODO), ul. Stawki 2, 00-193 Warszawa, jeśli uważasz, że przetwarzanie Twoich danych narusza przepisy RODO.</p>

@@ -6,7 +6,6 @@ export const GET: APIRoute = async () => {
 ## Kontakt
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Standort**: ul. Pomorska 555, 92-735 Łódź, Polen
-- **E-Mail für Anfragen**: produkcja@precimet.pl
 - **Laserschneiden & Metallbearbeitung**: +48 422 080 402, +48 422 080 419, +48 422 080 413, +48 422 080 418
 - **Büro**: +48 42 672 57 10, +48 422 080 400
 - **Öffnungszeiten**: Mo–Fr, 8:00–16:00 Uhr MEZ

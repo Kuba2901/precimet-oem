@@ -30,7 +30,7 @@ Powder coating and other coating services are not offered.
 - **Tax number (NIP / EU VAT)**: PL7282804918
 - **Statistical number (REGON)**: 363114171
 - **Share capital**: 101,000.00 PLN
-- **RFQ contact**: produkcja@precimet.pl | Tel: +48 422 080 402
+- **RFQ**: [contact form](https://oem.precimet.pl/en/contact/) | Tel: +48 422 080 402
 `;
 
   return new Response(content, {

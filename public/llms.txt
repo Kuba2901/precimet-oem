@@ -24,7 +24,6 @@ Industries served include machine and equipment building, automation and robotic
 
 ## How to request a quote
 
-- **Email**: `produkcja@precimet.pl`
 - **Web form**: [https://oem.precimet.pl/contact/](https://oem.precimet.pl/contact/)
 - **Include**:
   1. A 2D drawing or 3D model — STEP, STP, IGES, IGS, DXF, DWG or PDF. No 3D model? A sketch or sample part is enough to start.

@@ -52,7 +52,7 @@ Pulverbeschichtung und andere Beschichtungsleistungen bieten wir nicht an.
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Standort**: ul. Pomorska 555, 92-735 Łódź, Polen
 - **KRS**: 0000587797 | **USt-IdNr.**: PL7282804918 | **REGON**: 363114171
-- **E-Mail für Anfragen**: produkcja@precimet.pl
+- **Anfragen**: [Anfrageformular](https://oem.precimet.pl/de/contact/)
 - **Telefon**: +48 422 080 402
 - **Öffnungszeiten**: Mo–Fr, 8:00–16:00 Uhr MEZ
 `;

@@ -53,7 +53,7 @@ Powder coating and other coating services are not offered.
 - **Company**: PRECIMET H.C.E. Sp. z o.o.
 - **Address**: ul. Pomorska 555, 92-735 Łódź, Poland
 - **KRS**: 0000587797 | **VAT ID**: PL7282804918 | **REGON**: 363114171
-- **RFQ email**: produkcja@precimet.pl
+- **RFQ**: [contact form](https://oem.precimet.pl/en/contact/)
 - **Phone**: +48 422 080 402
 - **Opening hours**: Mon–Fri, 8:00–16:00 CET
 `;

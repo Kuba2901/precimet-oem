@@ -22,7 +22,7 @@ export const GET: APIRoute = async () => {
 - **PRECIMET H.C.E. Sp. z o.o.**, ul. Pomorska 555, 92-735 Łódź, Polska
 - **KRS**: 0000587797 | **NIP**: PL7282804918 | **REGON**: 363114171
 - **Certyfikat**: ISO 9001:2015
-- **E-mail RFQ**: produkcja@precimet.pl | **Tel**: +48 422 080 402
+- **Zapytania ofertowe**: [formularz kontaktowy](https://oem.precimet.pl/contact/) | **Tel**: +48 422 080 402
 `;
 
   return new Response(content, {

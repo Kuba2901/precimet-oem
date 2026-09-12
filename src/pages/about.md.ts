@@ -30,7 +30,7 @@ Nie oferujemy lakierowania proszkowego ani innych usług powłokowych.
 - **NIP (VAT UE)**: PL7282804918
 - **REGON**: 363114171
 - **Kapitał zakładowy**: 101.000,00 PLN
-- **Kontakt RFQ**: produkcja@precimet.pl | tel. +48 422 080 402
+- **Zapytania ofertowe**: [formularz kontaktowy](https://oem.precimet.pl/contact/) | tel. +48 422 080 402
 `;
 
   return new Response(content, {

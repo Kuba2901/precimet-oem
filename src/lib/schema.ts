@@ -16,7 +16,6 @@ export const BRAND_NAME = 'Precimet OEM Manufacturing';
 
 /** Główny numer działu produkcji — ten sam, który widnieje w stopce. */
 export const PHONE = '+48422080402';
-export const EMAIL = 'produkcja@precimet.pl';
 
 /**
  * Dane rejestrowe zweryfikowane 2026-09-13 w KRS (api-krs.ms.gov.pl),
@@ -68,7 +67,6 @@ export function organizationSchema(site: URL, description: string) {
     image: new URL(`${import.meta.env.BASE_URL}og-image.jpg`, site).href,
     description,
     telephone: PHONE,
-    email: EMAIL,
     taxID: NIP,
     vatID: VAT_ID,
     address: ADDRESS,

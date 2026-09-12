@@ -166,8 +166,6 @@ type Dict = {
       address: string;
       phoneLabel: string;
       phone: string;
-      emailLabel: string;
-      email: string;
       hoursLabel: string;
       hours: string;
       responseNote: string;
@@ -675,7 +673,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. *',
         submit: 'Wyślij zapytanie',
         note: 'Pola oznaczone * są wymagane.',
-        error: 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub napisz do nas e-mail.',
+        error: 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub zadzwoń: +48 422 080 402.',
       },
       info: {
         title: 'Dane kontaktowe',
@@ -683,8 +681,6 @@ export const ui: Record<Locale, Dict> = {
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Polska',
         phoneLabel: 'Telefon',
         phone: 'Biuro:\n+48 42 672 57 10\n+48 422 080 400\n\nCięcie laserowe, obróbka metalu:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
-        emailLabel: 'E-mail',
-        email: 'produkcja@precimet.pl',
         hoursLabel: 'Godziny pracy',
         hours: 'Pon–Pt: 8:00–16:00',
         responseNote:
@@ -1168,7 +1164,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'I consent to the processing of my data to answer this inquiry. *',
         submit: 'Send inquiry',
         note: 'Fields marked * are required.',
-        error: 'Something went wrong while sending. Try again or email us directly.',
+        error: 'Something went wrong while sending. Try again or call us at +48 422 080 402.',
       },
       info: {
         title: 'Contact details',
@@ -1176,8 +1172,6 @@ export const ui: Record<Locale, Dict> = {
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Poland',
         phoneLabel: 'Phone',
         phone: 'Office:\n+48 42 672 57 10\n+48 422 080 400\n\nLaser cutting, metalworking:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
-        emailLabel: 'E-mail',
-        email: 'produkcja@precimet.pl',
         hoursLabel: 'Working hours',
         hours: 'Mon–Fri: 8:00–16:00 CET',
         responseNote: 'We usually answer inquiries within 1–2 business days.',
@@ -1660,7 +1654,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'Ich stimme der Verarbeitung meiner Daten zur Beantwortung dieser Anfrage zu. *',
         submit: 'Anfrage senden',
         note: 'Mit * gekennzeichnete Felder sind Pflichtfelder.',
-        error: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns.',
+        error: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an: +48 422 080 402.',
       },
       info: {
         title: 'Kontaktdaten',
@@ -1668,8 +1662,6 @@ export const ui: Record<Locale, Dict> = {
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Polen',
         phoneLabel: 'Telefon',
         phone: 'Büro:\n+48 42 672 57 10\n+48 422 080 400\n\nLaserschneiden, Metallbearbeitung:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
-        emailLabel: 'E-Mail',
-        email: 'produkcja@precimet.pl',
         hoursLabel: 'Arbeitszeiten',
         hours: 'Mo–Fr: 8:00–16:00 Uhr MEZ',
         responseNote: 'Anfragen beantworten wir in der Regel innerhalb von 1–2 Werktagen.',

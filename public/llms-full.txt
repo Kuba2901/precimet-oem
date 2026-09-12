@@ -89,7 +89,6 @@ Parts outside these ranges: send the documentation and Precimet will confirm fea
 
 ## 6. Contact & RFQ
 
-- **Email**: `produkcja@precimet.pl`
 - **Web form**: [https://oem.precimet.pl/contact/](https://oem.precimet.pl/contact/)
 - **Laser cutting & metalworking**: +48 422 080 402, +48 422 080 419, +48 422 080 413, +48 422 080 418
 - **Office**: +48 42 672 57 10, +48 422 080 400

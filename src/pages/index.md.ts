@@ -52,7 +52,7 @@ Nie oferujemy lakierowania proszkowego ani innych usług powłokowych.
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Adres**: ul. Pomorska 555, 92-735 Łódź, Polska
 - **KRS**: 0000587797 | **NIP**: PL7282804918 | **REGON**: 363114171
-- **E-mail RFQ**: produkcja@precimet.pl
+- **Zapytania ofertowe**: [formularz kontaktowy](https://oem.precimet.pl/contact/)
 - **Telefon**: +48 422 080 402
 - **Godziny pracy**: pon.–pt. 8:00–16:00
 `;
