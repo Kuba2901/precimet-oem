@@ -18,6 +18,17 @@ export const BRAND_NAME = 'Precimet OEM Manufacturing';
 export const PHONE = '+48422080402';
 export const EMAIL = 'produkcja@precimet.pl';
 
+/**
+ * Dane rejestrowe zweryfikowane 2026-09-13 w KRS (api-krs.ms.gov.pl),
+ * na Białej liście VAT (wl-api.mf.gov.pl) i w VIES. Wcześniej w serwisie
+ * krążył KRS 0000503010 (należy do innej spółki) i NIP PL7272841275
+ * (nie istnieje) — nie przywracać.
+ */
+export const KRS = '0000587797';
+export const NIP = '7282804918';
+export const VAT_ID = 'PL7282804918';
+export const REGON = '363114171';
+
 export const ADDRESS = {
   '@type': 'PostalAddress',
   streetAddress: 'ul. Pomorska 555',
@@ -58,6 +69,8 @@ export function organizationSchema(site: URL, description: string) {
     description,
     telephone: PHONE,
     email: EMAIL,
+    taxID: NIP,
+    vatID: VAT_ID,
     address: ADDRESS,
     geo: GEO,
     openingHoursSpecification: OPENING_HOURS,

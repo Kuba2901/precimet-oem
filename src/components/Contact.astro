@@ -18,6 +18,7 @@ const dict = t(locale);
 const f = dict.contact.form;
 const info = dict.contact.info;
 const map = dict.contact.map;
+const rfq = dict.contact.rfq;
 const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === 'de' ? '/danke' : '/thank-you');
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
 
@@ -31,6 +32,19 @@ const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
       <Heading>{as === 'h1' ? dict.contact.pageTitle : dict.contact.title}</Heading>
       <hr class="laser-line" />
       <p class="contact__lead">{dict.contact.lead}</p>
+
+      {/* Tylko samodzielna strona /contact — odróżnia ją od sekcji na stronie głównej. */}
+      {as === 'h1' && (
+        <div class="contact__rfq">
+          <h2>{rfq.title}</h2>
+          <p>{rfq.lead}</p>
+          <ul class="contact__rfq-list">
+            {rfq.items.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="contact__rfq-formats"><span class="spec">{rfq.formatsLabel}:</span> {rfq.formats}</p>
+          <p class="contact__rfq-note">{rfq.noModel}</p>
+        </div>
+      )}
 
       <div class="contact__info">
         <h3>{info.title}</h3>
@@ -205,6 +219,14 @@ const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
   .contact__intro h1 { font-size: clamp(2rem, 4.2vw, 3rem); }
 
   .contact__lead { color: var(--c-text-inverse-muted); }
+
+  .contact__rfq { margin-top: 2rem; }
+  .contact__rfq h2 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+  .contact__rfq p,
+  .contact__rfq-list { color: var(--c-text-inverse-muted); }
+  .contact__rfq-list { display: grid; gap: 0.35rem; margin: 0 0 1rem; padding-left: 1.2rem; }
+  .contact__rfq-formats { font-size: 0.95rem; }
+  .contact__rfq-note { font-size: 0.9rem; }
 
   .contact__info { margin-top: 2rem; }
 

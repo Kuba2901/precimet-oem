@@ -1,7 +1,7 @@
 # SEO task list — audit remediation
 
 Date: 2026-09-11
-Status: Phases 1–2 complete (2026-09-11, branch `seo/phase-1-critical-fixes`); Phase 3 not started
+Status: Phases 1–2 complete, post-audit data fixes applied (2026-09-13, branch `seo/phase-1-critical-fixes`); Phase 3 not started
 Source: full-site SEO audit of `https://oem.precimet.pl` (11 live pages, 3 locales, crawled against commit `449f497`)
 
 Verification for every task: `npm run astro check && npm run build`. There is no test suite or linter.
@@ -162,7 +162,7 @@ The site-wide `Organization` block in `BaseLayout` carries only `addressLocality
 
 The homepage links to `/#kontakt` six times and to `/contact` zero times, so the page has no internal inbound links. Point the nav item and CTA at `path(locale, '/contact')`.
 
-- [ ] Then differentiate the page's content — it currently duplicates the homepage contact section exactly (same H2, same form, 279 words). Add an RFQ checklist, accepted file formats, and typical lead times.
+- [x] Then differentiate the page's content — it currently duplicates the homepage contact section exactly (same H2, same form, 279 words). Add an RFQ checklist, accepted file formats, and typical lead times.
 
 ### 2.7 Retitle the blog posts
 
@@ -180,14 +180,18 @@ The homepage links to `/#kontakt` six times and to `/contact` zero times, so the
 
 ---
 
-## Found during Phase 2 — not yet actioned
+## Found during Phase 2 — resolved 2026-09-13
 
-- [ ] **NIP conflict.** `src/pages/about.astro` schema declares `taxID: 'PL7272841275'`, the footer declares `NIP: 728-280-49-18` (= PL7282804918). These are different numbers; one is wrong. Left untouched pending confirmation — `taxID` is deliberately absent from `src/lib/schema.ts`.
-- [ ] **`src/assets/0.jpg` is a byte-identical duplicate of `hall.jpg`** (780 KB) and is referenced nowhere. Safe to delete.
-- [ ] **`.astro/` is gitignored but tracked**, so its build cache shows as modified after every build. Needs `git rm -r --cached .astro/`.
-- [ ] **Dangling markdown alternates.** `/blog`, `/dziekujemy`, `/thank-you` and `/danke` advertise a `text/markdown` variant, but no `.md.ts` route exists for them. Pre-existing.
-- [ ] **Hero image is still stock.** Now self-hosted and optimised, but the `podmień na własne` TODO in `src/components/Hero.astro` still stands — a real shop-floor photo would serve better.
-- [ ] **Blog covers now reuse service photos** (`bending.jpg`, `cad.jpg`). A genuine QC/inspection photo would suit the quality-control post better than the CAD workstation shot.
+- [x] **Registration data was wrong across the site.** About pages, privacy policies, every `.md` route and both `llms` files used KRS `0000503010` — which belongs to FUTURA INVEST … UNIMAX Sp.k. in Poznań — and NIP `PL7272841275`, which fails the NIP checksum and has no registered taxpayer. Verified against the KRS API, the VAT whitelist and VIES: **KRS 0000587797, NIP PL7282804918 (VIES-valid), REGON 363114171, share capital 101 000,00 PLN**, registered 2015-12-01. Corrected everywhere, including the data-controller clause in all three privacy policies; `taxID`/`vatID` now in `src/lib/schema.ts`.
+- [x] **Experience claims contradicted each other** (homepage 15+, About 30+). Client confirmed 30+ years, predating the 2015 company — now 30+ everywhere, worded as experience rather than company age.
+- [x] **Powder coating was claimed but not offered.** Removed from About pages, `.md` routes, `llms` files, agent instructions, RFQ checklists and the coating rows in the PL/DE quality-control posts. AI-facing files now state it is not offered.
+- [x] **AI-facing files contradicted the machine park** (320 t / 4000 mm press, 15 mm stainless, 12 mm aluminium, 450 mm lathe, CMM arms, plastics machining, 50–50,000 pcs/yr, a phone number used nowhere else). Client confirmed the site is correct: About pages, `.md` routes, `llms.txt`, `llms-full.txt` and `agent-instructions.md` rewritten from `src/i18n/ui.ts`.
+- [x] **Hours and quote time drifted** in AI-facing files (07:00–15:00, 24–48 h) — aligned to 8:00–16:00 and 1–2 business days.
+- [x] **`/contact` duplicated the homepage section** — now has its own RFQ checklist, accepted formats and no-3D-model note (`contact.rfq` in `ui.ts`, rendered only when `as="h1"`).
+- [x] **`src/assets/0.jpg`** (byte-identical duplicate of `hall.jpg`) deleted.
+- [x] **`.astro/` untracked** (`git rm -r --cached .astro/`); CI builds from a clean checkout, so nothing depended on it.
+- [x] **Dangling markdown alternates** fixed: `/blog.md` routes added for all locales; noindex pages no longer advertise a markdown variant.
+- [x] **Hero and blog-cover photos** kept by client decision (2026-09-13).
 
 ---
 

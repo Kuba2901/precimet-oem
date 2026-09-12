@@ -62,7 +62,6 @@ W zależności od zamówienia, pakiet jakościowy może obejmować:
 | **Protokół kontroli pierwszej sztuki** | Pierwsza część w serii spełnia wszystkie wymiary rysunkowe |
 | **Raport pomiarowy** | Wybrane części zmierzone przyrządami pomiarowymi, wyniki zarejestrowane |
 | **Protokół spawalniczy** | Metoda spawania, parametry, kwalifikacja spawacza (jeśli dotyczy) |
-| **Protokół obróbki powierzchniowej** | Kontrola powłoki (jakość, grubość) |
 | **WZ / lista przewozowa** | Ilość, nr części, nr zamówienia |
 
 Poziom dokumentacji zależy od zamówienia. Wspornik do ramy maszynowej może wymagać tylko WZ. Część do przemysłu spożywczego lub medycznego może wymagać pełnego zestawu.

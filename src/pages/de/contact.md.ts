@@ -1,30 +1,34 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
-  const content = `# Kontakt & Preisanfrage (RFQ) — Precimet OEM Manufacturing
+  const content = `# Angebotsanfrage (RFQ) — Precimet OEM Manufacturing
 
-## Kontaktdaten des Produktionswerks
+## Kontakt
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Standort**: ul. Pomorska 555, 92-735 Łódź, Polen
-- **Telefon**: +48 422 080 402
-- **E-Mail für Angebote**: produkcja@precimet.pl
-- **Öffnungszeiten**: Montag – Freitag, 07:00 – 15:00 Uhr MEZ
-- **Online-Anfrageformular**: [https://oem.precimet.pl/de/contact](https://oem.precimet.pl/de/contact)
+- **E-Mail für Anfragen**: produkcja@precimet.pl
+- **Laserschneiden & Metallbearbeitung**: +48 422 080 402, +48 422 080 419, +48 422 080 413, +48 422 080 418
+- **Büro**: +48 42 672 57 10, +48 422 080 400
+- **Öffnungszeiten**: Mo–Fr, 8:00–16:00 Uhr MEZ
+- **Online-Formular**: [https://oem.precimet.pl/de/contact/](https://oem.precimet.pl/de/contact/)
 
-## Richtlinien für Preisanfragen (RFQ)
-Für ein schnelles und verbindliches Angebot innerhalb von 24–48 Stunden benötigen wir:
-1. **3D-CAD-Dateien**: \`.step\`, \`.stp\`, \`.iges\`.
-2. **2D-Zeichnungen**: \`.dxf\`, \`.dwg\`, \`.pdf\` mit Maßen, Toleranzen und Gewindeangaben.
-3. **Materialangaben**: Werkstoffgüte (z.B. S355, 1.4301 / V2A, AlMg3 / 5754), Blechdicke.
-4. **Stückzahlen**: Losgröße und Jahresbedarf.
-5. **Oberflächenbehandlung**: RAL-Pulverbeschichtung, Verzinkung, Eloxal.
-6. **Lieferbedingungen**: Lieferort, Incoterms (DAP / EXW).
+## So bereiten Sie Ihre Anfrage vor
+Mit einer vollständigen Anfrage erhalten Sie unser Angebot innerhalb von 1–2 Werktagen. Bitte senden Sie:
+1. Eine 2D-Zeichnung oder ein 3D-Modell des Teils
+2. Werkstoffgüte und Materialstärke
+3. Stückzahl — Einzellos oder Serienprognose
+4. Gewünschten Liefertermin
+5. Qualitätsanforderungen, z. B. Dokumentation oder Materialzeugnisse
+
+**Akzeptierte Formate**: STEP, STP, IGES, IGS, DXF, DWG, PDF. Kein 3D-Modell? Senden Sie eine Skizze oder ein Musterteil — wir helfen, die Dokumentation zu vervollständigen.
+
+Es gibt keine Mindestbestellmenge. Die Lieferzeit bestätigen wir im Angebot.
 
 ## Handelsregisterangaben
-- **KRS**: 0000503010
-- **Umsatzsteuer-ID**: PL7272841275
+- **KRS**: 0000587797 (Amtsgericht Łódź-Śródmieście, 20. Handelsregisterabteilung)
+- **USt-IdNr.**: PL7282804918
 - **REGON**: 363114171
-- **Stammkapital**: 100.000,00 PLN
+- **Stammkapital**: 101.000,00 PLN
 `;
 
   return new Response(content, {

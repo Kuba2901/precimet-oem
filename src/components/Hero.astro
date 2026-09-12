@@ -10,7 +10,7 @@ const { locale } = Astro.props;
 const dict = t(locale);
 const home = path(locale, '/');
 
-// Stockowe zdjęcie hali / cięcia laserowego — podmień na własne przed publikacją.
+// Stockowe zdjęcie hali / cięcia laserowego (Unsplash) — klient zdecydował 2026-09-13, że zostaje.
 // Serwowane lokalnie (było hotlinkowane z Unsplash w 3432 px): 792 kB -> 64 kB,
 // bez zewnętrznego hosta na ścieżce krytycznej LCP.
 const heroImg = `${import.meta.env.BASE_URL}hero.webp`;

@@ -4,7 +4,7 @@ export const GET: APIRoute = async () => {
   const content = `# Privacy Policy — Precimet OEM Manufacturing
 
 ## 1. Data Controller
-The controller of your personal data is **PRECIMET H.C.E. Sp. z o.o.**, located at ul. Pomorska 555, 92-735 Łódź, Poland, KRS: 0000503010, VAT ID: PL7272841275, REGON: 363114171, share capital: 100,000.00 PLN.
+The controller of your personal data is **PRECIMET H.C.E. Sp. z o.o.**, located at ul. Pomorska 555, 92-735 Łódź, Poland, KRS: 0000587797, VAT ID: PL7282804918, REGON: 363114171, share capital: 101,000.00 PLN.
 
 ## 2. Contact Information
 - **Address**: ul. Pomorska 555, 92-735 Łódź, Poland

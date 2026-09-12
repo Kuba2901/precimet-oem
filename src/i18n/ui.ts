@@ -137,6 +137,15 @@ type Dict = {
     /** Nagłówek samodzielnej strony /contact (h1) — niesie frazę kluczową. */
     pageTitle: string;
     lead: string;
+    /** Lista kontrolna RFQ — tylko na samodzielnej stronie /contact. */
+    rfq: {
+      title: string;
+      lead: string;
+      items: string[];
+      formatsLabel: string;
+      formats: string;
+      noModel: string;
+    };
     form: {
       name: string;
       company: string;
@@ -262,7 +271,7 @@ export const ui: Record<Locale, Dict> = {
         'Montaż',
       ],
       stats: [
-        { value: '15+', label: 'lat w kooperacji przemysłowej' },
+        { value: '30+', label: 'lat doświadczenia w obróbce metali' },
         { value: '3,5 mln', label: 'części wyprodukowanych dla klientów' },
         { value: '50+', label: 'gatunków blach w magazynie' },
         { value: 'ISO 9001', label: 'certyfikowany system jakości od 2015' },
@@ -271,11 +280,11 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'O firmie',
       title: 'Partner kooperacyjny, nie tylko podwykonawca',
-      p1: 'Precimet od ponad 15 lat realizuje zlecenia kooperacyjne i outsourcing produkcji metalowej dla klientów przemysłowych z całej Polski. Pracujemy na dokumentacji klienta lub wspieramy jej przygotowanie — od pojedynczych prototypów po powtarzalne serie produkcyjne.',
+      p1: 'Za Precimet stoi ponad 30 lat doświadczenia w obróbce metali. Realizujemy zlecenia kooperacyjne i outsourcing produkcji metalowej dla klientów przemysłowych z całej Polski. Pracujemy na dokumentacji klienta lub wspieramy jej przygotowanie — od pojedynczych prototypów po powtarzalne serie produkcyjne.',
       p2: 'Wyprodukowaliśmy już ponad 3,5 miliona części. Utrzymujemy magazyn z ponad 50 gatunkami blach, co skraca czas realizacji i uniezależnia harmonogram od dostaw materiału. Współpracujemy z działami R&D klientów i realizujemy szybkie prototypowanie przed uruchomieniem serii.',
       p3: 'Od 2015 roku pracujemy w certyfikowanym systemie zarządzania jakością zgodnym z ISO 9001:2015. Każde zlecenie przechodzi kontrolę jakości, a proces produkcji jest udokumentowany i powtarzalny.',
       facts: [
-        { value: '15+', label: 'lat doświadczenia' },
+        { value: '30+', label: 'lat doświadczenia' },
         { value: '3 500 000+', label: 'wyprodukowanych części' },
         { value: '50+', label: 'gatunków blach od ręki' },
         { value: '100%', label: 'zleceń z kontrolą jakości' },
@@ -542,7 +551,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           title: 'Doświadczenie w kooperacji',
-          desc: 'Od ponad 15 lat produkujemy na podstawie dokumentacji klientów przemysłowych. Znamy realia współpracy OEM: zmiany rewizji, audyty, wymagania jakościowe i harmonogramy dostaw.',
+          desc: 'Mamy ponad 30 lat doświadczenia w produkcji na podstawie dokumentacji klientów przemysłowych. Znamy realia współpracy OEM: zmiany rewizji, audyty, wymagania jakościowe i harmonogramy dostaw.',
         },
       ],
       machineNote:
@@ -639,6 +648,20 @@ export const ui: Record<Locale, Dict> = {
       pageTitle: 'Zapytanie ofertowe — cięcie laserowe, gięcie i obróbka CNC',
       lead:
         'Masz dokumentację, model 3D albo tylko szkic? Napisz do nas. Zapytania wyceniamy szybko i konkretnie.',
+      rfq: {
+        title: 'Jak przygotować zapytanie ofertowe',
+        lead: 'Kompletne zapytanie pozwala nam przygotować ofertę w ciągu 1–2 dni roboczych. Prześlij:',
+        items: [
+          'Rysunek 2D lub model 3D detalu',
+          'Gatunek i grubość materiału',
+          'Liczbę sztuk — pojedynczą partię lub prognozę serii',
+          'Oczekiwany termin realizacji',
+          'Wymagania jakościowe, np. dokumentację lub świadectwa materiałowe',
+        ],
+        formatsLabel: 'Akceptowane formaty',
+        formats: 'STEP, STP, IGES, IGS, DXF, DWG, PDF',
+        noModel: 'Nie masz modelu 3D? Prześlij szkic lub próbkę — pomożemy uzupełnić dokumentację.',
+      },
       form: {
         name: 'Imię i nazwisko *',
         company: 'Firma',
@@ -741,7 +764,7 @@ export const ui: Record<Locale, Dict> = {
       ctaSecondary: 'Contact us',
       chips: ['Laser cutting', 'Sheet bending', 'Welding', 'CNC machining', 'Assembly'],
       stats: [
-        { value: '15+', label: 'years in industrial subcontracting' },
+        { value: '30+', label: 'years of metalworking experience' },
         { value: '3.5 M', label: 'parts manufactured for customers' },
         { value: '50+', label: 'sheet metal grades in stock' },
         { value: 'ISO 9001', label: 'certified quality system since 2015' },
@@ -750,11 +773,11 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'About us',
       title: 'A manufacturing partner, not just a subcontractor',
-      p1: 'For over 15 years Precimet has delivered subcontracted production and manufacturing outsourcing to industrial customers across Poland. We work from your documentation — or help you prepare it — from one-off prototypes to repeatable production series.',
+      p1: 'Precimet is built on more than 30 years of metalworking experience. We deliver subcontracted production and manufacturing outsourcing to industrial customers across Poland. We work from your documentation — or help you prepare it — from one-off prototypes to repeatable production series.',
       p2: 'We have manufactured more than 3.5 million parts to date. Our warehouse holds over 50 grades of sheet metal, which shortens lead times and decouples your schedule from raw material deliveries. We cooperate with customers’ R&D teams and provide rapid prototyping before serial launch.',
       p3: 'Since 2015 we have operated a certified quality management system compliant with ISO 9001:2015. Every order goes through quality control, and the production process is documented and repeatable.',
       facts: [
-        { value: '15+', label: 'years of experience' },
+        { value: '30+', label: 'years of experience' },
         { value: '3,500,000+', label: 'parts manufactured' },
         { value: '50+', label: 'sheet grades in stock' },
         { value: '100%', label: 'of orders quality-checked' },
@@ -1021,7 +1044,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           title: 'Subcontracting experience',
-          desc: 'Over 15 years of working to industrial customers’ documentation. We know OEM reality: revision changes, audits, delivery schedules.',
+          desc: 'Over 30 years of experience working to industrial customers’ documentation. We know OEM reality: revision changes, audits, delivery schedules.',
         },
       ],
       machineNote:
@@ -1118,6 +1141,20 @@ export const ui: Record<Locale, Dict> = {
       title: 'Send us a drawing — we\u2019ll come back with a quote',
       pageTitle: 'Request a quote — laser cutting, bending and CNC machining',
       lead: 'Got documentation, a 3D model or just a sketch? Write to us. We quote quickly and concretely.',
+      rfq: {
+        title: 'How to prepare your RFQ',
+        lead: 'A complete request lets us send your quote within 1–2 business days. Please include:',
+        items: [
+          'A 2D drawing or 3D model of the part',
+          'Material grade and thickness',
+          'Quantity — a single batch or a series forecast',
+          'Your target delivery date',
+          'Quality requirements, e.g. documentation or material certificates',
+        ],
+        formatsLabel: 'Accepted formats',
+        formats: 'STEP, STP, IGES, IGS, DXF, DWG, PDF',
+        noModel: 'No 3D model? Send a sketch or a sample part and we will help you complete the documentation.',
+      },
       form: {
         name: 'Full name *',
         company: 'Company',
@@ -1219,7 +1256,7 @@ export const ui: Record<Locale, Dict> = {
       ctaSecondary: 'Kontakt aufnehmen',
       chips: ['Laserschneiden', 'Blechbiegen', 'Schweißen', 'CNC-Bearbeitung', 'Montage'],
       stats: [
-        { value: '15+', label: 'Jahre in der industriellen Lohnfertigung' },
+        { value: '30+', label: 'Jahre Erfahrung in der Metallbearbeitung' },
         { value: '3,5 Mio.', label: 'gefertigte Teile für Kunden' },
         { value: '50+', label: 'Blechsorten auf Lager' },
         { value: 'ISO 9001', label: 'zertifiziertes QM-System seit 2015' },
@@ -1228,11 +1265,11 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'Über uns',
       title: 'Ein Fertigungspartner, nicht nur ein Zulieferer',
-      p1: 'Seit über 15 Jahren realisiert Precimet Lohnfertigung und Produktions-Outsourcing für Industriekunden aus ganz Polen. Wir fertigen nach Ihrer Dokumentation — oder unterstützen bei deren Erstellung — vom Einzelprototyp bis zur wiederholgenauen Serienproduktion.',
+      p1: 'Hinter Precimet stehen über 30 Jahre Erfahrung in der Metallbearbeitung. Wir realisieren Lohnfertigung und Produktions-Outsourcing für Industriekunden aus ganz Polen. Wir fertigen nach Ihrer Dokumentation — oder unterstützen bei deren Erstellung — vom Einzelprototyp bis zur wiederholgenauen Serienproduktion.',
       p2: 'Bis heute haben wir über 3,5 Millionen Teile gefertigt. Unser Lager umfasst mehr als 50 Blechsorten — das verkürzt Lieferzeiten und macht Ihren Zeitplan unabhängig von Materiallieferungen. Wir arbeiten mit den F&E-Abteilungen unserer Kunden zusammen und bieten Rapid Prototyping vor dem Serienstart.',
       p3: 'Seit 2015 arbeiten wir mit einem zertifizierten Qualitätsmanagementsystem nach ISO 9001:2015. Jeder Auftrag durchläuft die Qualitätskontrolle, der Fertigungsprozess ist dokumentiert und reproduzierbar.',
       facts: [
-        { value: '15+', label: 'Jahre Erfahrung' },
+        { value: '30+', label: 'Jahre Erfahrung' },
         { value: '3.500.000+', label: 'gefertigte Teile' },
         { value: '50+', label: 'Blechsorten ab Lager' },
         { value: '100%', label: 'der Aufträge qualitätsgeprüft' },
@@ -1499,7 +1536,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           title: 'Erfahrung in der Lohnfertigung',
-          desc: 'Über 15 Jahre Fertigung nach Kundendokumentation. Wir kennen die OEM-Realität: Revisionsänderungen, Audits, Lieferpläne.',
+          desc: 'Über 30 Jahre Erfahrung in der Fertigung nach Kundendokumentation. Wir kennen die OEM-Realität: Revisionsänderungen, Audits, Lieferpläne.',
         },
       ],
       machineNote:
@@ -1596,6 +1633,20 @@ export const ui: Record<Locale, Dict> = {
       title: 'Senden Sie uns eine Zeichnung — wir melden uns mit einem Angebot',
       pageTitle: 'Angebotsanfrage — Laserschneiden, Biegen und CNC-Bearbeitung',
       lead: 'Sie haben eine Dokumentation, ein 3D-Modell oder nur eine Skizze? Schreiben Sie uns. Wir kalkulieren schnell und konkret.',
+      rfq: {
+        title: 'So bereiten Sie Ihre Anfrage vor',
+        lead: 'Mit einer vollständigen Anfrage erhalten Sie unser Angebot innerhalb von 1–2 Werktagen. Bitte senden Sie:',
+        items: [
+          'Eine 2D-Zeichnung oder ein 3D-Modell des Teils',
+          'Werkstoffgüte und Materialstärke',
+          'Stückzahl — Einzellos oder Serienprognose',
+          'Gewünschten Liefertermin',
+          'Qualitätsanforderungen, z. B. Dokumentation oder Materialzeugnisse',
+        ],
+        formatsLabel: 'Akzeptierte Formate',
+        formats: 'STEP, STP, IGES, IGS, DXF, DWG, PDF',
+        noModel: 'Kein 3D-Modell? Senden Sie eine Skizze oder ein Musterteil — wir helfen, die Dokumentation zu vervollständigen.',
+      },
       form: {
         name: 'Vor- und Nachname *',
         company: 'Firma',

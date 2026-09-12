@@ -104,7 +104,8 @@ const breadcrumbs = noindex ? null : breadcrumbSchema(site, locale, basePath, di
     <link rel="alternate" hreflang="x-default" href={xDefault} />
 
     {/* Markdown content negotiation for AI agents (acceptmarkdown.com / RFC 8288) */}
-    <link rel="alternate" type="text/markdown" href={markdownHref} />
+    {/* Strony noindex (podziękowania) nie mają wariantu .md — nie wystawiamy martwego linku. */}
+    {!noindex && <link rel="alternate" type="text/markdown" href={markdownHref} />}
 
     {/* Open Graph / Twitter */}
     <meta property="og:type" content={ogType ?? 'website'} />

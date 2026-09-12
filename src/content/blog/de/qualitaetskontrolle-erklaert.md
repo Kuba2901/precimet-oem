@@ -62,7 +62,6 @@ Abhängig vom Auftrag kann das Qualitätspaket umfassen:
 | **Erstmusterprüfungsbericht** | Erstes Teil der Serie erfüllt alle Zeichnungsmaße |
 | **Maßmessprotokoll** | Ausgewählte Teile mit Messmitteln gemessen, Ergebnisse dokumentiert |
 | **Schweißprotokoll** | Schweißverfahren, Parameter, Schweißerqualifikation (falls zutreffend) |
-| **Oberflächenbehandlungsprotokoll** | Beschichtungskontrolle (Qualität, Dicke) |
 | **Lieferschein / Packliste** | Stückzahl, Teilenummern, Auftragsnummer |
 
 Das Niveau der Dokumentation hängt vom Auftrag ab. Eine Halterung für einen Maschinenrahmen benötigt möglicherweise nur einen Lieferschein. Ein Teil für die Lebensmittel- oder Medizintechnik kann das vollständige Set erfordern.

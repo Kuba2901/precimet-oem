@@ -4,7 +4,7 @@ export const GET: APIRoute = async () => {
   const content = `# Polityka Prywatności — Precimet OEM Manufacturing
 
 ## 1. Administrator danych
-Administratorem Twoich danych osobowych jest **PRECIMET H.C.E. Sp. z o.o.** z siedzibą w Łodzi (92-735), ul. Pomorska 555, KRS: 0000503010, NIP: PL7272841275, REGON: 363114171, kapitał zakładowy: 100.000,00 PLN.
+Administratorem Twoich danych osobowych jest **PRECIMET H.C.E. Sp. z o.o.** z siedzibą w Łodzi (92-735), ul. Pomorska 555, KRS: 0000587797, NIP: PL7282804918, REGON: 363114171, kapitał zakładowy: 101.000,00 PLN.
 
 ## 2. Dane kontaktowe
 - **Adres**: ul. Pomorska 555, 92-735 Łódź, Polska
