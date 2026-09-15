@@ -22,7 +22,7 @@ const rfq = dict.contact.rfq;
 const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === 'de' ? '/danke' : '/thank-you');
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
 
-const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
+const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
 ---
 
 <section id="kontakt" class="section section--dark contact">
@@ -87,7 +87,7 @@ const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
     <form
       class="contact__form reveal"
       method="POST"
-      action={`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`}
+      action={`https://formsubmit.co/ajax/${FORM_ENDPOINT_ID}`}
       enctype="multipart/form-data"
     >
       <input type="hidden" name="_captcha" value="false" />
