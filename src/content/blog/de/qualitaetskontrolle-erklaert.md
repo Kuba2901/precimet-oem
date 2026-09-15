@@ -1,9 +1,9 @@
 ---
-title: "Über Qualitätskontrolle"
+title: "Qualitätskontrolle in der Lohnfertigung"
 description: "Wareneingangsprüfung, Fertigungskontrollen, Endprüfung und Qualitätsdokumentationspaket — wie der Weg der Qualitätskontrolle bei einem Standard-Lohnfertigungsauftrag aussieht."
 date: 2026-09-01
 lang: de
-cover: "https://images.unsplash.com/photo-1758873263563-5ba4aa330799?auto=format&fit=crop&w=1400&q=70"
+cover: "/blog/kontrola-jakosci.webp"
 tags: ["Qualitätskontrolle", "ISO 9001", "Auftragsfertigung"]
 translationKey: "quality-control-explained"
 ---
@@ -62,7 +62,6 @@ Abhängig vom Auftrag kann das Qualitätspaket umfassen:
 | **Erstmusterprüfungsbericht** | Erstes Teil der Serie erfüllt alle Zeichnungsmaße |
 | **Maßmessprotokoll** | Ausgewählte Teile mit Messmitteln gemessen, Ergebnisse dokumentiert |
 | **Schweißprotokoll** | Schweißverfahren, Parameter, Schweißerqualifikation (falls zutreffend) |
-| **Oberflächenbehandlungsprotokoll** | Beschichtungskontrolle (Qualität, Dicke) |
 | **Lieferschein / Packliste** | Stückzahl, Teilenummern, Auftragsnummer |
 
 Das Niveau der Dokumentation hängt vom Auftrag ab. Eine Halterung für einen Maschinenrahmen benötigt möglicherweise nur einen Lieferschein. Ein Teil für die Lebensmittel- oder Medizintechnik kann das vollständige Set erfordern.

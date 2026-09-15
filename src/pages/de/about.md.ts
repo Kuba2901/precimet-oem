@@ -1,33 +1,36 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
-  const content = `# Über uns — Precimet OEM Manufacturing
+  const content = `# Über Precimet OEM Manufacturing
 
-> PRECIMET H.C.E. Sp. z o.o. ist ein polnischer Lohnfertigungsbetrieb mit Sitz in Łódź (ul. Pomorska 555), spezialisiert auf Blechbearbeitung, CNC-Zerspanung, Roboterschweißen und Serienfertigung nach ISO 9001:2015.
+> PRECIMET H.C.E. Sp. z o.o. ist ein Lohnfertigungsbetrieb in Łódź, Polen (ul. Pomorska 555): Laserschneiden, Abkanten, Schweißen, CNC-Bearbeitung und Montage für OEMs. Über 30 Jahre Erfahrung in der Metallbearbeitung, ISO 9001:2015 zertifiziert seit 2015.
 
-## 1. Unternehmensprofil & Erfahrung
-Seit über 30 Jahren ist Precimet ein bewährter Lohnfertiger für Industriekunden in der DACH-Region und ganz Europa. Wir beliefern die Branchen HVAC (Lüftung/Klima), Bahntechnik, Maschinenbau, Automotive, Energietechnik und Schaltschrankbau.
+## 1. Unternehmensprofil
+Hinter Precimet stehen über 30 Jahre Erfahrung in der Metallbearbeitung. Wir fertigen u. a. für Maschinen- und Anlagenbauer, Automatisierungsintegratoren und OEM-Unternehmen, darunter Kunden aus Lebensmittelindustrie, Energiewirtschaft, Transport und Logistik, Bau, Metallmöbelbau und Agrartechnik. Bisher haben wir über 3,5 Millionen Teile gefertigt — vom Einzelprototyp bis zur Serie.
 
-## 2. Fertigungskapazitäten & Maschinenpark
-- **Faserlaserschneiden (Fiber)**: Mazak Optiplex Nexus 3015 Fiber 4kW (Baustahl bis 20 mm, Edelstahl bis 15 mm, Aluminium bis 12 mm).
-- **CNC-Abkanten / Blechbiegen**: SafanDarley Abkantpressen bis 320 Tonnen Presskraft und 4000 mm Biegelänge mit aktiver Bombierung.
-- **CNC-Zerspanung**: Doosan DNM 750L Vertikal-Bearbeitungszentrum, Avia VMC 650 sowie Doosan Lynx 300M CNC-Drehzentren mit angetriebenen Werkzeugen.
-- **Roboter- und Handschweißen**: OTC Daihen 6-Achs-Schweißroboterzelle und zertifizierte WIG-, MIG- und MAG-Schweißarbeitsplätze.
-- **Pulverbeschichtung**: Automatische Pulverbeschichtungsanlage mit chemischer Vorbehandlung (RAL-Farben, C2–C5 Schutz).
-- **Baugruppenmontage**: PEM-Einpressbefestiger, Dichtungen, Baugruppenmontage und europaweiter Speditionsversand (DAP/EXW).
+## 2. Fertigungskapazitäten
+- **Laserschneiden**: Mazak Nexus Optiplex 2D, Faserlaser 4 kW, Tafelformat bis 3000 × 1500 mm; Baustahl sowie Edelstahl und säurebeständiger Stahl bis 20 mm, Aluminium bis 10 mm, Messing, Kupfer.
+- **Abkanten**: servoelektrische Abkantpresse Safan, Biegelänge bis 3000 mm, Presskraft bis 160 t.
+- **CNC-Zerspanung**: Doosan DNM-750L (2160 × 762 × 650 mm), Avia VMC 650 (650 × 540 × 620 mm), Romi 510 (bis 1500 mm, ⌀255 mm), Doosan Lynx 300M (bis 712 mm, ⌀254 mm).
+- **Schweißen**: Schweißroboter OTC Daihen (2000 × 1000 × 400 mm), manuelles MIG/MAG- und WIG-Schweißen.
+- **Profile und Rohre**: CNC-Säge IMET (Gehrungsschnitt −60° / 0 / +60°), Rohrbiegemaschine SOCO (⌀25, ⌀32, ⌀50 mm).
+- **Montage**: mechanische und Elektromontage — von Kabelsätzen bis zu kompletten Schaltschränken und Modulen.
+- **Technologische Beratung**: Fertigungsdokumentation, Blechabwicklungen, CAM-Programme, Materialberatung.
 
-## 3. Qualitätsmanagement
-- Zertifiziert nach **ISO 9001:2015**.
-- 3D-Koordinatenmessarme, optische Prüfmittel, 3.1 Werkszeugnisse nach EN 10204.
+Pulverbeschichtung und andere Beschichtungsleistungen bieten wir nicht an.
+
+## 3. Qualität
+- Zertifiziertes Qualitätsmanagementsystem nach **ISO 9001:2015** seit 2015.
+- Eingangs-, Zwischen- und Endprüfung; Qualitätsdokumentation und Materialzeugnisse auf Anfrage.
 
 ## 4. Unternehmensdaten & Handelsregister
-- **Rechtsform**: PRECIMET H.C.E. Sp. z o.o.
+- **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Firmensitz**: ul. Pomorska 555, 92-735 Łódź, Polen
-- **Handelsregister (KRS)**: 0000503010
-- **Umsatzsteuer-ID (USt-IdNr.)**: PL7272841275
+- **Handelsregister (KRS)**: 0000587797 (Amtsgericht Łódź-Śródmieście, 20. Handelsregisterabteilung)
+- **Umsatzsteuer-ID (USt-IdNr.)**: PL7282804918
 - **Statistische Nummer (REGON)**: 363114171
-- **Stammkapital**: 100.000,00 PLN
-- **E-Mail für Anfragen**: produkcja@precimet.pl | Tel: +48 422 080 402
+- **Stammkapital**: 101.000,00 PLN
+- **Anfragen**: [Anfrageformular](https://oem.precimet.pl/de/contact/) | Tel: +48 422 080 402
 `;
 
   return new Response(content, {

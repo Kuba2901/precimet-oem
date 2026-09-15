@@ -1,9 +1,9 @@
 ---
-title: "About bending parts on the press"
+title: "Designing for Sheet Metal Bending: 5 Rules"
 description: "Minimum flange length, bend radius, bend allowance and K-factor, relief cuts and realistic tolerances — five rules we apply on subcontracted bending orders."
 date: 2026-08-27
 lang: en
-cover: "https://images.unsplash.com/photo-1598299803213-d894fb2ab97d?auto=format&fit=crop&w=1400&q=70"
+cover: "/blog/giecie-blach.webp"
 tags: ["sheet bending", "design for manufacturing", "engineering tips"]
 translationKey: "bending-dfm-tips"
 ---

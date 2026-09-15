@@ -5,26 +5,46 @@ import { path } from '../i18n/config';
 
 interface Props {
   locale: Locale;
+  /**
+   * Poziom nagłówka sekcji. Na stronie głównej to `h2` (h1 należy do Hero),
+   * na samodzielnej stronie /contact — `h1`, bo inaczej strona nie ma h1 w ogóle.
+   */
+  as?: 'h1' | 'h2';
 }
 
-const { locale } = Astro.props;
+const { locale, as = 'h2' } = Astro.props;
+const Heading = as;
 const dict = t(locale);
 const f = dict.contact.form;
 const info = dict.contact.info;
 const map = dict.contact.map;
+const rfq = dict.contact.rfq;
 const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === 'de' ? '/danke' : '/thank-you');
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
 
-const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
+const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
 ---
 
 <section id="kontakt" class="section section--dark contact">
   <div class="container contact__grid">
     <div class="contact__intro reveal">
       <p class="eyebrow">{dict.contact.eyebrow}</p>
-      <h2>{dict.contact.title}</h2>
+      <Heading>{as === 'h1' ? dict.contact.pageTitle : dict.contact.title}</Heading>
       <hr class="laser-line" />
       <p class="contact__lead">{dict.contact.lead}</p>
+
+      {/* Tylko samodzielna strona /contact — odróżnia ją od sekcji na stronie głównej. */}
+      {as === 'h1' && (
+        <div class="contact__rfq">
+          <h2>{rfq.title}</h2>
+          <p>{rfq.lead}</p>
+          <ul class="contact__rfq-list">
+            {rfq.items.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="contact__rfq-formats"><span class="spec">{rfq.formatsLabel}:</span> {rfq.formats}</p>
+          <p class="contact__rfq-note">{rfq.noModel}</p>
+        </div>
+      )}
 
       <div class="contact__info">
         <h3>{info.title}</h3>
@@ -39,8 +59,6 @@ const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
               return <span class="spec">{line}</span>;
             })}
           </dd>
-          <dt class="spec">{info.emailLabel}</dt>
-          <dd><a href={`mailto:${info.email}`}>{info.email}</a></dd>
           <dt class="spec">{info.hoursLabel}</dt>
           <dd>{info.hours}</dd>
         </dl>
@@ -69,7 +87,7 @@ const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
     <form
       class="contact__form reveal"
       method="POST"
-      action={`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`}
+      action={`https://formsubmit.co/ajax/${FORM_ENDPOINT_ID}`}
       enctype="multipart/form-data"
     >
       <input type="hidden" name="_captcha" value="false" />
@@ -194,7 +212,19 @@ const RECIPIENT_EMAIL = 'produkcja@precimet.pl';
     align-items: start;
   }
 
+  /* Na /contact nagłówek jest h1, ale ma zachować skalę sekcji (h2),
+     a nie globalną skalę h1 (do 4.4rem), która rozsadziłaby ten układ. */
+  .contact__intro h1 { font-size: clamp(2rem, 4.2vw, 3rem); }
+
   .contact__lead { color: var(--c-text-inverse-muted); }
+
+  .contact__rfq { margin-top: 2rem; }
+  .contact__rfq h2 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+  .contact__rfq p,
+  .contact__rfq-list { color: var(--c-text-inverse-muted); }
+  .contact__rfq-list { display: grid; gap: 0.35rem; margin: 0 0 1rem; padding-left: 1.2rem; }
+  .contact__rfq-formats { font-size: 0.95rem; }
+  .contact__rfq-note { font-size: 0.9rem; }
 
   .contact__info { margin-top: 2rem; }
 

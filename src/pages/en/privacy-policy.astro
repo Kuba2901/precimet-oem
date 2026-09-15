@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { path } from '../../i18n/config';
 import { t } from '../../i18n/ui';
 
 const locale = 'en' as const;
@@ -19,7 +20,7 @@ const dict = t(locale);
       <div class="legal__content prose reveal">
         <h2>1. Data Controller</h2>
         <p>
-          The controller of your personal data is <strong>PRECIMET H.C.E. Sp. z o.o.</strong> with its registered office in Łódź (92-735), ul. Pomorska 555, entered into the National Court Register (KRS) kept by the District Court for Łódź-Śródmieście, 20th Commercial Division, under KRS number 0000503010, NIP: 7272841275, REGON: 363114171, share capital: 100,000.00 PLN (hereinafter "we", "us", "controller").
+          The controller of your personal data is <strong>PRECIMET H.C.E. Sp. z o.o.</strong> with its registered office in Łódź (92-735), ul. Pomorska 555, entered into the National Court Register (KRS) kept by the District Court for Łódź-Śródmieście, 20th Commercial Division, under KRS number 0000587797, NIP: 7282804918, REGON: 363114171, share capital: 101,000.00 PLN (hereinafter "we", "us", "controller").
         </p>
 
         <h2>2. Contact Details</h2>
@@ -27,7 +28,7 @@ const dict = t(locale);
           PRECIMET H.C.E. Sp. z o.o.<br />
           ul. Pomorska 555<br />
           92-735 Łódź, Poland<br />
-          E-mail: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a><br />
+          Contact form: <a href={path(locale, '/contact')}>oem.precimet.pl/en/contact</a><br />
           Phone: +48 422 080 402
         </address>
 
@@ -101,7 +102,7 @@ const dict = t(locale);
           <li>object to processing based on legitimate interest (Art. 21 GDPR),</li>
           <li>withdraw consent at any time (if processing based on Art. 6(1)(a) GDPR) — withdrawal does not affect lawfulness of processing before withdrawal.</li>
         </ul>
-        <p>To exercise the above rights, contact us: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a>.</p>
+        <p>To exercise the above rights, contact us via the <a href={path(locale, '/contact')}>contact form</a>, by phone at +48 422 080 402, or by post at the address in section 2.</p>
 
         <h2>8. Right to Lodge a Complaint</h2>
         <p>You have the right to lodge a complaint with the President of the Personal Data Protection Office (PUODO), ul. Stawki 2, 00-193 Warsaw, if you consider that the processing of your personal data violates the GDPR.</p>

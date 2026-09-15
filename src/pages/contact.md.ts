@@ -1,30 +1,33 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
-  const content = `# Kontakt & Zapytania Ofertowe (RFQ) — Precimet OEM Manufacturing
+  const content = `# Zapytanie ofertowe (RFQ) — Precimet OEM Manufacturing
 
-## Dane Kontaktowe Zakładu Produkcyjnego
+## Kontakt
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Adres**: ul. Pomorska 555, 92-735 Łódź, Polska
-- **Telefon**: +48 422 080 402
-- **E-mail RFQ**: produkcja@precimet.pl
-- **Godziny pracy**: Poniedziałek – Piątek, 07:00 – 15:00 CET
-- **Formularz kontaktowy online**: [https://oem.precimet.pl/contact](https://oem.precimet.pl/contact)
+- **Cięcie laserowe, obróbka metalu**: +48 422 080 402, +48 422 080 419, +48 422 080 413, +48 422 080 418
+- **Biuro**: +48 42 672 57 10, +48 422 080 400
+- **Godziny pracy**: pon.–pt. 8:00–16:00
+- **Formularz online**: [https://oem.precimet.pl/contact/](https://oem.precimet.pl/contact/)
 
-## Jak przesłać zapytanie ofertowe (RFQ)?
-Aby otrzymać szybką i precyzyjną wycenę w ciągu 24–48 godzin, prześlij:
-1. **Modele 3D**: formaty \`.step\`, \`.stp\`, \`.iges\`.
-2. **Rysunki 2D**: formaty \`.dxf\`, \`.dwg\`, \`.pdf\` (z zaznaczonymi tolerancjami, gwintami, chropowatością).
-3. **Specyfikację materiału**: gatunek stali, grubość, stan wykończenia.
-4. **Wielkość partii**: planowany nakład serii oraz prognozę roczną.
-5. **Wymagania powłokowe**: kolor RAL, grubość powłoki lakierniczej, klasa korozyjności.
-6. **Miejsce dostawy**: kod pocztowy, warunki Incoterms (DAP / EXW).
+## Jak przygotować zapytanie ofertowe
+Kompletne zapytanie pozwala nam przygotować ofertę w ciągu 1–2 dni roboczych. Prześlij:
+1. Rysunek 2D lub model 3D detalu
+2. Gatunek i grubość materiału
+3. Liczbę sztuk — pojedynczą partię lub prognozę serii
+4. Oczekiwany termin realizacji
+5. Wymagania jakościowe, np. dokumentację lub świadectwa materiałowe
 
-## Dane Rejestrowe Spółki
-- **KRS**: 0000503010 (Sąd Rejonowy dla Łodzi-Śródmieścia w Łodzi)
-- **NIP**: PL7272841275
+**Akceptowane formaty**: STEP, STP, IGES, IGS, DXF, DWG, PDF. Nie masz modelu 3D? Prześlij szkic lub próbkę — pomożemy uzupełnić dokumentację.
+
+Nie narzucamy minimalnej wielkości zamówienia. Czas realizacji potwierdzamy w ofercie.
+
+## Dane rejestrowe
+- **KRS**: 0000587797 (Sąd Rejonowy dla Łodzi-Śródmieścia w Łodzi, XX Wydział Gospodarczy KRS)
+- **NIP**: PL7282804918
 - **REGON**: 363114171
-- **Kapitał zakładowy**: 100.000,00 PLN
+- **Kapitał zakładowy**: 101.000,00 PLN
 `;
 
   return new Response(content, {

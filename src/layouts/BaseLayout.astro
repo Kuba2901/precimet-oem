@@ -12,6 +12,7 @@ import {
 } from '../i18n/config';
 import { t } from '../i18n/ui';
 import CookieConsent from '../components/CookieConsent.astro';
+import { breadcrumbSchema, organizationSchema } from '../lib/schema';
 
 interface Props {
   locale: Locale;
@@ -19,13 +20,20 @@ interface Props {
   description?: string;
   /** Ścieżka bez prefiksu językowego, np. '/blog' — używana do hreflang. */
   pagePath?: string;
+  /**
+   * Nadpisuje hreflang dla stron, których slug różni się między językami
+   * (np. wpisy bloga). Klucz = język, wartość = ścieżka bez prefiksu językowego.
+   * Brakujący język = brak wpisu hreflang, zamiast linku do nieistniejącej strony.
+   */
+  alternates?: Partial<Record<Locale, string>>;
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: string;
   noindex?: boolean;
 }
 
-const { locale, title, description, pagePath, ogImage, ogImageAlt, ogType, noindex } = Astro.props;
+const { locale, title, description, pagePath, alternates, ogImage, ogImageAlt, ogType, noindex } =
+  Astro.props;
 const dict = t(locale);
 
 const metaTitle = title ?? dict.seo.title;
@@ -33,23 +41,45 @@ const metaDescription = description ?? dict.seo.description;
 const basePath = pagePath ?? stripLocale(Astro.url);
 const site = Astro.site ?? new URL('https://oem.precimet.pl');
 const canonical = new URL(path(locale, basePath), site).href;
-const ogImg = ogImage ?? new URL(`${import.meta.env.BASE_URL}og-image.png`, site).href;
+const ogImg = ogImage ?? new URL(`${import.meta.env.BASE_URL}og-image.jpg`, site).href;
 const ogAlt = ogImageAlt ?? metaTitle;
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Precimet',
-  alternateName: 'Precimet OEM Manufacturing',
-  url: site.href,
-  logo: new URL(`${import.meta.env.BASE_URL}logo.png`, site).href,
-  description: metaDescription,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Łódź',
-    addressCountry: 'PL',
-  },
+/* x-default wskazuje wersję polską — z mapy `alternates`, jeśli została podana. */
+const xDefault = new URL(
+  alternates ? path('pl', alternates.pl ?? basePath) : localizedPath('pl', basePath),
+  site
+).href;
+
+/* Wariant markdown dla agentów AI: /about/ -> /about.md, / -> /index.md */
+const markdownHref = new URL(
+  basePath === '/'
+    ? locale === 'pl'
+      ? '/index.md'
+      : `/${locale}/index.md`
+    : `${path(locale, basePath).replace(/\/$/, '')}.md`,
+  site
+).href;
+
+const jsonLd = organizationSchema(site, metaDescription);
+
+/*
+ * Okruszki wyliczane ze ścieżki. Etykiety z nawigacji tam, gdzie istnieją;
+ * dla pozostałych stron (np. wpis bloga, polityka prywatności) bierzemy
+ * początek tytułu, czyli to, co i tak jest nagłówkiem strony.
+ */
+const NAV_LABELS: Record<string, string> = {
+  '/about': dict.nav.about,
+  '/contact': dict.nav.contact,
+  '/blog': dict.nav.blog,
 };
+
+const segments = basePath.split('/').filter(Boolean);
+const crumbs = segments.map((_, i) => {
+  const p = `/${segments.slice(0, i + 1).join('/')}`;
+  return { label: NAV_LABELS[p] ?? metaTitle.split('—')[0].trim(), path: p };
+});
+
+const breadcrumbs = noindex ? null : breadcrumbSchema(site, locale, basePath, dict.nav.home, crumbs);
 ---
 
 <!doctype html>
@@ -64,17 +94,18 @@ const jsonLd = {
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}logo.png`} />
 
     {/* hreflang — każda wersja językowa wskazuje właściwy przetłumaczony URL */}
-    {LOCALES.map((l) => (
-      <link rel="alternate" hreflang={l} href={new URL(localizedPath(l, basePath), site).href} />
-    ))}
-    <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('pl', basePath), site).href} />
+    {LOCALES.map((l) =>
+      alternates
+        ? alternates[l] && (
+            <link rel="alternate" hreflang={l} href={new URL(path(l, alternates[l]!), site).href} />
+          )
+        : <link rel="alternate" hreflang={l} href={new URL(localizedPath(l, basePath), site).href} />
+    )}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
 
     {/* Markdown content negotiation for AI agents (acceptmarkdown.com / RFC 8288) */}
-    <link
-      rel="alternate"
-      type="text/markdown"
-      href={new URL(basePath === '/' ? (locale === 'pl' ? '/index.md' : `/${locale}/index.md`) : `${path(locale, basePath)}.md`, site).href}
-    />
+    {/* Strony noindex (podziękowania) nie mają wariantu .md — nie wystawiamy martwego linku. */}
+    {!noindex && <link rel="alternate" type="text/markdown" href={markdownHref} />}
 
     {/* Open Graph / Twitter */}
     <meta property="og:type" content={ogType ?? 'website'} />
@@ -104,6 +135,9 @@ const jsonLd = {
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    {breadcrumbs && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbs)} />
+    )}
   </head>
   <body>
     <Header locale={locale} />

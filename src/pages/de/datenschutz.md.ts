@@ -4,11 +4,11 @@ export const GET: APIRoute = async () => {
   const content = `# Datenschutzerklärung — Precimet OEM Manufacturing
 
 ## 1. Verantwortlicher
-Verantwortlicher für die Datenverarbeitung ist **PRECIMET H.C.E. Sp. z o.o.**, ul. Pomorska 555, 92-735 Łódź, Polen, KRS: 0000503010, USt-IdNr.: PL7272841275, REGON: 363114171, Stammkapital: 100.000,00 PLN.
+Verantwortlicher für die Datenverarbeitung ist **PRECIMET H.C.E. Sp. z o.o.**, ul. Pomorska 555, 92-735 Łódź, Polen, KRS: 0000587797, USt-IdNr.: PL7282804918, REGON: 363114171, Stammkapital: 101.000,00 PLN.
 
 ## 2. Kontaktdaten
 - **Adresse**: ul. Pomorska 555, 92-735 Łódź, Polen
-- **E-Mail**: produkcja@precimet.pl
+- **Kontaktformular**: [https://oem.precimet.pl/de/contact/](https://oem.precimet.pl/de/contact/)
 - **Telefon**: +48 422 080 402
 
 ## 3. Zwecke und Rechtsgrundlagen der Verarbeitung

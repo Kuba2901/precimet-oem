@@ -1,9 +1,9 @@
 ---
-title: "O kontroli jakości"
+title: "Kontrola jakości w kooperacji: krok po kroku"
 description: "Kontrola przychodząca, kontrola w trakcie produkcji, odbiór końcowy i pakiet dokumentacji jakościowej — jak wygląda ścieżka kontroli jakości przy standardowym zleceniu kooperacyjnym."
 date: 2026-09-01
 lang: pl
-cover: "https://images.unsplash.com/photo-1758873263563-5ba4aa330799?auto=format&fit=crop&w=1400&q=70"
+cover: "/blog/kontrola-jakosci.webp"
 tags: ["kontrola jakości", "ISO 9001", "produkcja kontraktowa"]
 translationKey: "quality-control-explained"
 ---
@@ -62,7 +62,6 @@ W zależności od zamówienia, pakiet jakościowy może obejmować:
 | **Protokół kontroli pierwszej sztuki** | Pierwsza część w serii spełnia wszystkie wymiary rysunkowe |
 | **Raport pomiarowy** | Wybrane części zmierzone przyrządami pomiarowymi, wyniki zarejestrowane |
 | **Protokół spawalniczy** | Metoda spawania, parametry, kwalifikacja spawacza (jeśli dotyczy) |
-| **Protokół obróbki powierzchniowej** | Kontrola powłoki (jakość, grubość) |
 | **WZ / lista przewozowa** | Ilość, nr części, nr zamówienia |
 
 Poziom dokumentacji zależy od zamówienia. Wspornik do ramy maszynowej może wymagać tylko WZ. Część do przemysłu spożywczego lub medycznego może wymagać pełnego zestawu.

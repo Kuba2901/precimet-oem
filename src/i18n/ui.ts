@@ -53,6 +53,8 @@ type Dict = {
     privacyDescription: string;
   };
   nav: {
+    /** Etykieta strony głównej — używana w okruszkach (BreadcrumbList). */
+    home: string;
     about: string;
     services: string;
     machines: string;
@@ -132,7 +134,18 @@ type Dict = {
   contact: {
     eyebrow: string;
     title: string;
+    /** Nagłówek samodzielnej strony /contact (h1) — niesie frazę kluczową. */
+    pageTitle: string;
     lead: string;
+    /** Lista kontrolna RFQ — tylko na samodzielnej stronie /contact. */
+    rfq: {
+      title: string;
+      lead: string;
+      items: string[];
+      formatsLabel: string;
+      formats: string;
+      noModel: string;
+    };
     form: {
       name: string;
       company: string;
@@ -153,8 +166,6 @@ type Dict = {
       address: string;
       phoneLabel: string;
       phone: string;
-      emailLabel: string;
-      email: string;
       hoursLabel: string;
       hours: string;
       responseNote: string;
@@ -221,9 +232,9 @@ export const ui: Record<Locale, Dict> = {
   pl: {
     seo: {
       title:
-        'Precimet OEM Manufacturing — kooperacja w obróbce metalu | cięcie laserowe, gięcie, spawanie, CNC',
+        'Produkcja kontraktowa metalu — Precimet OEM, Łódź',
       description:
-        'Precimet OEM Manufacturing: partner kooperacyjny w obróbce metalu. Cięcie laserowe blach, gięcie, spawanie ręczne i zrobotyzowane, frezowanie i toczenie CNC, montaż. 15+ lat doświadczenia, ISO 9001:2015, produkcja kontraktowa dla firm OEM z całej Polski.',
+        'Cięcie laserowe, gięcie, spawanie i obróbka CNC dla firm OEM. ISO 9001:2015, od prototypu do serii. Prześlij rysunek — wycenimy w 1–2 dni.',
       blogTitle: 'Blog i aktualności — Precimet OEM Manufacturing',
       blogDescription:
         'Aktualności firmowe, case studies i wiedza technologiczna z obszaru obróbki metalu: cięcie laserowe, gięcie blach, spawanie, obróbka CNC i produkcja kontraktowa.',
@@ -231,6 +242,7 @@ export const ui: Record<Locale, Dict> = {
         'Polityka prywatności serwisu Precimet OEM Manufacturing — jak przetwarzamy dane osobowe, jakie pliki cookies stosujemy i jakie przysługują Ci prawa.',
     },
     nav: {
+      home: 'Strona główna',
       about: 'O firmie',
       services: 'Usługi',
       machines: 'Park maszynowy',
@@ -257,7 +269,7 @@ export const ui: Record<Locale, Dict> = {
         'Montaż',
       ],
       stats: [
-        { value: '15+', label: 'lat w kooperacji przemysłowej' },
+        { value: '30+', label: 'lat doświadczenia w obróbce metali' },
         { value: '3,5 mln', label: 'części wyprodukowanych dla klientów' },
         { value: '50+', label: 'gatunków blach w magazynie' },
         { value: 'ISO 9001', label: 'certyfikowany system jakości od 2015' },
@@ -266,11 +278,11 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'O firmie',
       title: 'Partner kooperacyjny, nie tylko podwykonawca',
-      p1: 'Precimet od ponad 15 lat realizuje zlecenia kooperacyjne i outsourcing produkcji metalowej dla klientów przemysłowych z całej Polski. Pracujemy na dokumentacji klienta lub wspieramy jej przygotowanie — od pojedynczych prototypów po powtarzalne serie produkcyjne.',
+      p1: 'Za Precimet stoi ponad 30 lat doświadczenia w obróbce metali. Realizujemy zlecenia kooperacyjne i outsourcing produkcji metalowej dla klientów przemysłowych z całej Polski. Pracujemy na dokumentacji klienta lub wspieramy jej przygotowanie — od pojedynczych prototypów po powtarzalne serie produkcyjne.',
       p2: 'Wyprodukowaliśmy już ponad 3,5 miliona części. Utrzymujemy magazyn z ponad 50 gatunkami blach, co skraca czas realizacji i uniezależnia harmonogram od dostaw materiału. Współpracujemy z działami R&D klientów i realizujemy szybkie prototypowanie przed uruchomieniem serii.',
       p3: 'Od 2015 roku pracujemy w certyfikowanym systemie zarządzania jakością zgodnym z ISO 9001:2015. Każde zlecenie przechodzi kontrolę jakości, a proces produkcji jest udokumentowany i powtarzalny.',
       facts: [
-        { value: '15+', label: 'lat doświadczenia' },
+        { value: '30+', label: 'lat doświadczenia' },
         { value: '3 500 000+', label: 'wyprodukowanych części' },
         { value: '50+', label: 'gatunków blach od ręki' },
         { value: '100%', label: 'zleceń z kontrolą jakości' },
@@ -537,7 +549,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           title: 'Doświadczenie w kooperacji',
-          desc: 'Od ponad 15 lat produkujemy na podstawie dokumentacji klientów przemysłowych. Znamy realia współpracy OEM: zmiany rewizji, audyty, wymagania jakościowe i harmonogramy dostaw.',
+          desc: 'Mamy ponad 30 lat doświadczenia w produkcji na podstawie dokumentacji klientów przemysłowych. Znamy realia współpracy OEM: zmiany rewizji, audyty, wymagania jakościowe i harmonogramy dostaw.',
         },
       ],
       machineNote:
@@ -631,8 +643,23 @@ export const ui: Record<Locale, Dict> = {
     contact: {
       eyebrow: 'Kontakt',
       title: 'Prześlij rysunek — odezwiemy się z wyceną',
+      pageTitle: 'Zapytanie ofertowe — cięcie laserowe, gięcie i obróbka CNC',
       lead:
         'Masz dokumentację, model 3D albo tylko szkic? Napisz do nas. Zapytania wyceniamy szybko i konkretnie.',
+      rfq: {
+        title: 'Jak przygotować zapytanie ofertowe',
+        lead: 'Kompletne zapytanie pozwala nam przygotować ofertę w ciągu 1–2 dni roboczych. Prześlij:',
+        items: [
+          'Rysunek 2D lub model 3D detalu',
+          'Gatunek i grubość materiału',
+          'Liczbę sztuk — pojedynczą partię lub prognozę serii',
+          'Oczekiwany termin realizacji',
+          'Wymagania jakościowe, np. dokumentację lub świadectwa materiałowe',
+        ],
+        formatsLabel: 'Akceptowane formaty',
+        formats: 'STEP, STP, IGES, IGS, DXF, DWG, PDF',
+        noModel: 'Nie masz modelu 3D? Prześlij szkic lub próbkę — pomożemy uzupełnić dokumentację.',
+      },
       form: {
         name: 'Imię i nazwisko *',
         company: 'Firma',
@@ -646,7 +673,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. *',
         submit: 'Wyślij zapytanie',
         note: 'Pola oznaczone * są wymagane.',
-        error: 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub napisz do nas e-mail.',
+        error: 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie lub zadzwoń: +48 422 080 402.',
       },
       info: {
         title: 'Dane kontaktowe',
@@ -654,8 +681,6 @@ export const ui: Record<Locale, Dict> = {
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Polska',
         phoneLabel: 'Telefon',
         phone: 'Biuro:\n+48 42 672 57 10\n+48 422 080 400\n\nCięcie laserowe, obróbka metalu:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
-        emailLabel: 'E-mail',
-        email: 'produkcja@precimet.pl',
         hoursLabel: 'Godziny pracy',
         hours: 'Pon–Pt: 8:00–16:00',
         responseNote:
@@ -704,9 +729,9 @@ export const ui: Record<Locale, Dict> = {
   en: {
     seo: {
       title:
-        'Precimet OEM Manufacturing — metal fabrication partner | laser cutting, bending, welding, CNC',
+        'Contract Metal Fabrication in Poland — Precimet OEM',
       description:
-        'Precimet OEM Manufacturing: your contract manufacturing partner for metal parts. Sheet metal laser cutting, bending, manual and robotic welding, CNC milling and turning, assembly. 15+ years of experience, ISO 9001:2015, serving OEMs across Poland and the EU.',
+        'Laser cutting, bending, welding and CNC machining for OEMs. ISO 9001:2015, prototype to series. Send a drawing — quoted in 1–2 working days.',
       blogTitle: 'Blog & news — Precimet OEM Manufacturing',
       blogDescription:
         'Company news, case studies and engineering know-how on metal fabrication: laser cutting, sheet metal bending, welding, CNC machining and contract manufacturing.',
@@ -714,6 +739,7 @@ export const ui: Record<Locale, Dict> = {
         'Precimet OEM Manufacturing privacy policy — how we process personal data, what cookies we use and what rights you have.',
     },
     nav: {
+      home: 'Home',
       about: 'About us',
       services: 'Services',
       machines: 'Machine park',
@@ -734,7 +760,7 @@ export const ui: Record<Locale, Dict> = {
       ctaSecondary: 'Contact us',
       chips: ['Laser cutting', 'Sheet bending', 'Welding', 'CNC machining', 'Assembly'],
       stats: [
-        { value: '15+', label: 'years in industrial subcontracting' },
+        { value: '30+', label: 'years of metalworking experience' },
         { value: '3.5 M', label: 'parts manufactured for customers' },
         { value: '50+', label: 'sheet metal grades in stock' },
         { value: 'ISO 9001', label: 'certified quality system since 2015' },
@@ -743,11 +769,11 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'About us',
       title: 'A manufacturing partner, not just a subcontractor',
-      p1: 'For over 15 years Precimet has delivered subcontracted production and manufacturing outsourcing to industrial customers across Poland. We work from your documentation — or help you prepare it — from one-off prototypes to repeatable production series.',
+      p1: 'Precimet is built on more than 30 years of metalworking experience. We deliver subcontracted production and manufacturing outsourcing to industrial customers across Poland. We work from your documentation — or help you prepare it — from one-off prototypes to repeatable production series.',
       p2: 'We have manufactured more than 3.5 million parts to date. Our warehouse holds over 50 grades of sheet metal, which shortens lead times and decouples your schedule from raw material deliveries. We cooperate with customers’ R&D teams and provide rapid prototyping before serial launch.',
       p3: 'Since 2015 we have operated a certified quality management system compliant with ISO 9001:2015. Every order goes through quality control, and the production process is documented and repeatable.',
       facts: [
-        { value: '15+', label: 'years of experience' },
+        { value: '30+', label: 'years of experience' },
         { value: '3,500,000+', label: 'parts manufactured' },
         { value: '50+', label: 'sheet grades in stock' },
         { value: '100%', label: 'of orders quality-checked' },
@@ -1014,7 +1040,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           title: 'Subcontracting experience',
-          desc: 'Over 15 years of working to industrial customers’ documentation. We know OEM reality: revision changes, audits, delivery schedules.',
+          desc: 'Over 30 years of experience working to industrial customers’ documentation. We know OEM reality: revision changes, audits, delivery schedules.',
         },
       ],
       machineNote:
@@ -1109,7 +1135,22 @@ export const ui: Record<Locale, Dict> = {
     contact: {
       eyebrow: 'Contact',
       title: 'Send us a drawing — we\u2019ll come back with a quote',
+      pageTitle: 'Request a quote — laser cutting, bending and CNC machining',
       lead: 'Got documentation, a 3D model or just a sketch? Write to us. We quote quickly and concretely.',
+      rfq: {
+        title: 'How to prepare your RFQ',
+        lead: 'A complete request lets us send your quote within 1–2 business days. Please include:',
+        items: [
+          'A 2D drawing or 3D model of the part',
+          'Material grade and thickness',
+          'Quantity — a single batch or a series forecast',
+          'Your target delivery date',
+          'Quality requirements, e.g. documentation or material certificates',
+        ],
+        formatsLabel: 'Accepted formats',
+        formats: 'STEP, STP, IGES, IGS, DXF, DWG, PDF',
+        noModel: 'No 3D model? Send a sketch or a sample part and we will help you complete the documentation.',
+      },
       form: {
         name: 'Full name *',
         company: 'Company',
@@ -1123,7 +1164,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'I consent to the processing of my data to answer this inquiry. *',
         submit: 'Send inquiry',
         note: 'Fields marked * are required.',
-        error: 'Something went wrong while sending. Try again or email us directly.',
+        error: 'Something went wrong while sending. Try again or call us at +48 422 080 402.',
       },
       info: {
         title: 'Contact details',
@@ -1131,8 +1172,6 @@ export const ui: Record<Locale, Dict> = {
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Poland',
         phoneLabel: 'Phone',
         phone: 'Office:\n+48 42 672 57 10\n+48 422 080 400\n\nLaser cutting, metalworking:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
-        emailLabel: 'E-mail',
-        email: 'produkcja@precimet.pl',
         hoursLabel: 'Working hours',
         hours: 'Mon–Fri: 8:00–16:00 CET',
         responseNote: 'We usually answer inquiries within 1–2 business days.',
@@ -1180,16 +1219,17 @@ export const ui: Record<Locale, Dict> = {
   de: {
     seo: {
       title:
-        'Precimet OEM Manufacturing — Partner für Metallbearbeitung | Laserschneiden, Biegen, Schweißen, CNC',
+        'Lohnfertigung Metall aus Polen — Precimet OEM',
       description:
-        'Precimet OEM Manufacturing: Ihr Partner für Lohnfertigung in der Metallbearbeitung. Laserschneiden von Blechen, Abkanten, manuelles und Roboterschweißen, CNC-Fräsen und -Drehen, Montage. 15+ Jahre Erfahrung, ISO 9001:2015, Auftragsfertigung für OEMs in Polen und der EU.',
+        'Laserschneiden, Abkanten, Schweißen und CNC-Bearbeitung für OEMs. ISO 9001:2015, Prototyp bis Serie. Zeichnung senden — Angebot in 1–2 Tagen.',
       blogTitle: 'Blog & Aktuelles — Precimet OEM Manufacturing',
       blogDescription:
-        'Unternehmensnachrichten, Case Studies und technisches Know-how zur Metallbearbeitung: Laserschneiden, Blechbiegen, Schweißen, CNC-Bearbeitung und Auftragsfertigung.',
+        'Case Studies und technisches Know-how zur Metallbearbeitung: Laserschneiden, Blechbiegen, Schweißen, CNC-Bearbeitung und Lohnfertigung.',
       privacyDescription:
         'Datenschutzerklärung von Precimet OEM Manufacturing — wie wir personenbezogene Daten verarbeiten, welche Cookies wir einsetzen und welche Rechte Ihnen zustehen.',
     },
     nav: {
+      home: 'Startseite',
       about: 'Über uns',
       services: 'Leistungen',
       machines: 'Maschinenpark',
@@ -1210,7 +1250,7 @@ export const ui: Record<Locale, Dict> = {
       ctaSecondary: 'Kontakt aufnehmen',
       chips: ['Laserschneiden', 'Blechbiegen', 'Schweißen', 'CNC-Bearbeitung', 'Montage'],
       stats: [
-        { value: '15+', label: 'Jahre in der industriellen Lohnfertigung' },
+        { value: '30+', label: 'Jahre Erfahrung in der Metallbearbeitung' },
         { value: '3,5 Mio.', label: 'gefertigte Teile für Kunden' },
         { value: '50+', label: 'Blechsorten auf Lager' },
         { value: 'ISO 9001', label: 'zertifiziertes QM-System seit 2015' },
@@ -1219,11 +1259,11 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'Über uns',
       title: 'Ein Fertigungspartner, nicht nur ein Zulieferer',
-      p1: 'Seit über 15 Jahren realisiert Precimet Lohnfertigung und Produktions-Outsourcing für Industriekunden aus ganz Polen. Wir fertigen nach Ihrer Dokumentation — oder unterstützen bei deren Erstellung — vom Einzelprototyp bis zur wiederholgenauen Serienproduktion.',
+      p1: 'Hinter Precimet stehen über 30 Jahre Erfahrung in der Metallbearbeitung. Wir realisieren Lohnfertigung und Produktions-Outsourcing für Industriekunden aus ganz Polen. Wir fertigen nach Ihrer Dokumentation — oder unterstützen bei deren Erstellung — vom Einzelprototyp bis zur wiederholgenauen Serienproduktion.',
       p2: 'Bis heute haben wir über 3,5 Millionen Teile gefertigt. Unser Lager umfasst mehr als 50 Blechsorten — das verkürzt Lieferzeiten und macht Ihren Zeitplan unabhängig von Materiallieferungen. Wir arbeiten mit den F&E-Abteilungen unserer Kunden zusammen und bieten Rapid Prototyping vor dem Serienstart.',
       p3: 'Seit 2015 arbeiten wir mit einem zertifizierten Qualitätsmanagementsystem nach ISO 9001:2015. Jeder Auftrag durchläuft die Qualitätskontrolle, der Fertigungsprozess ist dokumentiert und reproduzierbar.',
       facts: [
-        { value: '15+', label: 'Jahre Erfahrung' },
+        { value: '30+', label: 'Jahre Erfahrung' },
         { value: '3.500.000+', label: 'gefertigte Teile' },
         { value: '50+', label: 'Blechsorten ab Lager' },
         { value: '100%', label: 'der Aufträge qualitätsgeprüft' },
@@ -1490,7 +1530,7 @@ export const ui: Record<Locale, Dict> = {
         },
         {
           title: 'Erfahrung in der Lohnfertigung',
-          desc: 'Über 15 Jahre Fertigung nach Kundendokumentation. Wir kennen die OEM-Realität: Revisionsänderungen, Audits, Lieferpläne.',
+          desc: 'Über 30 Jahre Erfahrung in der Fertigung nach Kundendokumentation. Wir kennen die OEM-Realität: Revisionsänderungen, Audits, Lieferpläne.',
         },
       ],
       machineNote:
@@ -1585,7 +1625,22 @@ export const ui: Record<Locale, Dict> = {
     contact: {
       eyebrow: 'Kontakt',
       title: 'Senden Sie uns eine Zeichnung — wir melden uns mit einem Angebot',
+      pageTitle: 'Angebotsanfrage — Laserschneiden, Biegen und CNC-Bearbeitung',
       lead: 'Sie haben eine Dokumentation, ein 3D-Modell oder nur eine Skizze? Schreiben Sie uns. Wir kalkulieren schnell und konkret.',
+      rfq: {
+        title: 'So bereiten Sie Ihre Anfrage vor',
+        lead: 'Mit einer vollständigen Anfrage erhalten Sie unser Angebot innerhalb von 1–2 Werktagen. Bitte senden Sie:',
+        items: [
+          'Eine 2D-Zeichnung oder ein 3D-Modell des Teils',
+          'Werkstoffgüte und Materialstärke',
+          'Stückzahl — Einzellos oder Serienprognose',
+          'Gewünschten Liefertermin',
+          'Qualitätsanforderungen, z. B. Dokumentation oder Materialzeugnisse',
+        ],
+        formatsLabel: 'Akzeptierte Formate',
+        formats: 'STEP, STP, IGES, IGS, DXF, DWG, PDF',
+        noModel: 'Kein 3D-Modell? Senden Sie eine Skizze oder ein Musterteil — wir helfen, die Dokumentation zu vervollständigen.',
+      },
       form: {
         name: 'Vor- und Nachname *',
         company: 'Firma',
@@ -1599,7 +1654,7 @@ export const ui: Record<Locale, Dict> = {
         consent: 'Ich stimme der Verarbeitung meiner Daten zur Beantwortung dieser Anfrage zu. *',
         submit: 'Anfrage senden',
         note: 'Mit * gekennzeichnete Felder sind Pflichtfelder.',
-        error: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns.',
+        error: 'Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder rufen Sie uns an: +48 422 080 402.',
       },
       info: {
         title: 'Kontaktdaten',
@@ -1607,8 +1662,6 @@ export const ui: Record<Locale, Dict> = {
         address: 'PRECIMET H.C.E. Sp. z o.o.\nul. Pomorska 555\n92-735 Łódź, Polen',
         phoneLabel: 'Telefon',
         phone: 'Büro:\n+48 42 672 57 10\n+48 422 080 400\n\nLaserschneiden, Metallbearbeitung:\n+48 422 080 402\n+48 422 080 419\n+48 422 080 413\n+48 422 080 418',
-        emailLabel: 'E-Mail',
-        email: 'produkcja@precimet.pl',
         hoursLabel: 'Arbeitszeiten',
         hours: 'Mo–Fr: 8:00–16:00 Uhr MEZ',
         responseNote: 'Anfragen beantworten wir in der Regel innerhalb von 1–2 Werktagen.',

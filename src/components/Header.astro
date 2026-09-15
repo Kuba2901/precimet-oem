@@ -12,13 +12,13 @@ const dict = t(locale);
 const home = path(locale, '/');
 
 const links = [
-  { href: `${home}#o-firmie`, label: dict.nav.about },
+  { href: path(locale, '/about'), label: dict.nav.about },
   { href: `${home}#uslugi`, label: dict.nav.services },
   { href: `${home}#park-maszynowy`, label: dict.nav.machines },
   { href: `${home}#dlaczego-my`, label: dict.nav.why },
   { href: `${home}#proces`, label: dict.nav.process },
   { href: path(locale, '/blog'), label: dict.nav.blog },
-  { href: `${home}#kontakt`, label: dict.nav.contact },
+  { href: path(locale, '/contact'), label: dict.nav.contact },
 ];
 ---
 
@@ -44,7 +44,7 @@ const links = [
       </ul>
       <div class="nav__aside">
         <LanguageSwitcher variant="header" />
-        <a class="btn btn--primary nav__cta" href={`${home}#kontakt`}>{dict.nav.cta}</a>
+        <a class="btn btn--primary nav__cta" href={path(locale, '/contact')}>{dict.nav.cta}</a>
       </div>
     </nav>
   </div>

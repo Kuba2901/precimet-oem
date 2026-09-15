@@ -1,51 +1,60 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
-  const content = `# Precimet OEM Manufacturing — Industrielle Lohnfertigung & Metallverarbeitung
+  const content = `# Precimet OEM Manufacturing — Lohnfertigung Metall aus Polen
 
-> Ganzheitliche Lohnfertigung von Blechteilen, Schweißbaugruppen und CNC-Präzisionsteilen in Polen (EU). Über 30 Jahre Erfahrung, ISO 9001:2015 Qualitätszertifizierung und moderner CNC-Maschinenpark in Łódź.
+> Laserschneiden, Abkanten, manuelles und Roboterschweißen, CNC-Bearbeitung und Montage für OEMs — vom Prototyp bis zur Serie. Über 30 Jahre Erfahrung in der Metallbearbeitung, ISO 9001:2015 zertifiziert seit 2015, Produktionswerk in Łódź.
 
 ## Schnellzugriff für KI-Agenten
-- **LLM Übersicht & Einsatzbereiche**: [https://oem.precimet.pl/llms.txt](https://oem.precimet.pl/llms.txt)
+- **LLM-Übersicht**: [https://oem.precimet.pl/llms.txt](https://oem.precimet.pl/llms.txt)
 - **Vollständige Wissensdatenbank**: [https://oem.precimet.pl/llms-full.txt](https://oem.precimet.pl/llms-full.txt)
-- **Über uns**: [https://oem.precimet.pl/de/about](https://oem.precimet.pl/de/about)
-- **Kontakt & Preisanfrage (RFQ)**: [https://oem.precimet.pl/de/contact](https://oem.precimet.pl/de/contact)
-- **Datenschutzerklärung**: [https://oem.precimet.pl/de/privacy](https://oem.precimet.pl/de/privacy)
-- **XML Sitemap**: [https://oem.precimet.pl/sitemap-index.xml](https://oem.precimet.pl/sitemap-index.xml)
+- **Über uns**: [https://oem.precimet.pl/de/about/](https://oem.precimet.pl/de/about/)
+- **Kontakt & Angebotsanfrage (RFQ)**: [https://oem.precimet.pl/de/contact/](https://oem.precimet.pl/de/contact/)
+- **Blog**: [https://oem.precimet.pl/de/blog/](https://oem.precimet.pl/de/blog/)
+- **Datenschutzerklärung**: [https://oem.precimet.pl/de/datenschutz/](https://oem.precimet.pl/de/datenschutz/)
+- **XML-Sitemap**: [https://oem.precimet.pl/sitemap-index.xml](https://oem.precimet.pl/sitemap-index.xml)
 
 ---
 
-## Fertigungsdienstleistungen
+## Leistungen
+1. **Laserschneiden von Blechen** — Stahl, Edelstahl, Aluminium, Messing, Kupfer.
+2. **Blechbiegen** auf einer CNC-Abkantpresse.
+3. **Manuelles Schweißen** — MIG/MAG und WIG von Stahl, Edelstahl und Aluminium.
+4. **Roboterschweißen** für die Serienfertigung.
+5. **CNC-Fräsen** und **CNC-Drehen**.
+6. **CNC-Rohrbiegen** und **CNC-Profilzuschnitt**.
+7. **Mechanische Montage** und **Elektromontage** — von Kabelsätzen bis zu kompletten Schaltschränken und Modulen.
+8. **CAD/CAM-Engineering** — Fertigungsdokumentation, Blechabwicklungen, CAM-Programme, Materialberatung.
+9. **Schlosserarbeiten** — Bohren, Gewindeschneiden, Schleifen und Finish von Teilen.
 
-1. **Faserlaserschneiden (Fiber)**:
-   - Mazak Optiplex Nexus 3015 Fiber 4kW: Baustahl bis 20 mm, Edelstahl bis 15 mm, Aluminium bis 12 mm.
+Pulverbeschichtung und andere Beschichtungsleistungen bieten wir nicht an.
 
-2. **CNC-Abkanten / Blechbiegen**:
-   - SafanDarley Abkantpressen: bis 320 Tonnen Presskraft, 4000 mm Biegelänge mit aktiver Bombierung.
+## Maschinenpark
+| Maschine | Bereich |
+| :--- | :--- |
+| Faserlaser Mazak Nexus Optiplex 2D (4 kW) | Tafelformat 3000 × 1500 mm; Baustahl sowie Edelstahl und säurebeständiger Stahl bis 20 mm; Aluminium bis 10 mm; Messing, Kupfer |
+| Servoelektrische Abkantpresse Safan | Biegelänge bis 3000 mm, Presskraft bis 160 t |
+| Bearbeitungszentrum Doosan DNM-750L | Bearbeitungsbereich 2160 × 762 × 650 mm |
+| Bearbeitungszentrum Avia VMC 650 | Bearbeitungsbereich 650 × 540 × 620 mm |
+| CNC-Drehmaschine Romi 510 | Drehlänge bis 1500 mm, Durchmesser bis 255 mm |
+| CNC-Drehmaschine Doosan Lynx 300M | Drehlänge bis 712 mm, Durchmesser bis 254 mm |
+| Schweißroboter OTC Daihen | Schweißbereich 2000 × 1000 × 400 mm |
+| CNC-Säge IMET | automatische Zuführung, Gehrungsschnitt −60° / 0 / +60° |
+| CNC-Rohrbiegemaschine SOCO | in einer Ebene, Rohre ⌀25, ⌀32, ⌀50 mm (weitere auf Anfrage) |
 
-3. **CNC-Zerspanung (Fräsen & Drehen)**:
-   - Fräszentren: Doosan DNM 750L, Avia VMC 650.
-   - Drehzentren: Doosan Lynx 300M mit angetriebenen Werkzeugen, Romi 510.
-
-4. **Roboter- und Handschweißen**:
-   - OTC Daihen 6-Achs-Schweißroboterzelle.
-   - Zertifizierte WIG-, MIG- und MAG-Schweißarbeitsplätze.
-
-5. **Pulverbeschichtung & Oberflächentechnik**:
-   - Automatische Pulverbeschichtungsanlage mit chemischer Vorbehandlung (RAL-Farben, C2–C5 Schutz).
-
-6. **Montage & europaweite Logistik**:
-   - Einpressbefestiger (PEM), Dichtungen, Baugruppenmontage, DAP/EXW Lieferungen in die gesamte EU.
-
----
+## Fakten
+- Über 3,5 Millionen gefertigte Teile.
+- Mehr als 50 Blechsorten auf Lager — Bau- und Edelstähle, Aluminium.
+- Keine Mindestbestellmenge — vom Einzelteil bis zur Serie.
+- Angebot in der Regel innerhalb von 1–2 Werktagen.
 
 ## Unternehmensdaten & Kontakt
-
 - **Firma**: PRECIMET H.C.E. Sp. z o.o.
 - **Standort**: ul. Pomorska 555, 92-735 Łódź, Polen
-- **Handelsregister**: KRS 0000503010 | **USt-IdNr.**: PL7272841275 | **REGON**: 363114171
-- **E-Mail für Anfragen**: produkcja@precimet.pl
+- **KRS**: 0000587797 | **USt-IdNr.**: PL7282804918 | **REGON**: 363114171
+- **Anfragen**: [Anfrageformular](https://oem.precimet.pl/de/contact/)
 - **Telefon**: +48 422 080 402
+- **Öffnungszeiten**: Mo–Fr, 8:00–16:00 Uhr MEZ
 `;
 
   return new Response(content, {

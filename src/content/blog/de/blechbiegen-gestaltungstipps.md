@@ -1,9 +1,9 @@
 ---
-title: "Über das Biegen von Teilen auf der Presse"
+title: "Konstruieren für das Blechbiegen: 5 Regeln"
 description: "Mindestflanschlänge, Biegeradius, Biegezugabe und K-Faktor, Entlastungsschnitte und realistische Toleranzen — fünf Regeln, die wir bei Biegeaufträgen in Lohnfertigung anwenden."
 date: 2026-08-27
 lang: de
-cover: "https://images.unsplash.com/photo-1598299803213-d894fb2ab97d?auto=format&fit=crop&w=1400&q=70"
+cover: "/blog/giecie-blach.webp"
 tags: ["Blechbiegen", "Design for Manufacturing", "Technische Tipps"]
 translationKey: "bending-dfm-tips"
 ---

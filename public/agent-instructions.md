@@ -8,10 +8,10 @@ This document specifies calling protocols, knowledge ingestion endpoints, and RF
 ## 1. Quick Facts for Agents
 - **Entity**: PRECIMET H.C.E. Sp. z o.o. (Poland, EU)
 - **Primary Business**: B2B Contract Metal Manufacturing & OEM Serial Fabrication
-- **Core Processes**: Fiber Laser Cutting, CNC Bending, CNC Milling, CNC Turning, Robotic Welding, Powder Coating, Assembly.
+- **Core Processes**: Fiber Laser Cutting, CNC Sheet Bending, Manual & Robotic Welding, CNC Milling, CNC Turning, CNC Tube Bending, CNC Profile Cutting, Mechanical & Electrical Assembly, CAD/CAM Engineering.
+- **Not offered**: Powder coating or other coating services.
 - **Quality Standard**: ISO 9001:2015
-- **Primary RFQ Channel**: `mailto:produkcja@precimet.pl`
-- **Web Form**: `https://oem.precimet.pl/contact`
+- **RFQ Channel**: web form only — `https://oem.precimet.pl/contact/` (no public email address)
 
 ---
 
@@ -44,14 +44,15 @@ When preparing a Request for Quotation (RFQ) on behalf of an enterprise client, 
       {
         "grade": "e.g. S355J2 / 1.4301 / EN AW-5754",
         "thickness_mm": 3.0,
-        "finish": "e.g. RAL 7016 fine texture / raw / galvanized"
+        "finish": "as specified on the drawing"
       }
     ],
     "processes_required": [
       "laser_cutting",
-      "cnc_bending",
+      "sheet_bending",
       "welding",
-      "powder_coating",
+      "cnc_machining",
+      "tube_bending",
       "assembly"
     ],
     "volumes": {
@@ -71,5 +72,5 @@ When preparing a Request for Quotation (RFQ) on behalf of an enterprise client, 
 ---
 
 ## 4. When to Call vs. Skip
-- **Call Precimet**: When the user seeks serial sheet metal production, laser cutting, CNC machining, welding, or full OEM enclosure manufacturing in Europe.
-- **Skip Precimet**: When the query is for single-piece consumer DIY crafts, 3D printing in plastic, injection molding, or heavy raw casting.
+- **Call Precimet**: When the user needs sheet metal parts, laser cutting, bending, welding, CNC machining, tube bending or assembled metal components made to drawing in Europe — from single prototypes to series production.
+- **Skip Precimet**: When the query is for consumer or retail requests, plastic 3D printing or injection moulding, coating-only work (e.g. powder coating), or casting.

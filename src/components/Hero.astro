@@ -10,17 +10,20 @@ const { locale } = Astro.props;
 const dict = t(locale);
 const home = path(locale, '/');
 
-// Stockowe zdjęcie hali / cięcia laserowego — podmień na własne przed publikacją
-const heroImg =
-  'https://images.unsplash.com/photo-1738162837438-92ff852619a1?q=80&w=3432&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+// Stockowe zdjęcie hali / cięcia laserowego (Unsplash) — klient zdecydował 2026-09-13, że zostaje.
+// Serwowane lokalnie (było hotlinkowane z Unsplash w 3432 px): 792 kB -> 64 kB,
+// bez zewnętrznego hosta na ścieżce krytycznej LCP.
+const heroImg = `${import.meta.env.BASE_URL}hero.webp`;
 ---
 
 <section class="hero" style={`--hero-img: url('${heroImg}')`}>
   <div class="container hero__inner">
     <p class="eyebrow">{dict.hero.eyebrow}</p>
+    {/* `{' '}` jest konieczne: JSX zjada odstęp przed <br />, przez co crawler
+        czytał nagłówek jako "…metalowedla producentów OEM.Od prototypu…". */}
     <h1>
-      {dict.hero.title1}<br />
-      <span class="hero__accent">{dict.hero.titleAccent}</span><br />
+      {dict.hero.title1}{' '}<br />
+      <span class="hero__accent">{dict.hero.titleAccent}</span>{' '}<br />
       {dict.hero.title2}
     </h1>
     <p class="hero__lead">{dict.hero.lead}</p>

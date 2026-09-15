@@ -2,7 +2,8 @@
 import BaseLayout from './BaseLayout.astro';
 import { path, type Locale } from '../i18n/config';
 import { t } from '../i18n/ui';
-import { dateFormatter, postSlug, type BlogPost } from '../lib/blog';
+import { dateFormatter, postAlternates, postSlug, type BlogPost } from '../lib/blog';
+import { blogPostingSchema } from '../lib/schema';
 
 interface Props {
   locale: Locale;
@@ -12,17 +13,32 @@ interface Props {
 const { locale, post } = Astro.props;
 const dict = t(locale);
 const fmt = dateFormatter(locale);
+const alternates = await postAlternates(post);
+
+const site = Astro.site ?? new URL('https://oem.precimet.pl');
+const postJsonLd = blogPostingSchema(site, {
+  url: new URL(path(locale, `/blog/${postSlug(post)}`), site).href,
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date,
+  image: post.data.cover,
+  locale,
+  keywords: post.data.tags,
+});
 ---
 
 <BaseLayout
   locale={locale}
-  title={`${post.data.title} — Precimet OEM Manufacturing`}
+  title={`${post.data.title} — Precimet`}
   description={post.data.description}
   pagePath={`/blog/${postSlug(post)}`}
+  alternates={alternates}
   ogImage={post.data.cover}
   ogImageAlt={post.data.title}
   ogType="article"
 >
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(postJsonLd)} />
+
   <article class="section post">
     <div class="container">
       <header class="post__head">

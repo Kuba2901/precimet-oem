@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { path } from '../../i18n/config';
 import { t } from '../../i18n/ui';
 
 const locale = 'de' as const;
@@ -19,7 +20,7 @@ const dict = t(locale);
       <div class="legal__content prose reveal">
         <h2>1. Verantwortlicher</h2>
         <p>
-          Verantwortlicher für die Verarbeitung Ihrer personenbezogenen Daten ist die <strong>PRECIMET H.C.E. Sp. z o.o.</strong> mit Sitz in Łódź (92-735), ul. Pomorska 555, eingetragen im Unternehmerregister des Nationalen Gerichtsregisters (KRS) unter der Nummer 0000503010, geführt vom Amtsgericht Łódź-Śródmieście, 20. Handelsregisterabteilung, NIP: 7272841275, REGON: 363114171, Stammkapital: 100.000,00 PLN (nachfolgend „wir“, „uns“, „Verantwortlicher“).
+          Verantwortlicher für die Verarbeitung Ihrer personenbezogenen Daten ist die <strong>PRECIMET H.C.E. Sp. z o.o.</strong> mit Sitz in Łódź (92-735), ul. Pomorska 555, eingetragen im Unternehmerregister des Nationalen Gerichtsregisters (KRS) unter der Nummer 0000587797, geführt vom Amtsgericht Łódź-Śródmieście, 20. Handelsregisterabteilung, NIP: 7282804918, REGON: 363114171, Stammkapital: 101.000,00 PLN (nachfolgend „wir“, „uns“, „Verantwortlicher“).
         </p>
 
         <h2>2. Kontaktdaten</h2>
@@ -27,7 +28,7 @@ const dict = t(locale);
           PRECIMET H.C.E. Sp. z o.o.<br />
           ul. Pomorska 555<br />
           92-735 Łódź, Polen<br />
-          E-Mail: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a><br />
+          Kontaktformular: <a href={path(locale, '/contact')}>oem.precimet.pl/de/contact</a><br />
           Telefon: +48 422 080 402
         </address>
 
@@ -101,7 +102,7 @@ const dict = t(locale);
           <li>Widerspruch gegen Verarbeitung aufgrund berechtigten Interesses (Art. 21 DSGVO),</li>
           <li>Widerruf der Einwilligung jederzeit (bei Verarbeitung nach Art. 6 Abs. 1 lit. a DSGVO) — der Widerruf berührt nicht die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung.</li>
         </ul>
-        <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns: <a href="mailto:produkcja@precimet.pl">produkcja@precimet.pl</a>.</p>
+        <p>Zur Ausübung Ihrer Rechte kontaktieren Sie uns über das <a href={path(locale, '/contact')}>Kontaktformular</a>, telefonisch unter +48 422 080 402 oder postalisch unter der in Abschnitt 2 genannten Anschrift.</p>
 
         <h2>8. Beschwerderecht</h2>
         <p>Sie haben das Recht, sich bei der Aufsichtsbehörde zu beschweren: Präsident des Amtes für den Schutz personenbezogener Daten (PUODO), ul. Stawki 2, 00-193 Warschau, wenn Sie der Ansicht sind, dass die Verarbeitung Ihrer Daten gegen die DSGVO verstößt.</p>
