@@ -1,0 +1,12 @@
+name = "precimet-contact-form"
+main = "src/index.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+TO_EMAIL = "produkcja@precimet.pl"
+FROM_EMAIL = "Formularz kontaktowy Precimet OEM <formularz@mail.oem.precimet.pl>"
+MAX_ATTACHMENT_BYTES = "15000000"
+MAX_TOTAL_ATTACHMENT_BYTES = "25000000"
+
+# Ustaw sekret raz z terminala (nie trzymamy klucza w repo):
+#   wrangler secret put RESEND_API_KEY

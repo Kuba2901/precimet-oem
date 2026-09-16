@@ -22,7 +22,7 @@ const rfq = dict.contact.rfq;
 const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === 'de' ? '/danke' : '/thank-you');
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
 
-const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
+const CONTACT_WORKER_URL = 'https://precimet-contact-form.precimet.workers.dev';
 ---
 
 <section id="kontakt" class="section section--dark contact">
@@ -87,13 +87,12 @@ const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
     <form
       class="contact__form reveal"
       method="POST"
-      action={`https://formsubmit.co/ajax/${FORM_ENDPOINT_ID}`}
+      action={CONTACT_WORKER_URL}
       enctype="multipart/form-data"
     >
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_subject" value={`Nowe zapytanie OEM (${locale.toUpperCase()}) - Precimet`} />
-      <input type="hidden" name="_next" value={new URL(thankYouPath, Astro.site ?? 'https://oem.precimet.pl').href} />
+      <input type="hidden" name="subject" value={`Nowe zapytanie OEM (${locale.toUpperCase()}) - Precimet`} />
+      <input type="hidden" name="redirect" value={new URL(thankYouPath, Astro.site ?? 'https://oem.precimet.pl').href} />
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
       <div class="field-row">
         <label class="field">
@@ -126,7 +125,7 @@ const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
       <div class="field">
         <span>{f.file}</span>
         <label class="file-label">
-          <input type="file" name="attachment" accept=".dxf,.dwg,.step,.stp,.iges,.igs,.pdf,.zip" />
+          <input type="file" name="attachment" accept=".dxf,.dwg,.step,.stp,.iges,.igs,.pdf,.zip" multiple />
         </label>
         <small class="spec">{f.fileHint}</small>
       </div>
@@ -135,10 +134,6 @@ const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
         <input type="checkbox" name="consent" required />
         <span>{f.consent} <a href={privacyUrl} target="_blank" rel="noopener noreferrer">{locale === 'pl' ? 'Polityka prywatności' : locale === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}</a>.</span>
       </label>
-
-      <div class="contact__error" role="alert" hidden>
-        {f.error}
-      </div>
 
       <button class="btn btn--primary" type="submit">
         <span class="btn__text">{f.submit}</span>
@@ -149,56 +144,17 @@ const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
   </div>
 </section>
 
-<script is:inline define:vars={{ thankYouPath }}>
+<script is:inline>
   (function () {
     const form = document.querySelector('.contact__form');
     if (!form) return;
 
-    const errorMsg = form.querySelector('.contact__error');
     const submitBtn = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (errorMsg) errorMsg.hidden = true;
+    form.addEventListener('submit', () => {
       if (submitBtn) {
         submitBtn.disabled = true;
         submitBtn.classList.add('is-loading');
-      }
-
-      try {
-        const formData = new FormData(form);
-        const fileInput = form.querySelector('input[type="file"][name="attachment"]');
-        if (fileInput && (!fileInput.files || fileInput.files.length === 0 || fileInput.files[0].size === 0)) {
-          formData.delete('attachment');
-        }
-
-        const res = await fetch(form.action, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-          },
-          body: formData,
-        });
-
-        const data = await res.json().catch(() => null);
-
-        if (res.ok && (data === null || data.success === 'true' || data.success === true || res.status === 200)) {
-          window.location.href = thankYouPath;
-        } else {
-          console.error('FormSubmit response status:', res.status, data);
-          if (errorMsg) errorMsg.hidden = false;
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.classList.remove('is-loading');
-          }
-        }
-      } catch (err) {
-        console.error('Contact form submission error:', err);
-        if (errorMsg) errorMsg.hidden = false;
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.classList.remove('is-loading');
-        }
       }
     });
   })();
@@ -332,20 +288,6 @@ const FORM_ENDPOINT_ID = '93188daa24457f796518554443024dea';
   .contact__directions:hover { color: #fff; border-color: #fff; }
 
   .contact__map { margin-top: 1.5rem; }
-
-  .contact__error {
-    background: #fef2f2;
-    color: #991b1b;
-    border: 1px solid #fecaca;
-    padding: 0.75rem 1rem;
-    border-radius: var(--radius);
-    font-size: 0.88rem;
-    line-height: 1.4;
-  }
-
-  .contact__error[hidden] {
-    display: none !important;
-  }
 
   .btn {
     position: relative;

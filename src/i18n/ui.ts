@@ -668,8 +668,8 @@ export const ui: Record<Locale, Dict> = {
         message: 'Treść zapytania *',
         messagePlaceholder:
           'Opisz detal, ilości i oczekiwany termin. Możesz też wkleić link do dokumentacji.',
-        file: 'Załącz plik (DXF, STEP, PDF…)',
-        fileHint: 'Maks. 20 MB. Większe pliki prześlij linkiem w treści.',
+        file: 'Załącz pliki (DXF, STEP, PDF…)',
+        fileHint: 'Można dodać kilka plików. Maks. 15 MB/plik, 25 MB łącznie. Większe pliki prześlij linkiem w treści.',
         consent: 'Wyrażam zgodę na przetwarzanie danych w celu odpowiedzi na zapytanie. *',
         submit: 'Wyślij zapytanie',
         note: 'Pola oznaczone * są wymagane.',
@@ -1159,8 +1159,8 @@ export const ui: Record<Locale, Dict> = {
         message: 'Your inquiry *',
         messagePlaceholder:
           'Describe the part, quantities and expected lead time. You can also paste a link to documentation.',
-        file: 'Attach a file (DXF, STEP, PDF…)',
-        fileHint: 'Max 20 MB. For larger files, share a link in the message.',
+        file: 'Attach files (DXF, STEP, PDF…)',
+        fileHint: 'You can add several files. Max 15 MB/file, 25 MB total. For larger files, share a link in the message.',
         consent: 'I consent to the processing of my data to answer this inquiry. *',
         submit: 'Send inquiry',
         note: 'Fields marked * are required.',
@@ -1649,8 +1649,8 @@ export const ui: Record<Locale, Dict> = {
         message: 'Ihre Anfrage *',
         messagePlaceholder:
           'Beschreiben Sie das Bauteil, Stückzahlen und den gewünschten Termin. Sie können auch einen Link zur Dokumentation einfügen.',
-        file: 'Datei anhängen (DXF, STEP, PDF…)',
-        fileHint: 'Max. 20 MB. Größere Dateien bitte per Link in der Nachricht.',
+        file: 'Dateien anhängen (DXF, STEP, PDF…)',
+        fileHint: 'Mehrere Dateien möglich. Max. 15 MB/Datei, 25 MB gesamt. Größere Dateien bitte per Link in der Nachricht.',
         consent: 'Ich stimme der Verarbeitung meiner Daten zur Beantwortung dieser Anfrage zu. *',
         submit: 'Anfrage senden',
         note: 'Mit * gekennzeichnete Felder sind Pflichtfelder.',
