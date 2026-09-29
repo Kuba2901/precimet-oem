@@ -4,6 +4,8 @@ compatibility_date = "2025-01-01"
 
 [vars]
 TO_EMAIL = "produkcja@precimet.pl"
+CC_EMAIL = "adam.nenczak@precimet.pl"
+BCC_EMAIL = "kubanenczakdev@gmail.com"
 FROM_EMAIL = "Formularz kontaktowy Precimet OEM <formularz@mail.oem.precimet.pl>"
 MAX_ATTACHMENT_BYTES = "15000000"
 MAX_TOTAL_ATTACHMENT_BYTES = "25000000"

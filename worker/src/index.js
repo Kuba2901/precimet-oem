@@ -186,7 +186,9 @@ export default {
       },
       body: JSON.stringify({
         from: env.FROM_EMAIL,
-        to: [env.TO_EMAIL],
+        to: env.TO_EMAIL.split(',').map((addr) => addr.trim()),
+        cc: env.CC_EMAIL ? env.CC_EMAIL.split(',').map((addr) => addr.trim()) : undefined,
+        bcc: env.BCC_EMAIL ? env.BCC_EMAIL.split(',').map((addr) => addr.trim()) : undefined,
         reply_to: String(email),
         subject: String(subject),
         html,
