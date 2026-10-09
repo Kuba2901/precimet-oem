@@ -9,6 +9,15 @@ BCC_EMAIL = "kubanenczakdev@gmail.com"
 FROM_EMAIL = "Formularz kontaktowy Precimet OEM <formularz@mail.oem.precimet.pl>"
 MAX_ATTACHMENT_BYTES = "15000000"
 MAX_TOTAL_ATTACHMENT_BYTES = "25000000"
+TWENTY_API_URL = "https://crm.precimet.pl"
+CRM_OWNER_ID = "abfe760d-8689-44b3-b343-8655326d10a9"
 
 # Ustaw sekret raz z terminala (nie trzymamy klucza w repo):
 #   wrangler secret put RESEND_API_KEY
+
+# Precimet CRM (Twenty). Klucz API ustaw jako sekret:
+#   wrangler secret put TWENTY_API_KEY
+# CRM_OWNER_ID = workspaceMember opiekuna nowych Zapytań OEM (Katarzyna Nenczak).
+
+[observability]
+enabled = true

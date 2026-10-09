@@ -61,3 +61,28 @@ npx wrangler dev
 
 Worker wystartuje lokalnie — możesz tymczasowo podmienić `CONTACT_WORKER_URL` na
 `http://127.0.0.1:8787` do testów przed wdrożeniem produkcyjnym.
+
+## Zapis zgłoszeń do Precimet CRM (Twenty)
+
+Po wysłaniu maila Worker zapisuje zgłoszenie w CRM (`https://crm.precimet.pl`), w tle
+(`ctx.waitUntil`) — awaria CRM nie blokuje formularza ani maila, tylko trafia do logów
+(Cloudflare → Workers → `precimet-contact-form` → Logs).
+
+Każde zgłoszenie tworzy:
+
+- **Firmę** — szukaną po domenie maila (pomijamy gmail/wp/onet itp.), potem po nazwie;
+  nowa dostaje `ZLECENIODAWCA_OEM` + segment `KOOPERACJA_OEM`. Istniejącej dopisujemy
+  segment `KOOPERACJA_OEM`, jeśli go nie ma.
+- **Osobę** — szukaną po e-mailu; nowa jest przypinana do firmy.
+- **Zapytanie OEM** — etap „Nowe zapytanie”, opiekun z `CRM_OWNER_ID` (Katarzyna Nenczak).
+- **Notatkę** z danymi kontaktowymi, treścią i listą załączników — podpiętą pod zapytanie,
+  osobę i firmę. Same pliki zostają w mailu.
+
+Konfiguracja: `TWENTY_API_URL` i `CRM_OWNER_ID` w `wrangler.toml`, klucz API jako sekret:
+
+```bash
+npx wrangler secret put TWENTY_API_KEY
+# klucz z CRM: Settings -> APIs & Webhooks -> Create API key
+```
+
+Bez `TWENTY_API_KEY` Worker działa jak wcześniej (tylko mail).

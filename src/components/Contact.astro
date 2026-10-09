@@ -91,7 +91,8 @@ const CONTACT_WORKER_URL = 'https://precimet-contact-form.precimet.workers.dev';
       enctype="multipart/form-data"
     >
       <input type="hidden" name="subject" value={`Nowe zapytanie OEM (${locale.toUpperCase()}) - Precimet`} />
-      <input type="hidden" name="redirect" value={new URL(thankYouPath, Astro.site ?? 'https://oem.precimet.pl').href} />
+      <input type="hidden" name="locale" value={locale} />
+      <input type="hidden" name="redirect"value={new URL(thankYouPath, Astro.site ?? 'https://oem.precimet.pl').href} />
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
       <div class="field-row">

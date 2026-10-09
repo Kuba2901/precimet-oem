@@ -1,3 +1,5 @@
+import { saveSubmissionToCrm } from './crm.js';
+
 const REQUIRED_FIELDS = ['name', 'email', 'message'];
 
 function errorPage(message) {
@@ -111,7 +113,7 @@ function buildEmailHtml({ name, company, email, phone, message, files }) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     if (request.method !== 'POST') {
       return new Response('Method not allowed', { status: 405 });
     }
@@ -174,6 +176,7 @@ export default {
     const email = formData.get('email');
     const phone = formData.get('phone') || '—';
     const message = formData.get('message');
+    const locale = String(formData.get('locale') || 'pl');
     const subject = formData.get('subject') || `Nowe zapytanie OEM - Precimet (od ${name})`;
 
     const html = buildEmailHtml({ name, company, email, phone, message, files });
@@ -201,6 +204,19 @@ export default {
       console.error('Resend API error:', resendRes.status, detail);
       return errorPage('Usługa wysyłki maili jest chwilowo niedostępna. Spróbuj ponownie za chwilę.');
     }
+
+    // Mail już poszedł — zapis do CRM leci w tle i nie opóźnia przekierowania.
+    ctx.waitUntil(
+      saveSubmissionToCrm(env, {
+        name: String(name),
+        company: formData.get('company') ? String(formData.get('company')).trim() : '',
+        email: String(email).trim(),
+        phone: formData.get('phone') ? String(formData.get('phone')).trim() : '',
+        message: String(message),
+        locale,
+        files,
+      }).catch((err) => console.error('CRM error:', err))
+    );
 
     const redirect = formData.get('redirect');
     return Response.redirect(redirect || 'https://oem.precimet.pl/', 303);
