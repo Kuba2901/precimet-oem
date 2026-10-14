@@ -123,7 +123,7 @@ function buildNoteMarkdown({ name, company, email, phone, message, files, locale
 export async function saveSubmissionToCrm(env, submission) {
   if (!env.TWENTY_API_URL || !env.TWENTY_API_KEY) {
     console.warn('CRM: brak TWENTY_API_URL lub TWENTY_API_KEY — pomijam zapis.');
-    return;
+    return null;
   }
 
   const { name, company, email, phone, message, locale } = submission;
@@ -163,4 +163,6 @@ export async function saveSubmissionToCrm(env, submission) {
   }
 
   console.log(`CRM: zapisano zapytanie ${zapytanie.id} (osoba ${person.id}, firma ${companyRecord?.id ?? '—'})`);
+  // Dla Ofertomatu: link do zapytania w panelu zgłoszenia.
+  return zapytanie.id;
 }

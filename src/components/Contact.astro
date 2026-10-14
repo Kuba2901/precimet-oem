@@ -23,6 +23,9 @@ const thankYouPath = path(locale, locale === 'pl' ? '/dziekujemy' : locale === '
 const privacyUrl = path(locale, locale === 'pl' ? '/polityka-prywatnosci' : locale === 'de' ? '/datenschutz' : '/privacy-policy');
 
 const CONTACT_WORKER_URL = 'https://precimet-contact-form.precimet.workers.dev';
+// Cloudflare Turnstile (klucz publiczny widżetu). Pusty = bez widżetu.
+// Najpierw wdróż stronę z kluczem, potem ustaw TURNSTILE_SECRET w workerze.
+const TURNSTILE_SITE_KEY = '';
 ---
 
 <section id="kontakt" class="section section--dark contact">
@@ -136,6 +139,10 @@ const CONTACT_WORKER_URL = 'https://precimet-contact-form.precimet.workers.dev';
         <span>{f.consent} <a href={privacyUrl} target="_blank" rel="noopener noreferrer">{locale === 'pl' ? 'Polityka prywatności' : locale === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}</a>.</span>
       </label>
 
+      {TURNSTILE_SITE_KEY && (
+        <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-language={locale}></div>
+      )}
+
       <button class="btn btn--primary" type="submit">
         <span class="btn__text">{f.submit}</span>
         <span class="btn__spinner" aria-hidden="true"></span>
@@ -144,6 +151,10 @@ const CONTACT_WORKER_URL = 'https://precimet-contact-form.precimet.workers.dev';
     </form>
   </div>
 </section>
+
+{TURNSTILE_SITE_KEY && (
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+)}
 
 <script is:inline>
   (function () {

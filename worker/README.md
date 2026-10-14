@@ -86,3 +86,47 @@ npx wrangler secret put TWENTY_API_KEY
 ```
 
 Bez `TWENTY_API_KEY` Worker działa jak wcześniej (tylko mail).
+
+## Przekazanie zgłoszeń do Ofertomatu (Faza 46)
+
+Po mailu i zapisie w CRM Worker przekazuje zgłoszenie — pola formularza, załączniki
+i id Zapytania OEM z CRM — do Ofertomatu (`INTAKE_URL` w `wrangler.toml`, na razie
+staging `ofertomat.oem.precimet.pl`). Też w tle: awaria Ofertomatu nie blokuje
+formularza ani maila, tylko trafia do logów.
+
+Ofertomat decyduje, co z tym zrobić:
+
+- **są rysunki** (PDF z rysunkiem, DXF) → robocza wycena dla klienta, do sprawdzenia
+  przez technologa, i mail do produkcji **w tym samym wątku** co mail z formularza
+  (dlatego mail z formularza ma własny nagłówek `Message-ID`);
+- **jest NDA** → wycena powstaje, ale żaden plik nie trafia do analizy AI, dopóki
+  ktoś w Ofertomacie nie przeczyta NDA i nie kliknie „Zwolnij analizę AI”;
+- **sama wiadomość albo tylko dokumenty tekstowe / modele STEP** → nic nie powstaje,
+  zgłoszenie jest tylko na liście „Zgłoszenia OEM”.
+
+Żądanie jest podpisane HMAC-SHA256 (nagłówek `X-Intake-Signature`) sekretem
+wspólnym z Ofertomatem:
+
+```bash
+npx wrangler secret put INTAKE_HMAC_SECRET
+# ta sama wartość co INTAKE_HMAC_SECRET w sejfie Ofertomatu (staging_vault.yml)
+```
+
+Bez tego sekretu Worker działa jak wcześniej (mail + CRM).
+
+## Ochrona przed spamem: Cloudflare Turnstile
+
+Od Fazy 46 każde zgłoszenie kosztuje wywołania modelu w Ofertomacie i może założyć
+konto klienta, więc sam honeypot nie wystarcza.
+
+1. Cloudflare → **Turnstile** → **Add widget**, domena `oem.precimet.pl`, tryb
+   „Managed”. Dostaniesz klucz publiczny (site key) i tajny (secret key).
+2. Wpisz klucz publiczny w `src/components/Contact.astro` (`TURNSTILE_SITE_KEY`),
+   zbuduj i wdróż stronę.
+3. **Dopiero potem** ustaw sekret w Workerze — inaczej Worker odrzuci każde
+   zgłoszenie ze strony bez widżetu:
+
+```bash
+npx wrangler secret put TURNSTILE_SECRET
+npx wrangler deploy
+```

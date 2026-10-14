@@ -11,6 +11,9 @@ MAX_ATTACHMENT_BYTES = "15000000"
 MAX_TOTAL_ATTACHMENT_BYTES = "25000000"
 TWENTY_API_URL = "https://crm.precimet.pl"
 CRM_OWNER_ID = "abfe760d-8689-44b3-b343-8655326d10a9"
+# Ofertomat (Faza 46): zgłoszenie z rysunkami otwiera tam roboczą wycenę.
+# Na razie staging. Bez sekretu INTAKE_HMAC_SECRET przekazanie jest wyłączone.
+INTAKE_URL = "https://ofertomat.oem.precimet.pl/api/v1/intake/oem"
 
 # Ustaw sekret raz z terminala (nie trzymamy klucza w repo):
 #   wrangler secret put RESEND_API_KEY
@@ -18,6 +21,13 @@ CRM_OWNER_ID = "abfe760d-8689-44b3-b343-8655326d10a9"
 # Precimet CRM (Twenty). Klucz API ustaw jako sekret:
 #   wrangler secret put TWENTY_API_KEY
 # CRM_OWNER_ID = workspaceMember opiekuna nowych Zapytań OEM (Katarzyna Nenczak).
+
+# Ofertomat — ten sam sekret co INTAKE_HMAC_SECRET w sejfie Ofertomatu:
+#   wrangler secret put INTAKE_HMAC_SECRET
+# Cloudflare Turnstile — klucz tajny widżetu (Cloudflare → Turnstile):
+#   wrangler secret put TURNSTILE_SECRET
+# Ustaw go DOPIERO gdy strona z widżetem (TURNSTILE_SITE_KEY w Contact.astro)
+# jest wdrożona — inaczej każde zgłoszenie zostanie odrzucone.
 
 [observability]
 enabled = true

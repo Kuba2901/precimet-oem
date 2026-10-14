@@ -1,4 +1,5 @@
 import { saveSubmissionToCrm } from './crm.js';
+import { forwardToOfertomat } from './intake.js';
 
 const REQUIRED_FIELDS = ['name', 'email', 'message'];
 
@@ -132,6 +133,20 @@ export default {
       return Response.redirect(redirect || 'https://oem.precimet.pl/', 303);
     }
 
+    // Turnstile — przed czymkolwiek innym, bo od Fazy 46 każde zgłoszenie
+    // kosztuje wywołania modelu i może założyć konto w Ofertomacie. Bez
+    // `TURNSTILE_SECRET` sprawdzenie jest wyłączone (jak przed tą zmianą).
+    if (env.TURNSTILE_SECRET) {
+      const ok = await verifyTurnstile(
+        env.TURNSTILE_SECRET,
+        formData.get('cf-turnstile-response'),
+        request.headers.get('CF-Connecting-IP')
+      );
+      if (!ok) {
+        return errorPage('Nie udało się potwierdzić, że formularz wysyła człowiek. Odśwież stronę i spróbuj ponownie.');
+      }
+    }
+
     for (const field of REQUIRED_FIELDS) {
       const value = formData.get(field);
       if (!value || String(value).trim() === '') {
@@ -180,6 +195,9 @@ export default {
     const subject = formData.get('subject') || `Nowe zapytanie OEM - Precimet (od ${name})`;
 
     const html = buildEmailHtml({ name, company, email, phone, message, files });
+    // Własny Message-ID: Ofertomat odpowiada w tym samym wątku
+    // (In-Reply-To/References), więc musi znać identyfikator tego maila.
+    const messageId = `<oem-${crypto.randomUUID()}@mail.oem.precimet.pl>`;
 
     const resendRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -196,6 +214,7 @@ export default {
         subject: String(subject),
         html,
         attachments: attachments.length ? attachments : undefined,
+        headers: { 'Message-ID': messageId },
       }),
     });
 
@@ -205,20 +224,59 @@ export default {
       return errorPage('Usługa wysyłki maili jest chwilowo niedostępna. Spróbuj ponownie za chwilę.');
     }
 
-    // Mail już poszedł — zapis do CRM leci w tle i nie opóźnia przekierowania.
+    // Mail już poszedł — reszta leci w tle i nie opóźnia przekierowania.
+    // Najpierw CRM, bo Ofertomat dostaje id Zapytania OEM; awaria CRM nie
+    // zatrzymuje przekazania do Ofertomatu, awaria Ofertomatu niczego nie psuje.
+    const submission = {
+      name: String(name),
+      company: formData.get('company') ? String(formData.get('company')).trim() : '',
+      email: String(email).trim(),
+      phone: formData.get('phone') ? String(formData.get('phone')).trim() : '',
+      message: String(message),
+      locale,
+      files,
+    };
     ctx.waitUntil(
-      saveSubmissionToCrm(env, {
-        name: String(name),
-        company: formData.get('company') ? String(formData.get('company')).trim() : '',
-        email: String(email).trim(),
-        phone: formData.get('phone') ? String(formData.get('phone')).trim() : '',
-        message: String(message),
-        locale,
-        files,
-      }).catch((err) => console.error('CRM error:', err))
+      (async () => {
+        let crmZapytanieId = null;
+        try {
+          crmZapytanieId = await saveSubmissionToCrm(env, submission);
+        } catch (err) {
+          console.error('CRM error:', err);
+        }
+        try {
+          await forwardToOfertomat(env, {
+            ...submission,
+            messageId,
+            subject: String(subject),
+            crmZapytanieId,
+          });
+        } catch (err) {
+          console.error('Ofertomat error:', err);
+        }
+      })()
     );
 
     const redirect = formData.get('redirect');
     return Response.redirect(redirect || 'https://oem.precimet.pl/', 303);
   },
 };
+
+async function verifyTurnstile(secret, token, remoteIp) {
+  if (!token) return false;
+  const body = new FormData();
+  body.append('secret', secret);
+  body.append('response', String(token));
+  if (remoteIp) body.append('remoteip', remoteIp);
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body,
+    });
+    const outcome = await res.json();
+    return Boolean(outcome.success);
+  } catch (err) {
+    console.error('Turnstile error:', err);
+    return false;
+  }
+}
