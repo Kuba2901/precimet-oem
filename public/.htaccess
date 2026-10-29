@@ -21,6 +21,11 @@
   RewriteRule ^de/ueber-uns/?$ /de/about [R=301,L]
   RewriteRule ^de/kontakt/?$ /de/contact [R=301,L]
 
+  # Usunięte wpisy (4c7c506), wciąż widoczne w Google — przekierowanie na listę wpisów
+  RewriteRule ^blog/stal-nierdzewna-vs-aluminium/?$ /blog/ [R=301,L]
+  RewriteRule ^en/blog/stainless-vs-aluminium/?$ /en/blog/ [R=301,L]
+  RewriteRule ^de/blog/stahl-vs-aluminium/?$ /de/blog/ [R=301,L]
+
   # Skip static assets (images, css, js, fonts, etc.)
   RewriteCond %{REQUEST_URI} \.(?:css|js|mjs|map|png|jpe?g|webp|gif|svg|avif|ico|woff2?|ttf|otf|eot|xml|txt|json|pdf|mp4|webm|mp3|wav|ogg|zip)$ [NC]
   RewriteRule ^ - [L]
