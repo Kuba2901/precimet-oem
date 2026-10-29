@@ -82,8 +82,21 @@ ErrorDocument 404 /404.html
     Header set Content-Type "text/markdown; charset=utf-8"
   </FilesMatch>
 
+  # Pliki z /_astro/ mają hash treści w nazwie — zmiana pliku = nowy URL, więc można je
+  # cache'ować na rok. HTML i pozostałe pliki zostają bez długiego cache.
+  SetEnvIf Request_URI "^/_astro/" ASTRO_HASHED_ASSET
+  Header set Cache-Control "public, max-age=31536000, immutable" env=ASTRO_HASHED_ASSET
+
   <FilesMatch "(llms\.txt|llms-full\.txt|robots\.txt)">
     ForceType text/plain
     Header set Content-Type "text/plain; charset=utf-8"
   </FilesMatch>
+</IfModule>
+
+# Obrazy z public/ (bez hasha w nazwie: hero, zdjęcia maszyn, okładki bloga) — tydzień.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 7 days"
+  ExpiresByType image/png "access plus 7 days"
 </IfModule>

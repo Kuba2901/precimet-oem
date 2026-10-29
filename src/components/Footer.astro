@@ -33,7 +33,7 @@ const links = [
     </div>
 
     <nav aria-label="Footer">
-      <h4>{dict.footer.navTitle}</h4>
+      <h2 class="footer__title">{dict.footer.navTitle}</h2>
       <ul>
         {links.map((l) => (
           <li><a href={l.href}>{l.label}</a></li>
@@ -42,7 +42,7 @@ const links = [
     </nav>
 
     <div>
-      <h4>{dict.footer.contactTitle}</h4>
+      <h2 class="footer__title">{dict.footer.contactTitle}</h2>
       <address>
         {dict.contact.info.address.split('\n').map((line) => <span>{line}</span>)}
         <a href="tel:+48426725710">+48 42 672 57 10</a>
@@ -51,7 +51,7 @@ const links = [
     </div>
 
     <div>
-      <h4>{dict.footer.langTitle}</h4>
+      <h2 class="footer__title">{dict.footer.langTitle}</h2>
       <LanguageSwitcher variant="footer" />
     </div>
   </div>
@@ -114,7 +114,8 @@ const links = [
     color: var(--c-sand-500);
   }
 
-  h4 {
+  /* h2, nie h4: po sekcjach strony (h2) h4 przeskakiwał poziom nagłówka (Lighthouse heading-order). */
+  .footer__title {
     color: var(--c-text-inverse);
     font-size: 1.05rem;
     letter-spacing: 0.08em;

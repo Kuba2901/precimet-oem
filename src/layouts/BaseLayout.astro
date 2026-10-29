@@ -10,6 +10,9 @@ import '@fontsource/inter/600.css';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
+/* Najważniejsze pliki fontów (nagłówki 600, tekst 400, podzbiór latin) — preload, żeby zdążyły przed pierwszym renderem. */
+import displayFontUrl from '@fontsource/barlow-condensed/files/barlow-condensed-latin-600-normal.woff2?url';
+import bodyFontUrl from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import {
@@ -149,6 +152,8 @@ const breadcrumbs = noindex ? null : breadcrumbSchema(site, locale, basePath, di
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImg} />
 
+    <link rel="preload" as="font" type="font/woff2" href={displayFontUrl} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={bodyFontUrl} crossorigin />
     {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
