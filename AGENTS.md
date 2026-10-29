@@ -45,3 +45,17 @@ There is **no test suite and no linter**. Verify changes with `npm run astro che
 
 - Privacy pages exist per locale (`polityka-prywatnosci.astro`, `en/privacy-policy.astro`, `de/datenschutz.astro`); `Contact.astro` links them via `path()`.
 - `dist/` and `.astro/` are generated — never edit them directly.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitHub Issues for `Kuba2901/precimet-oem` (via `gh`). See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` + `docs/adr/` at the repo root (created lazily). See `docs/agents/domain.md`.
