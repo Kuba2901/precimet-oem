@@ -54,6 +54,12 @@ export const OPENING_HOURS = {
  * Pełny profil firmy. `@id` jest stały, więc pozostałe węzły (BreadcrumbList,
  * BlogPosting) mogą się do niego odwoływać zamiast powielać dane.
  */
+/** Profile tej samej firmy w innych serwisach — Google łączy je z witryną w jeden byt. */
+const SAME_AS = [
+  // Wizytówka Google „PRECIMET H.C.E.” (stały link po CID)
+  'https://maps.google.com/?cid=2226114506056942605',
+];
+
 export function organizationSchema(site: URL, description: string) {
   const id = new URL('/#organization', site).href;
   return {
@@ -73,6 +79,7 @@ export function organizationSchema(site: URL, description: string) {
     geo: GEO,
     openingHoursSpecification: OPENING_HOURS,
     availableLanguage: LOCALES.map((l) => l.toUpperCase()),
+    sameAs: SAME_AS,
   };
 }
 
@@ -154,5 +161,28 @@ export function blogPostingSchema(
     ...(opts.keywords?.length ? { keywords: opts.keywords.join(', ') } : {}),
     author: { '@id': ORGANIZATION_ID(site) },
     publisher: { '@id': ORGANIZATION_ID(site) },
+  };
+}
+
+/** Podstrona usługi — wykonawcą jest firma (przez `@id`), obszar: Łódź, Polska, Europa. */
+export function serviceSchema(
+  site: URL,
+  opts: { url: string; name: string; serviceType: string; description: string; locale: Locale }
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${opts.url}#service`,
+    url: opts.url,
+    name: opts.name,
+    serviceType: opts.serviceType,
+    description: opts.description,
+    inLanguage: opts.locale,
+    provider: { '@id': ORGANIZATION_ID(site) },
+    areaServed: [
+      { '@type': 'City', name: 'Łódź' },
+      { '@type': 'Country', name: 'Poland' },
+      { '@type': 'Place', name: 'Europe' },
+    ],
   };
 }

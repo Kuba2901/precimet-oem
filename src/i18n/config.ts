@@ -85,6 +85,20 @@ export const ROUTE_MAP: Record<string, Record<Locale, string>> = {
     pl: '/dziekujemy',
     en: '/thank-you',
     de: '/danke',
+  },  '/ciecie-laserowe': {
+    pl: '/ciecie-laserowe',
+    en: '/laser-cutting',
+    de: '/laserschneiden',
+  },
+  '/laser-cutting': {
+    pl: '/ciecie-laserowe',
+    en: '/laser-cutting',
+    de: '/laserschneiden',
+  },
+  '/laserschneiden': {
+    pl: '/ciecie-laserowe',
+    en: '/laser-cutting',
+    de: '/laserschneiden',
   },
 };
 

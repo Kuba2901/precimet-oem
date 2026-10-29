@@ -1,0 +1,250 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { LOCALES, path, type Locale } from '../i18n/config';
+import { t } from '../i18n/ui';
+import { serviceSchema } from '../lib/schema';
+import laserImg from '../assets/laser.jpg';
+
+/**
+ * Szablon podstrony usługi. Treść w `ui.ts` (`servicePages`), parametry maszyn
+ * z `machines` — jedno źródło prawdy dla strony głównej i podstron.
+ */
+interface Props {
+  locale: Locale;
+  service: 'laser';
+}
+
+const IMAGES = { laser: laserImg };
+
+const { locale, service } = Astro.props;
+const dict = t(locale);
+const content = dict.servicePages[service];
+
+/* Slugi różnią się między językami — hreflang bierzemy z treści każdego języka. */
+const alternates = Object.fromEntries(
+  LOCALES.map((l) => [l, t(l).servicePages[service].path])
+) as Record<Locale, string>;
+
+const machines = dict.machines.groups
+  .flatMap((g) => g.machines)
+  .filter((m) => content.machineNames.includes(m.name));
+
+const site = Astro.site ?? new URL('https://oem.precimet.pl');
+const jsonLd = serviceSchema(site, {
+  url: new URL(path(locale, content.path), site).href,
+  name: content.h1,
+  serviceType: content.serviceType,
+  description: content.description,
+  locale,
+});
+const contactHref = path(locale, '/contact');
+---
+
+<BaseLayout
+  locale={locale}
+  title={content.title}
+  description={content.description}
+  pagePath={content.path}
+  alternates={alternates}
+>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <section class="section service-page">
+    <div class="container">
+      <header class="service-page__head">
+        <div>
+          <p class="eyebrow">{content.eyebrow}</p>
+          <h1>{content.h1}</h1>
+          <hr class="laser-line" />
+          <p class="service-page__lead">{content.lead}</p>
+          <a class="btn btn--primary" href={contactHref}>{content.cta.button}</a>
+        </div>
+        <Image
+          class="service-page__img"
+          src={IMAGES[service]}
+          alt={content.imgAlt}
+          widths={[480, 720, 960]}
+          sizes="(min-width: 960px) 460px, 100vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </header>
+
+      <div class="service-page__grid">
+        <div class="prose">
+          {content.sections.map((s) => (
+            <>
+              <h2>{s.title}</h2>
+              {s.paragraphs.map((p) => <p>{p}</p>)}
+              {s.bullets && (
+                <ul>
+                  {s.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              )}
+            </>
+          ))}
+
+          <h2>{content.processTitle}</h2>
+          <ol class="service-page__process">
+            {content.process.map((step) => (
+              <li>
+                <strong>{step.title}</strong>
+                <span>{step.desc}</span>
+              </li>
+            ))}
+          </ol>
+
+          <h2>{content.faqTitle}</h2>
+          <div class="service-page__faq">
+            {content.faq.map((item) => (
+              <details>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <aside class="service-page__aside">
+          {machines.map((m) => (
+            <div class="info-card">
+              <h2 class="info-card__title">{content.specsTitle}</h2>
+              <p class="spec">{m.brand} {m.name}</p>
+              <dl class="specs">
+                {m.specs.map((s) => (
+                  <div>
+                    <dt>{s.label}</dt>
+                    <dd>{s.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ))}
+
+          <div class="info-card info-card--cta">
+            <h2 class="info-card__title">{content.cta.title}</h2>
+            <p>{content.cta.text}</p>
+            <a class="btn btn--primary" href={contactHref}>{content.cta.button}</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .service-page__head {
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .service-page__lead {
+    font-size: 1.15rem;
+    color: var(--c-text-muted);
+    line-height: 1.6;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .service-page__img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .service-page__grid {
+    display: grid;
+    grid-template-columns: 1fr 20rem;
+    gap: 3.5rem;
+    align-items: start;
+  }
+
+  .service-page__grid .prose h2:first-child { margin-top: 0; }
+
+  .service-page__process {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .service-page__process li { display: grid; gap: 0.15rem; }
+  .service-page__process span { color: var(--c-text-muted); }
+
+  .service-page__faq details {
+    border-bottom: 1px solid var(--c-line);
+    padding: 0.9rem 0;
+  }
+
+  .service-page__faq summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .service-page__faq details p {
+    margin: 0.6rem 0 0;
+    color: var(--c-text-muted);
+  }
+
+  .service-page__aside {
+    display: grid;
+    gap: 1.5rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .info-card {
+    background: var(--c-surface);
+    border: 1px solid var(--c-line);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+  }
+
+  .info-card__title {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .specs {
+    display: grid;
+    gap: 0.7rem;
+    margin: 1rem 0 0;
+  }
+
+  .specs dt {
+    font-size: 0.82rem;
+    color: var(--c-text-muted);
+  }
+
+  .specs dd {
+    margin: 0;
+    font-weight: 600;
+    color: var(--c-graphite-800);
+  }
+
+  .info-card--cta {
+    background: var(--c-graphite-900);
+    color: var(--c-text-inverse);
+    border-color: var(--c-graphite-700);
+  }
+
+  .info-card--cta .info-card__title { color: var(--c-text-inverse); }
+
+  .info-card--cta p {
+    color: var(--c-steel-300);
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media (max-width: 960px) {
+    .service-page__head,
+    .service-page__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-page__aside { position: static; }
+  }
+</style>

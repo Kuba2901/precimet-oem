@@ -24,8 +24,9 @@ const links = [
 
 <header class="header">
   <div class="container header__inner">
-    <a href={home} class="brand" aria-label="Precimet OEM Manufacturing — strona główna">
-      <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Precimet" width="44" height="44" />
+    {/* Nazwa linku = widoczny tekst (WCAG 2.5.3); logo obok tekstu jest dekoracyjne. */}
+    <a href={home} class="brand">
+      <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" width="44" height="44" />
       <span class="brand__text">
         <strong>PRECIMET</strong>
         <span class="brand__sub">OEM Manufacturing</span>

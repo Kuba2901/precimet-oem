@@ -14,7 +14,7 @@ import Contact from '../../components/Contact.astro';
 const locale = 'en' as const;
 ---
 
-<BaseLayout locale={locale} pagePath="/">
+<BaseLayout locale={locale} pagePath="/" preloadImage={`${import.meta.env.BASE_URL}hero.webp`}>
   <Hero locale={locale} />
   <About locale={locale} />
   <Services locale={locale} />

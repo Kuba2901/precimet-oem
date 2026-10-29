@@ -1,3 +1,4 @@
+import type { ImageMetadata } from 'astro';
 import type { Locale } from './config';
 import laser from '../assets/laser.jpg';
 import bending from '../assets/bending.jpg';
@@ -21,7 +22,8 @@ type ServiceItem = {
   id: string;
   title: string;
   desc: string;
-  img: string;
+  /** Zdjęcie z src/assets — przetwarzane przez astro:assets (WebP, srcset). */
+  img: ImageMetadata;
   imgAlt: string;
 };
 
@@ -42,6 +44,28 @@ type MachineGroup = {
   id: string;
   title: string;
   machines: MachineItem[];
+};
+
+/** Treść podstrony usługi (np. /ciecie-laserowe). Parametry maszyn bierzemy z `machines`. */
+type ServicePageContent = {
+  /** Ścieżka bez prefiksu językowego, np. '/ciecie-laserowe'. */
+  path: string;
+  title: string;
+  description: string;
+  serviceType: string;
+  eyebrow: string;
+  h1: string;
+  lead: string;
+  imgAlt: string;
+  /** Nazwy maszyn z `machines.groups[].machines[].name`, których parametry pokazujemy. */
+  machineNames: string[];
+  specsTitle: string;
+  sections: { title: string; paragraphs: string[]; bullets?: string[] }[];
+  processTitle: string;
+  process: { title: string; desc: string }[];
+  faqTitle: string;
+  faq: { q: string; a: string }[];
+  cta: { title: string; text: string; button: string };
 };
 
 type Dict = {
@@ -206,22 +230,24 @@ type Dict = {
     linkLabel: string;
     accept: string;
     decline: string;
+  };  servicePages: {
+    laser: ServicePageContent;
   };
 };
 
 const STOCK = {
-  laser: laser.src,
-  bending: bending.src,
-  welding: welding.src,
-  robotWelding: robotWelding.src,
-  cncMill: cncMill.src,
-  cncTurn: cncTurn.src,
-  tubes: tubes.src,
-  assembly: assembly.src,
-  electrical: electrical.src,
-  cad: cad.src,
-  locksmith: locksmith.src,
-  hall: hall.src,
+  laser,
+  bending,
+  welding,
+  robotWelding,
+  cncMill,
+  cncTurn,
+  tubes,
+  assembly,
+  electrical,
+  cad,
+  locksmith,
+  hall,
 };
 
 /** Zdjęcia maszyn z parku maszynowego (public/maszyny). */
@@ -723,6 +749,82 @@ export const ui: Record<Locale, Dict> = {
       accept: 'Akceptuję',
       decline: 'Odrzucam',
     },
+    servicePages: {
+      laser: {
+        path: '/ciecie-laserowe',
+        title: 'Cięcie laserowe blach Łódź — Precimet OEM',
+        description: 'Cięcie laserowe blach w Łodzi: laser fiber 4 kW, arkusz 3000 × 1500 mm, stal do 20 mm, aluminium do 10 mm. 50+ gatunków w magazynie, wycena w 1–2 dni.',
+        serviceType: 'Cięcie laserowe blach',
+        eyebrow: 'Usługi · Cięcie laserowe',
+        h1: 'Cięcie laserowe blach w Łodzi',
+        lead: 'Tniemy laserem blachy stalowe, nierdzewne, kwasoodporne i aluminiowe na wycinarce Mazak z laserem światłowodowym 4 kW. Od pojedynczego prototypu po powtarzalne serie — z materiału z własnego magazynu i z wyceną w 1–2 dni robocze.',
+        imgAlt: 'Wycinarka laserowa tnąca blachę stalową',
+        machineNames: ['NEXUS OPTIPLEX 2D'],
+        specsTitle: 'Zakres cięcia laserowego',
+        sections: [
+          {
+            title: 'Wycinanie laserowe detali z blach — od prototypu do serii',
+            paragraphs: [
+              'Cięcie laserem to pierwszy etap większości zleceń, które realizujemy dla producentów maszyn, integratorów automatyki i firm rozwijających własne produkty. Wycinamy detale płaskie i rozwinięcia, które trafiają potem do gięcia, spawania, obróbki CNC lub montażu — u nas albo u klienta.',
+              'Nie narzucamy minimalnej wielkości zamówienia. Pojedynczy prototyp traktujemy tak samo jak serię: ta sama maszyna, ten sam program i ta sama kontrola jakości, dzięki czemu prototyp przechodzi płynnie w produkcję seryjną.',
+            ],
+          },
+          {
+            title: 'Jakie materiały tniemy laserem',
+            paragraphs: [
+              'W magazynie utrzymujemy ponad 50 gatunków blach, więc cięcie metalu laserem zwykle startuje bez czekania na dostawę materiału. To najczęstsza przyczyna opóźnień w kooperacji, którą eliminujemy po swojej stronie. Tniemy też z materiału powierzonego przez klienta.',
+            ],
+            bullets: [
+              'stal czarna (konstrukcyjna) do 20 mm',
+              'stal nierdzewna i kwasoodporna do 20 mm',
+              'aluminium do 10 mm',
+              'metale kolorowe: mosiądz i miedź',
+            ],
+          },
+          {
+            title: 'Cięcie laserowe jako część całego procesu',
+            paragraphs: [
+              'Detale po cięciu nie muszą jechać do kolejnego dostawcy. W tym samym zakładzie gniemy je na serwoelektrycznej prasie krawędziowej Safan (do 3000 mm, 160 t), spawamy ręcznie metodami MIG/MAG i TIG lub na robocie OTC Daihen, obrabiamy na centrach CNC i montujemy w gotowe zespoły.',
+              'Przygotowujemy też technologię: dokumentację pod produkcję, rozwinięcia blach i programy CAM. Nie masz modelu 3D? Wystarczy szkic lub próbka detalu — pomożemy uzupełnić dokumentację.',
+            ],
+          },
+          {
+            title: 'Jakość i dokumentacja',
+            paragraphs: [
+              'Pracujemy w systemie zarządzania jakością ISO 9001:2015, certyfikowanym od 2015 roku. Kontrolujemy materiał na wejściu, detale w trakcie produkcji i przed wysyłką. Na życzenie dołączamy uzgodnioną dokumentację jakościową i świadectwa materiałowe.',
+            ],
+          },
+          {
+            title: 'Cięcie laserowe w Łodzi dla firm z Polski i Europy',
+            paragraphs: [
+              'Zakład mieści się w Łodzi przy ul. Pomorskiej 555. Za firmą stoi ponad 30 lat doświadczenia w obróbce metali i ponad 3,5 miliona wyprodukowanych części. Realizujemy zlecenia dla firm z Łodzi i województwa łódzkiego, z całej Polski i z Europy — m.in. z branży maszynowej, automatyki i robotyki, spożywczej, energetyki, transportu i logistyki, budownictwa oraz mebli metalowych.',
+            ],
+          },
+        ],
+        processTitle: 'Jak wygląda zlecenie cięcia laserowego',
+        process: [
+          { title: 'Prześlij dokumentację', desc: 'Rysunek 2D lub model 3D (STEP, STP, IGES, IGS, DXF, DWG, PDF), gatunek i grubość materiału, ilość oraz oczekiwany termin.' },
+          { title: 'Wycena w 1–2 dni robocze', desc: 'Analizujemy wykonalność i wysyłamy ofertę z potwierdzonym terminem realizacji.' },
+          { title: 'Technologia', desc: 'Przygotowujemy program CAM i rozkład detali na arkuszu, a w razie potrzeby rozwinięcia blach.' },
+          { title: 'Cięcie i dalsze operacje', desc: 'Tniemy laserem, a jeśli zlecenie tego wymaga — gniemy, spawamy, obrabiamy CNC i montujemy.' },
+          { title: 'Kontrola i wysyłka', desc: 'Kontrola końcowa, dokumentacja na życzenie i dostawa w uzgodnionym terminie.' },
+        ],
+        faqTitle: 'Cięcie laserowe — pytania i odpowiedzi',
+        faq: [
+          { q: 'Jaką maksymalną grubość blachy tniecie laserem?', a: 'Stal czarną oraz stal nierdzewną i kwasoodporną do 20 mm, aluminium do 10 mm. Tniemy też mosiądz i miedź. Maksymalny format arkusza to 3000 × 1500 mm.' },
+          { q: 'Czy wycinacie pojedyncze sztuki?', a: 'Tak. Nie mamy minimalnej wielkości zamówienia — realizujemy zarówno prototypy i pojedyncze detale, jak i duże serie.' },
+          { q: 'Czy tniecie z materiału powierzonego?', a: 'Tak. Tniemy z naszego magazynu (ponad 50 gatunków blach) albo z materiału dostarczonego przez klienta — w zapytaniu wystarczy zaznaczyć, którą opcję wybierasz.' },
+          { q: 'W jakich formatach przesłać pliki?', a: 'STEP, STP, IGES, IGS, DXF, DWG lub PDF. Jeśli nie masz modelu 3D, prześlij szkic lub próbkę — pomożemy przygotować dokumentację.' },
+          { q: 'Ile trwa wycena cięcia laserowego?', a: 'Ofertę wysyłamy zwykle w ciągu 1–2 dni roboczych. Termin realizacji zależy od detalu i obłożenia maszyn — potwierdzamy go w ofercie.' },
+          { q: 'Czy po cięciu możecie detale giąć i spawać?', a: 'Tak. W jednym zakładzie gniemy, spawamy (ręcznie i zrobotyzowanie), obrabiamy CNC i montujemy, więc cały detal lub zespół powstaje u jednego dostawcy.' },
+        ],
+        cta: {
+          title: 'Potrzebujesz detali ciętych laserem?',
+          text: 'Prześlij rysunek lub model — przygotujemy ofertę w ciągu 1–2 dni roboczych.',
+          button: 'Zapytaj o wycenę',
+        },
+      },
+    },
   },
 
   /* ------------------------------------------------------------------ EN */
@@ -1213,15 +1315,91 @@ export const ui: Record<Locale, Dict> = {
       accept: 'Accept',
       decline: 'Decline',
     },
+    servicePages: {
+      laser: {
+        path: '/laser-cutting',
+        title: 'Laser Cutting Services in Poland — Precimet OEM',
+        description: 'Sheet metal laser cutting in Łódź, Poland: 4 kW fibre laser, 3000 × 1500 mm sheets, steel up to 20 mm, aluminium up to 10 mm. Quoted in 1–2 working days.',
+        serviceType: 'Sheet metal laser cutting',
+        eyebrow: 'Services · Laser cutting',
+        h1: 'Sheet metal laser cutting in Poland',
+        lead: 'We laser cut mild steel, stainless and acid-resistant steel and aluminium on a Mazak machine with a 4 kW fibre laser. From a single prototype to repeat series — from material in our own warehouse, with a quote in 1–2 working days.',
+        imgAlt: 'Laser cutting machine processing steel sheet',
+        machineNames: ['NEXUS OPTIPLEX 2D'],
+        specsTitle: 'Laser cutting capacity',
+        sections: [
+          {
+            title: 'Laser cut parts from prototype to series',
+            paragraphs: [
+              'Laser cutting is the first step of most orders we run for machine builders, automation integrators and companies developing their own products. We cut flat parts and blanks that then go on to bending, welding, CNC machining or assembly — in our plant or at yours.',
+              'There is no minimum order quantity. A single prototype gets the same machine, the same program and the same quality control as a series, so the prototype moves straight into series production.',
+            ],
+          },
+          {
+            title: 'Materials we laser cut',
+            paragraphs: [
+              'We keep more than 50 sheet metal grades in stock, so laser cutting usually starts without waiting for material. Material lead time is the most common cause of delay in subcontracting, and we remove it on our side. We also cut customer-supplied material.',
+            ],
+            bullets: [
+              'mild (structural) steel up to 20 mm',
+              'stainless and acid-resistant steel up to 20 mm',
+              'aluminium up to 10 mm',
+              'non-ferrous metals: brass and copper',
+            ],
+          },
+          {
+            title: 'Laser cutting as part of the whole process',
+            paragraphs: [
+              'Cut parts do not need to travel to another supplier. In the same plant we bend them on a Safan servo-electric press brake (up to 3000 mm, 160 t), weld them manually (MIG/MAG and TIG) or on an OTC Daihen robot, machine them on CNC centres and assemble them into finished units.',
+              'We also handle the engineering: documentation for manufacture, sheet metal unfolds and CAM programming. No 3D model? A sketch or a sample part is enough — we will help complete the documentation.',
+            ],
+          },
+          {
+            title: 'Quality and documentation',
+            paragraphs: [
+              'We work under an ISO 9001:2015 quality management system, certified since 2015. Material is checked on arrival, parts are inspected during production and before shipping, and agreed quality documentation and material certificates are supplied on request.',
+            ],
+          },
+          {
+            title: 'A laser cutting partner in Poland for customers across Europe',
+            paragraphs: [
+              'Our plant is at ul. Pomorska 555 in Łódź, central Poland. The company draws on more than 30 years of metalworking experience and has produced over 3.5 million parts. We supply customers in Poland and across Europe — including machine and equipment building, automation and robotics, food, energy, transport and logistics, construction and metal furniture.',
+            ],
+          },
+        ],
+        processTitle: 'How a laser cutting order works',
+        process: [
+          { title: 'Send your documentation', desc: 'A 2D drawing or 3D model (STEP, STP, IGES, IGS, DXF, DWG, PDF), material grade and thickness, quantity and target date.' },
+          { title: 'Quote in 1–2 working days', desc: 'We check manufacturability and send an offer with a confirmed lead time.' },
+          { title: 'Engineering', desc: 'We prepare the CAM program and sheet nesting, and the sheet metal unfolds if needed.' },
+          { title: 'Cutting and further operations', desc: 'We laser cut and, where the order requires it, bend, weld, machine and assemble.' },
+          { title: 'Inspection and delivery', desc: 'Final inspection, documentation on request and delivery on the agreed date.' },
+        ],
+        faqTitle: 'Laser cutting — questions and answers',
+        faq: [
+          { q: 'What is the maximum sheet thickness you can laser cut?', a: 'Mild steel and stainless or acid-resistant steel up to 20 mm, aluminium up to 10 mm. We also cut brass and copper. The maximum sheet size is 3000 × 1500 mm.' },
+          { q: 'Do you cut single parts?', a: 'Yes. There is no minimum order quantity — we handle prototypes and one-off parts as well as large series.' },
+          { q: 'Can you cut customer-supplied material?', a: 'Yes. We cut from our own stock (more than 50 sheet metal grades) or from material you supply — just say which in your enquiry.' },
+          { q: 'Which file formats do you accept?', a: 'STEP, STP, IGES, IGS, DXF, DWG or PDF. No 3D model? Send a sketch or a sample and we will help prepare the documentation.' },
+          { q: 'How long does a laser cutting quote take?', a: 'We usually send the offer within 1–2 working days. Lead time depends on the part and machine load and is confirmed in the offer.' },
+          { q: 'Can you bend and weld the parts after cutting?', a: 'Yes. We bend, weld (manual and robotic), machine and assemble in one plant, so the whole part or assembly comes from a single supplier.' },
+        ],
+        cta: {
+          title: 'Need laser cut parts?',
+          text: 'Send a drawing or a model — we will prepare an offer within 1–2 working days.',
+          button: 'Request a quote',
+        },
+      },
+    },
   },
 
   /* ------------------------------------------------------------------ DE */
   de: {
     seo: {
       title:
-        'Lohnfertigung Metall aus Polen — Precimet OEM',
+        'Fertigungspartner für OEM aus Polen — Precimet',
       description:
-        'Laserschneiden, Abkanten, Schweißen und CNC-Bearbeitung für OEMs. ISO 9001:2015, Prototyp bis Serie. Zeichnung senden — Angebot in 1–2 Tagen.',
+        'Fertigungspartner für OEM in Polen: Laserschneiden, Abkanten, Schweißen, CNC. ISO 9001:2015, Lieferung nach DE und CH, Ansprechpartner auf Deutsch.',
       blogTitle: 'Blog & Aktuelles — Precimet OEM Manufacturing',
       blogDescription:
         'Case Studies und technisches Know-how zur Metallbearbeitung: Laserschneiden, Blechbiegen, Schweißen, CNC-Bearbeitung und Lohnfertigung.',
@@ -1240,7 +1418,7 @@ export const ui: Record<Locale, Dict> = {
       cta: 'Angebot anfragen',
     },
     hero: {
-      eyebrow: 'Precimet OEM Manufacturing · Partner für Metallbearbeitung',
+      eyebrow: 'Precimet OEM Manufacturing · Fertigungspartner für OEM',
       title1: 'Metallteile gefertigt',
       titleAccent: 'nach Ihrer Zeichnung.',
       title2: 'Vom Prototyp zur Serie.',
@@ -1259,7 +1437,7 @@ export const ui: Record<Locale, Dict> = {
     about: {
       eyebrow: 'Über uns',
       title: 'Ein Fertigungspartner, nicht nur ein Zulieferer',
-      p1: 'Hinter Precimet stehen über 30 Jahre Erfahrung in der Metallbearbeitung. Wir realisieren Lohnfertigung und Produktions-Outsourcing für Industriekunden aus ganz Polen. Wir fertigen nach Ihrer Dokumentation — oder unterstützen bei deren Erstellung — vom Einzelprototyp bis zur wiederholgenauen Serienproduktion.',
+      p1: 'Hinter Precimet stehen über 30 Jahre Erfahrung in der Metallbearbeitung. Wir realisieren Lohnfertigung und Produktions-Outsourcing für Industriekunden in Polen und Europa — wir liefern nach Deutschland und in die Schweiz, und Ihr Ansprechpartner spricht Deutsch. Wir fertigen nach Ihrer Dokumentation — oder unterstützen bei deren Erstellung — vom Einzelprototyp bis zur wiederholgenauen Serienproduktion.',
       p2: 'Bis heute haben wir über 3,5 Millionen Teile gefertigt. Unser Lager umfasst mehr als 50 Blechsorten — das verkürzt Lieferzeiten und macht Ihren Zeitplan unabhängig von Materiallieferungen. Wir arbeiten mit den F&E-Abteilungen unserer Kunden zusammen und bieten Rapid Prototyping vor dem Serienstart.',
       p3: 'Seit 2015 arbeiten wir mit einem zertifizierten Qualitätsmanagementsystem nach ISO 9001:2015. Jeder Auftrag durchläuft die Qualitätskontrolle, der Fertigungsprozess ist dokumentiert und reproduzierbar.',
       facts: [
@@ -1702,6 +1880,82 @@ export const ui: Record<Locale, Dict> = {
       linkLabel: 'Datenschutzerklärung',
       accept: 'Akzeptieren',
       decline: 'Ablehnen',
+    },
+    servicePages: {
+      laser: {
+        path: '/laserschneiden',
+        title: 'Laserschneiden in Polen — Precimet OEM, Łódź',
+        description: 'Laserschneiden von Blech in Polen: 4-kW-Faserlaser, Tafeln bis 3000 × 1500 mm, Stahl bis 20 mm, Aluminium bis 10 mm. Angebot in 1–2 Arbeitstagen.',
+        serviceType: 'Laserschneiden von Blech',
+        eyebrow: 'Leistungen · Laserschneiden',
+        h1: 'Laserschneiden von Blech in Polen',
+        lead: 'Wir schneiden Baustahl, Edelstahl, säurebeständigen Stahl und Aluminium auf einer Mazak-Anlage mit 4-kW-Faserlaser. Vom einzelnen Prototyp bis zur Serie — aus Material aus dem eigenen Lager und mit Angebot in 1–2 Arbeitstagen.',
+        imgAlt: 'Laserschneidanlage beim Schneiden von Stahlblech',
+        machineNames: ['NEXUS OPTIPLEX 2D'],
+        specsTitle: 'Leistungsdaten Laserschneiden',
+        sections: [
+          {
+            title: 'Laserzuschnitte vom Prototyp bis zur Serie',
+            paragraphs: [
+              'Laserschneiden ist der erste Schritt der meisten Aufträge, die wir für Maschinenbauer, Automatisierungsintegratoren und Unternehmen mit eigenen Produkten fertigen. Wir schneiden Flachteile und Abwicklungen, die anschließend gekantet, geschweißt, CNC-bearbeitet oder montiert werden — bei uns oder bei Ihnen.',
+              'Es gibt keine Mindestbestellmenge. Ein einzelner Prototyp läuft auf derselben Maschine, mit demselben Programm und derselben Qualitätskontrolle wie die Serie, sodass der Übergang in die Serienfertigung reibungslos gelingt.',
+            ],
+          },
+          {
+            title: 'Welche Werkstoffe wir lasern',
+            paragraphs: [
+              'Wir halten mehr als 50 Blechsorten auf Lager. Das Laserschneiden startet daher meist ohne Wartezeit auf Material — die häufigste Ursache für Verzögerungen in der Lohnfertigung entfällt. Auf Wunsch schneiden wir auch beigestelltes Material.',
+            ],
+            bullets: [
+              'Baustahl bis 20 mm',
+              'Edelstahl und säurebeständiger Stahl bis 20 mm',
+              'Aluminium bis 10 mm',
+              'Buntmetalle: Messing und Kupfer',
+            ],
+          },
+          {
+            title: 'Laserschneiden als Teil der gesamten Fertigung',
+            paragraphs: [
+              'Die Zuschnitte müssen nicht zum nächsten Lieferanten. Im selben Werk kanten wir sie auf einer servoelektrischen Safan-Abkantpresse (bis 3000 mm, 160 t), schweißen sie manuell (MIG/MAG und WIG) oder mit einem OTC-Daihen-Roboter, bearbeiten sie auf CNC-Zentren und montieren sie zu fertigen Baugruppen.',
+              'Auch die Technologie übernehmen wir: fertigungsgerechte Dokumentation, Blechabwicklungen und CAM-Programme. Kein 3D-Modell? Eine Skizze oder ein Musterteil genügt — wir helfen, die Dokumentation zu vervollständigen.',
+            ],
+          },
+          {
+            title: 'Qualität und Dokumentation',
+            paragraphs: [
+              'Wir arbeiten mit einem Qualitätsmanagementsystem nach ISO 9001:2015, zertifiziert seit 2015. Material wird beim Wareneingang geprüft, Teile während der Fertigung und vor dem Versand. Vereinbarte Qualitätsdokumentation und Materialzeugnisse liefern wir auf Wunsch mit.',
+            ],
+          },
+          {
+            title: 'Ihr Fertigungspartner für Laserzuschnitte in Polen',
+            paragraphs: [
+              'Unser Werk befindet sich in Łódź (ul. Pomorska 555) in Zentralpolen. Hinter dem Unternehmen stehen mehr als 30 Jahre Erfahrung in der Metallbearbeitung und über 3,5 Millionen gefertigte Teile. Wir beliefern Kunden in Polen und ganz Europa, auch in Deutschland und der Schweiz, mit deutschsprachigem Ansprechpartner — unter anderem aus Maschinen- und Anlagenbau, Automatisierung und Robotik, Lebensmittelindustrie, Energie, Transport und Logistik, Bauwesen sowie Metallmöbelbau.',
+            ],
+          },
+        ],
+        processTitle: 'So läuft ein Auftrag zum Laserschneiden ab',
+        process: [
+          { title: 'Unterlagen senden', desc: '2D-Zeichnung oder 3D-Modell (STEP, STP, IGES, IGS, DXF, DWG, PDF), Werkstoff und Blechdicke, Stückzahl und Wunschtermin.' },
+          { title: 'Angebot in 1–2 Arbeitstagen', desc: 'Wir prüfen die Machbarkeit und senden ein Angebot mit bestätigtem Liefertermin.' },
+          { title: 'Technologie', desc: 'Wir erstellen das CAM-Programm und die Schachtelung auf der Tafel, bei Bedarf auch die Blechabwicklungen.' },
+          { title: 'Schneiden und weitere Bearbeitung', desc: 'Wir lasern und — wenn der Auftrag es erfordert — kanten, schweißen, bearbeiten CNC und montieren.' },
+          { title: 'Prüfung und Versand', desc: 'Endprüfung, Dokumentation auf Wunsch und Lieferung zum vereinbarten Termin.' },
+        ],
+        faqTitle: 'Laserschneiden — Fragen und Antworten',
+        faq: [
+          { q: 'Bis zu welcher Blechdicke schneiden Sie mit dem Laser?', a: 'Baustahl sowie Edelstahl und säurebeständigen Stahl bis 20 mm, Aluminium bis 10 mm. Außerdem schneiden wir Messing und Kupfer. Das maximale Tafelformat beträgt 3000 × 1500 mm.' },
+          { q: 'Schneiden Sie auch Einzelteile?', a: 'Ja. Es gibt keine Mindestbestellmenge — wir fertigen Prototypen und Einzelteile ebenso wie große Serien.' },
+          { q: 'Schneiden Sie auch beigestelltes Material?', a: 'Ja. Wir schneiden aus unserem Lager (mehr als 50 Blechsorten) oder aus Material, das Sie beistellen — geben Sie es einfach in Ihrer Anfrage an.' },
+          { q: 'In welchen Formaten kann ich Dateien senden?', a: 'STEP, STP, IGES, IGS, DXF, DWG oder PDF. Kein 3D-Modell? Senden Sie eine Skizze oder ein Muster — wir helfen bei der Dokumentation.' },
+          { q: 'Wie lange dauert ein Angebot für Laserschneiden?', a: 'Das Angebot erhalten Sie in der Regel innerhalb von 1–2 Arbeitstagen. Die Lieferzeit hängt vom Teil und der Maschinenauslastung ab und wird im Angebot bestätigt.' },
+          { q: 'Können Sie die Teile nach dem Schneiden auch kanten und schweißen?', a: 'Ja. Wir kanten, schweißen (manuell und robotergestützt), bearbeiten CNC und montieren in einem Werk — das ganze Teil oder die Baugruppe kommt von einem Lieferanten.' },
+        ],
+        cta: {
+          title: 'Sie benötigen Laserzuschnitte?',
+          text: 'Senden Sie eine Zeichnung oder ein Modell — Ihr Angebot erhalten Sie innerhalb von 1–2 Arbeitstagen.',
+          button: 'Angebot anfordern',
+        },
+      },
     },
   },
 };

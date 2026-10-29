@@ -1,14 +1,15 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
-  const content = `# Precimet OEM Manufacturing — Lohnfertigung Metall aus Polen
+  const content = `# Precimet OEM Manufacturing — Fertigungspartner für OEM aus Polen
 
-> Laserschneiden, Abkanten, manuelles und Roboterschweißen, CNC-Bearbeitung und Montage für OEMs — vom Prototyp bis zur Serie. Über 30 Jahre Erfahrung in der Metallbearbeitung, ISO 9001:2015 zertifiziert seit 2015, Produktionswerk in Łódź.
+> Laserschneiden, Abkanten, manuelles und Roboterschweißen, CNC-Bearbeitung und Montage für OEMs — vom Prototyp bis zur Serie. Über 30 Jahre Erfahrung in der Metallbearbeitung, ISO 9001:2015 zertifiziert seit 2015, Produktionswerk in Łódź. Lieferung nach Deutschland und in die Schweiz, deutschsprachiger Ansprechpartner.
 
 ## Schnellzugriff für KI-Agenten
 - **LLM-Übersicht**: [https://oem.precimet.pl/llms.txt](https://oem.precimet.pl/llms.txt)
 - **Vollständige Wissensdatenbank**: [https://oem.precimet.pl/llms-full.txt](https://oem.precimet.pl/llms-full.txt)
 - **Über uns**: [https://oem.precimet.pl/de/about/](https://oem.precimet.pl/de/about/)
+- **Laserschneiden**: [https://oem.precimet.pl/de/laserschneiden/](https://oem.precimet.pl/de/laserschneiden/)
 - **Kontakt & Angebotsanfrage (RFQ)**: [https://oem.precimet.pl/de/contact/](https://oem.precimet.pl/de/contact/)
 - **Blog**: [https://oem.precimet.pl/de/blog/](https://oem.precimet.pl/de/blog/)
 - **Datenschutzerklärung**: [https://oem.precimet.pl/de/datenschutz/](https://oem.precimet.pl/de/datenschutz/)

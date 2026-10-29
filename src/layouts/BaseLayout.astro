@@ -1,4 +1,14 @@
 ---
+/* Fonty hostowane lokalnie (fontsource) — Google Fonts blokowało renderowanie ~2,8 s na mobile.
+   Te same wagi co wcześniej; unicode-range sprawia, że przeglądarka pobiera tylko potrzebne podzbiory. */
+import '@fontsource/barlow-condensed/500.css';
+import '@fontsource/barlow-condensed/600.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -30,10 +40,22 @@ interface Props {
   ogImageAlt?: string;
   ogType?: string;
   noindex?: boolean;
+  /** Obraz LCP ładowany z CSS (np. tło hero) — bez preloadu przeglądarka znajduje go dopiero po CSS. */
+  preloadImage?: string;
 }
 
-const { locale, title, description, pagePath, alternates, ogImage, ogImageAlt, ogType, noindex } =
-  Astro.props;
+const {
+  locale,
+  title,
+  description,
+  pagePath,
+  alternates,
+  ogImage,
+  ogImageAlt,
+  ogType,
+  noindex,
+  preloadImage,
+} = Astro.props;
 const dict = t(locale);
 
 const metaTitle = title ?? dict.seo.title;
@@ -127,13 +149,7 @@ const breadcrumbs = noindex ? null : breadcrumbSchema(site, locale, basePath, di
     <meta name="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={ogImg} />
 
-    {/* Fonty */}
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
-    />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
     {breadcrumbs && (

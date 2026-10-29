@@ -1,5 +1,6 @@
 ---
-import type { Locale } from '../i18n/config';
+import { Image } from 'astro:assets';
+import { path, type Locale } from '../i18n/config';
 import { t } from '../i18n/ui';
 
 interface Props {
@@ -8,6 +9,11 @@ interface Props {
 
 const { locale } = Astro.props;
 const dict = t(locale);
+
+/* Usługi, które mają już własną podstronę (id usługi -> ścieżka). */
+const pages: Record<string, string> = {
+  laser: path(locale, dict.servicePages.laser.path),
+};
 ---
 
 <section id="uslugi" class="section section--alt">
@@ -23,10 +29,18 @@ const dict = t(locale);
       {dict.services.items.map((s) => (
         <article class="card service reveal">
           <div class="service__media">
-            <img src={s.img} alt={s.imgAlt} loading="lazy" width="600" height="400" />
+            <Image
+              src={s.img}
+              alt={s.imgAlt}
+              loading="lazy"
+              width={600}
+              height={400}
+              widths={[400, 600, 900]}
+              sizes="(min-width: 1180px) 380px, (min-width: 640px) 50vw, 100vw"
+            />
           </div>
           <div class="service__body">
-            <h3>{s.title}</h3>
+            <h3>{pages[s.id] ? <a href={pages[s.id]}>{s.title}</a> : s.title}</h3>
             <p>{s.desc}</p>
           </div>
         </article>
@@ -65,6 +79,13 @@ const dict = t(locale);
   .service__body h3 {
     font-size: 1.3rem;
     margin-bottom: 0.4rem;
+  }
+
+  .service__body h3 a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--c-red-500);
+    text-underline-offset: 0.2em;
   }
 
   .service__body p {

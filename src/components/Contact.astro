@@ -127,11 +127,18 @@ const TURNSTILE_SITE_KEY = '';
       </label>
 
       <div class="field">
-        <span>{f.file}</span>
+        <span id="attachment-label">{f.file}</span>
         <label class="file-label">
-          <input type="file" name="attachment" accept=".dxf,.dwg,.step,.stp,.iges,.igs,.pdf,.zip" multiple />
+          <input
+            type="file"
+            name="attachment"
+            accept=".dxf,.dwg,.step,.stp,.iges,.igs,.pdf,.zip"
+            multiple
+            aria-labelledby="attachment-label"
+            aria-describedby="attachment-hint"
+          />
         </label>
-        <small class="spec">{f.fileHint}</small>
+        <small id="attachment-hint" class="spec">{f.fileHint}</small>
       </div>
 
       <label class="field field--consent">
