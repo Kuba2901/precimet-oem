@@ -1,6 +1,6 @@
 ---
 title: "Designing for Sheet Metal Bending: 5 Rules"
-description: "Minimum flange length, bend radius, bend allowance and K-factor, relief cuts and realistic tolerances — five rules we apply on subcontracted bending orders."
+description: "Minimum flange length, bend radius, bend allowance and K-factor, relief cuts and realistic tolerances — five rules for subcontracted bending orders."
 date: 2026-08-27
 lang: en
 cover: "/blog/giecie-blach.webp"

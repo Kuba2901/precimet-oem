@@ -1,6 +1,6 @@
 ---
 title: "Quality Control in Contract Manufacturing"
-description: "Incoming inspection, in-process control, final inspection and the quality documentation package — what the quality control path looks like on a standard subcontracted order."
+description: "Incoming inspection, in-process control, final inspection and the quality documentation package — how quality control works on a subcontracted order."
 date: 2026-09-01
 lang: en
 cover: "/blog/kontrola-jakosci.webp"

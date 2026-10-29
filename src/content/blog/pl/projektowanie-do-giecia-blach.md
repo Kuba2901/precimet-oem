@@ -1,6 +1,6 @@
 ---
 title: "Projektowanie pod gięcie blach: 5 zasad"
-description: "Minimalna długość podparcia, promień gięcia, korekta gięcia i współczynnik K, nacięcia ulgowe oraz realistyczne tolerancje — pięć zasad, które stosujemy przy zleceniach gięcia kooperacyjnego."
+description: "Długość podparcia, promień gięcia, współczynnik K, nacięcia ulgowe i realne tolerancje — pięć zasad, które stosujemy przy kooperacyjnym gięciu blach."
 date: 2026-08-27
 lang: pl
 cover: "/blog/giecie-blach.webp"

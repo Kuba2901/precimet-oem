@@ -1,6 +1,6 @@
 ---
 title: "Qualitätskontrolle in der Lohnfertigung"
-description: "Wareneingangsprüfung, Fertigungskontrollen, Endprüfung und Qualitätsdokumentationspaket — wie der Weg der Qualitätskontrolle bei einem Standard-Lohnfertigungsauftrag aussieht."
+description: "Wareneingangsprüfung, Fertigungskontrolle, Endprüfung und Qualitätsdokumentation — so läuft die Qualitätskontrolle bei einem Lohnfertigungsauftrag ab."
 date: 2026-09-01
 lang: de
 cover: "/blog/kontrola-jakosci.webp"

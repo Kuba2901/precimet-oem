@@ -1,6 +1,6 @@
 ---
 title: "Kontrola jakości w kooperacji: krok po kroku"
-description: "Kontrola przychodząca, kontrola w trakcie produkcji, odbiór końcowy i pakiet dokumentacji jakościowej — jak wygląda ścieżka kontroli jakości przy standardowym zleceniu kooperacyjnym."
+description: "Kontrola przychodząca, kontrola w trakcie produkcji, odbiór końcowy i dokumentacja jakościowa — jak wygląda kontrola jakości przy zleceniu kooperacyjnym."
 date: 2026-09-01
 lang: pl
 cover: "/blog/kontrola-jakosci.webp"

@@ -237,7 +237,7 @@ export const ui: Record<Locale, Dict> = {
         'Cięcie laserowe, gięcie, spawanie i obróbka CNC dla firm OEM. ISO 9001:2015, od prototypu do serii. Prześlij rysunek — wycenimy w 1–2 dni.',
       blogTitle: 'Blog i aktualności — Precimet OEM Manufacturing',
       blogDescription:
-        'Aktualności firmowe, case studies i wiedza technologiczna z obszaru obróbki metalu: cięcie laserowe, gięcie blach, spawanie, obróbka CNC i produkcja kontraktowa.',
+        'Aktualności firmowe, case studies i wiedza technologiczna z obróbki metalu: cięcie laserowe, gięcie blach, spawanie, obróbka CNC i produkcja kontraktowa.',
       privacyDescription:
         'Polityka prywatności serwisu Precimet OEM Manufacturing — jak przetwarzamy dane osobowe, jakie pliki cookies stosujemy i jakie przysługują Ci prawa.',
     },

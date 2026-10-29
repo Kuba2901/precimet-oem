@@ -1,6 +1,6 @@
 ---
 title: "Konstruieren für das Blechbiegen: 5 Regeln"
-description: "Mindestflanschlänge, Biegeradius, Biegezugabe und K-Faktor, Entlastungsschnitte und realistische Toleranzen — fünf Regeln, die wir bei Biegeaufträgen in Lohnfertigung anwenden."
+description: "Mindestflanschlänge, Biegeradius, K-Faktor, Entlastungsschnitte und realistische Toleranzen — fünf Regeln für Biegeaufträge in der Lohnfertigung."
 date: 2026-08-27
 lang: de
 cover: "/blog/giecie-blach.webp"
